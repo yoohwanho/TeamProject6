@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	안늉
-	
-	헤헤
+main
+
 </body>
 </html>
