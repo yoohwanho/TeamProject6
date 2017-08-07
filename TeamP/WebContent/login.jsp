@@ -66,26 +66,36 @@
 		</div>
 	</header>
 	<!-- header end -->
+	
+	<!-- section1 로그인 실패시 안내 메세지 세션-->
+	<section>
+	${msg}
+	</section>
 
-	<!-- section1 -->
-	<section class="mid-top">
-		<div class="text-vertical-center">
-			<h1>반응형 이미지 들어갈곳</h1>
+	<!-- section2 로그인세션 -->
+	<section>
+		<div align="center">
+			<h1>로그인</h1>
+			<form action="login" method="post">
+				<table>
+					<tr>
+						<th>id</th>
+						<td><input type="text" name="id" /></td>
+					</tr>
+					<tr>
+						<th>pw</th>
+						<td><input type="password" name="pw" /></td>
+					</tr>
+					<tr>
+						<td colspan="3"><input type="submit" value="로그인" /> <input
+							type="button" value="취소" id="btn" /> <input type="button"
+							value="ID/PW찾기" id="btn2" /></td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</section>
 	<!-- section1 end -->
-
-	<!-- section2 -->
-	<section class="mid-down">
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-	</section>
-	<!-- section2 END -->
 
 
 

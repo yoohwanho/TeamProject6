@@ -68,24 +68,40 @@
 	<!-- header end -->
 
 	<!-- section1 -->
-	<section class="mid-top">
-		<div class="text-vertical-center">
-			<h1>반응형 이미지 들어갈곳</h1>
+	<section>
+		<div align="center">
+			<h1>회원가입</h1>
+			<form action="join" method="post">
+				<table>
+					<tr>
+						<th>id</th>
+						<td><input type="text" name="id" /></td>
+					</tr>
+					<tr>
+						<th>pw</th>
+						<td><input type="password" name="pw" /></td>
+					</tr>
+					<tr>
+						<th>pw확인</th>
+						<td><input type="password" name="repw" /></td>
+					</tr>
+					<tr>
+						<th>email</th>
+						<td><input type="text" name="email" /></td>
+					</tr>
+					<tr>
+						<th>휴대폰</th>
+						<td><input type="text" name="phone" /></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="submit" value="회원가입" /> <input
+							type="button" value="취소" id="btn" /></td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</section>
 	<!-- section1 end -->
-
-	<!-- section2 -->
-	<section class="mid-down">
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-	</section>
-	<!-- section2 END -->
 
 
 

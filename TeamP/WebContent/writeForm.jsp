@@ -68,24 +68,28 @@
 	<!-- header end -->
 
 	<!-- section1 -->
-	<section class="mid-top">
-		<div class="text-vertical-center">
-			<h1>반응형 이미지 들어갈곳</h1>
+	<section>
+		<div align="center">
+			<form action="writeOk" method="post">
+				<table>
+					<tr>
+						<th>제목</th>
+						<td><input type="text" name="title" /></td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td><textarea rows="" cols=""></textarea></td>
+					</tr>
+				
+					<tr>
+						<td colspan="2"><input type="submit" value="작성/수정" /> <input
+							type="button" value="취소" id="btn" /></td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</section>
 	<!-- section1 end -->
-
-	<!-- section2 -->
-	<section class="mid-down">
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-	</section>
-	<!-- section2 END -->
 
 
 
