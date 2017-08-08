@@ -114,9 +114,7 @@
 						<td><img src="./img/defaultman.png" alt="default" width="100" height="100"/></td>
 						<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
 						<td>
-							<input type="text" name="" id="" />
-							<!-- filePath출력 -->
-							<input type="file" name="file" id="" />
+							<input type="button" value="사진 올리기" />
 						<td>
 					</tr>
 
