@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--리뷰는 조회 입력 -->
+<mapper namespace="kr.co.ilque.review">
+	<!-- 유저정보 페이지에서 그사람이 고용됬던 일의 고용주의 리뷰나 그사람이 고용한 일의 고용자의 리뷰가 보여야됨 => 일단 그사람이 
+		관여된 일은 review 테이블의 boardNo로 알수있음. review테이블의 boardNo로 알아온 게시글의 writer와 applicant의 
+		아이디를 보고 본인이 아닌 다른사람의 아이디로 boardNo,id 로 후기글을 검색해서 보여준다. 어어시벌 애초에 리뷰를 언제 어떻게적는거야 -->
+	<select id="showReview" resultType="rdto">
+		select rno reviewno, bno boardno, rwriter writer, rcontents contents,
+		regdate, imgsrc rscore score
+		from board_review where bwriter=#{member} and bapplicant=rwriter
+		union
+		select rno reviewno, bno boardno, rwriter writer, rcontents contents,
+		regdate, imgsrc, rscore score
+		from board_review where bwriter=rwriter and bapplicant=#{member}
+
+	</select>
+	<insert id="insertOne" parameterType="rdto">
+		insert into review values(review_seq,#{boardno},#{writer},#{contents},
+		#{regdate}, #{imgsrc} )
+	</insert>
+	
+</mapper>

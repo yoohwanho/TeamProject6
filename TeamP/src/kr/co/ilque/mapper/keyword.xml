@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+
+ 
+ <mapper namespace="kr.co.ilque.keyword">
+ <!-- 상위 10개 조회 -->
+ <select id="showTop10" resultType="kdto">
+ select * from keywords where rownum &lt; 10 order by counts desc
+ </select>
+ <!-- 검색어 추가를위해 DB에 있는지 없는지 isnext로 확인할거 -->
+ <select id="checkKeyword" resultType="kdto">
+ select * from keywords where kword=#{kword}
+ </select>
+ <insert id="insertOne" parameterType="kdto">
+ insert into keywords values(keyword_seq, #{kword}, 1)
+ </insert>
+ <update id="updateOne" parameterType="kdto">
+ update keywords set counts = counts+1 where kword=#{kword}
+ </update>
+ 
+ </mapper>
