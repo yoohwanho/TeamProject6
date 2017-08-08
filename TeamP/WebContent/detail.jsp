@@ -48,12 +48,11 @@
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-			<li><a href="http://localhost:8080/TeamP/main.jsp"><h2>일일퀘스트</h2></a></li>
-			<li><a href="http://localhost:8080/TeamP/login">로그인</a></li>
-			<li><a href="http://localhost:8080/TeamP/loginForm">회원가입</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='1'">해주세요</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='2'">해드립니다</a></li>
-			<li><a href="http://localhost:8080/TeamP/List">거래목록</a></li>
+			<li><a href="main"><h2>일일퀘스트</h2></a></li>
+			<li><a href="login">로그인</a></li>
+			<li><a href="join">회원가입</a></li>
+			<li><a href="writeForm">해주세요/해드립니다</a></li>
+			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
 	<!-- Navigation END -->
@@ -61,8 +60,8 @@
 	<!-- header -->
 	<header class="header">
 		<div class="logo">
-			<a href="http://localhost:8080/TeamP/main.jsp"><img
-				src="./img/logo.png" alt="logo" width="50" height="50" /></a>
+			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+				height="50" /></a>
 		</div>
 	</header>
 	<!-- header end -->
@@ -106,16 +105,68 @@
 						<td>서울시 종로구</td>
 						<td>2017-08-15</td>
 					</tr>
-					<tr>
-
-					</tr>
-
+				
 				</table>
+				<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=cFEzVHezFowJellMimC4&submodules=geocoder"></script>
+						<div id="map" style="width: 60%; height: 300px;"></div>
+						<script>
+						
+							var map = new naver.maps.Map('map');
+							//입력된 주소에 따라 지도시작위치가 달라짐.
+							var myaddress = '남대문로 117';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
+							naver.maps.Service
+									.geocode(
+											{
+												address : myaddress
+											},
+											function(status, response) {
+												if (status !== naver.maps.Service.Status.OK) {
+													return alert(myaddress
+															+ '의 검색 결과가 없거나 기타 네트워크 에러');
+												}
+												var result = response.result;
+												// 검색 결과 갯수: result.total
+												// 첫번째 결과 결과 주소: result.items[0].address
+												// 첫번째 검색 결과 좌표: result.items[0].point.y, result.items[0].point.x
+												var myaddr = new naver.maps.Point(
+														result.items[0].point.x,
+														result.items[0].point.y);
+												map.setCenter(myaddr); // 검색된 좌표로 지도 이동
+												// 마커 표시
+												var marker = new naver.maps.Marker(
+														{
+															position : myaddr,
+															map : map
+														});
+												// 마커 클릭 이벤트 처리
+												naver.maps.Event
+														.addListener(
+																marker,
+																"click",
+																function(e) {
+																	if (infowindow
+																			.getMap()) {
+																		infowindow
+																				.close();
+																	} else {
+																		infowindow
+																				.open(
+																						map,
+																						marker);
+																	}
+																});
+												// 마크 클릭시 인포윈도우 오픈
+												var infowindow = new naver.maps.InfoWindow(
+														{
+															content : '<h4> [네이버 개발자센터]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
+														});
+											});
+						</script>
 				<!--  댓글 테이블. db에서 댓글 조회하여 입력시켜야함. -->
 				<table class="table">
-					
+
 					<tr class="active">
-						
+
 						<td>댓글 (2개)</td>
 					</tr>
 					<tr>
@@ -142,13 +193,16 @@
 				<form action="writecomments" method="post">
 					<div class="form-group">
 						<label for="comment">문의하기</label>
-						<textarea class="form-control" rows="5" name="comments" id="comment"
-							placeholder="궁금하신 점을 작성해주세요~"></textarea>
+						<textarea class="form-control" rows="5" name="comments"
+							id="comment" placeholder="궁금하신 점을 작성해주세요~"></textarea>
 						<button type="button" class="btn" id="">등록하기</button>
 					</div>
 				</form>
 			</div>
 		</div>
+
+
+
 	</section>
 	<!-- section1 end -->
 

@@ -36,12 +36,7 @@
 	});
 </script>
 
-<style type="text/css">
-img{
-width: 100px;
-height:100px;
-}
-</style>
+
 </head>
 
 
@@ -54,12 +49,11 @@ height:100px;
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-			<li><a href="http://localhost:8080/TeamP/main.jsp"><h2>일일퀘스트</h2></a></li>
-			<li><a href="http://localhost:8080/TeamP/login">로그인</a></li>
-			<li><a href="http://localhost:8080/TeamP/loginForm">회원가입</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='1'">해주세요</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='2'">해드립니다</a></li>
-			<li><a href="http://localhost:8080/TeamP/List">거래목록</a></li>
+			<li><a href="main"><h2>일일퀘스트</h2></a></li>
+			<li><a href="login">로그인</a></li>
+			<li><a href="join">회원가입</a></li>
+			<li><a href="writeForm">해주세요/해드립니다</a></li>
+			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
 	<!-- Navigation END -->
@@ -67,7 +61,7 @@ height:100px;
 	<!-- header -->
 	<header class="header">
 		<div class="logo">
-			<a href="http://localhost:8080/TeamP/main.jsp"><img
+			<a href="main"><img
 				src="./img/logo.png" alt="logo" width="50" height="50" /></a>
 		</div>
 	</header>
@@ -114,14 +108,12 @@ height:100px;
 					<tr><th>생년월일</th>
 						<td colspan="2"><input type="date" name="birthday" id="" /></td>
 					</tr>
-					<tr rowspan="2">
+					<tr>
 						<th>사진 등록</th>
-						<td><img src="./img/defaultman.png" alt="default" /></td>
+						<td><img src="./img/defaultman.png" alt="default" width="100" height="100"/></td>
 						<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
 						<td>
-							<input type="text" name="" id="" />
-							<!-- filePath출력 -->
-							<input type="file" name="file" id="" />
+							<input type="button" value="사진 올리기" />
 						<td>
 					</tr>
 

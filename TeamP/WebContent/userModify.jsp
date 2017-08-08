@@ -35,7 +35,12 @@
 		});
 	});
 </script>
-
+<style type="text/css">
+img{
+width:100px;
+height: 100px;
+}
+</style>
 </head>
 
 
@@ -48,12 +53,11 @@
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-			<li><a href="http://localhost:8080/TeamP/main.jsp"><h2>일일퀘스트</h2></a></li>
-			<li><a href="http://localhost:8080/TeamP/login">로그인</a></li>
-			<li><a href="http://localhost:8080/TeamP/loginForm">회원가입</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='1'">해주세요</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='2'">해드립니다</a></li>
-			<li><a href="http://localhost:8080/TeamP/List">거래목록</a></li>
+			<li><a href="main"><h2>일일퀘스트</h2></a></li>
+			<li><a href="login">로그인</a></li>
+			<li><a href="join">회원가입</a></li>
+			<li><a href="writeForm">해주세요/해드립니다</a></li>
+			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
 	<!-- Navigation END -->
@@ -61,7 +65,7 @@
 	<!-- header -->
 	<header class="header">
 		<div class="logo">
-			<a href="http://localhost:8080/TeamP/main.jsp"><img
+			<a href="main"><img
 				src="./img/logo.png" alt="logo" width="50" height="50" /></a>
 		</div>
 	</header>
@@ -70,7 +74,41 @@
 	<!-- section1 -->
 	<section>
 		<div align="center">
-			<h1>ddd</h1>
+			<h1>프로필</h1>
+			<div class="container">
+			<form action="">
+			<!-- 수정 버튼을 누르면 userDetail.jsp로 이동  -->
+			<table class="table">
+				<tr>
+					<td rowspan="5"><img src="./img/defaultman.png" alt="default" /></td>
+					<td>ID</td>
+					<td>${id }</td>
+				</tr>
+				<tr>
+					<td>휴대폰</td>
+					<td colspan="2"><input type="text" name="phone" id="" /></td>
+				</tr>
+				<tr>
+					<td>성별</td>
+					<td colspan="2">
+					<input type="radio" name="gender" id="male" /> 남자
+					<input type="radio" name="gender" id="female" /> 여자				
+					</td>
+				</tr>
+				<tr>
+					<td><h2>소개</h2></td>
+					<td colspan="2"><textarea name="contents" id="contents" cols="30" rows="10"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+					<input type="submit" value="수정" />
+					<!-- 수정 버튼을 누르면 userDetail.jsp로 이동  -->
+					<input type="button" value="돌아가기" />
+					</td>
+				</tr>
+			</table>
+			</form>
+			</div>
 		</div>
 	</section>
 	<!-- section1 end -->
