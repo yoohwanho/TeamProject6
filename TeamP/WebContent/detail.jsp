@@ -68,11 +68,84 @@
 	<!-- header end -->
 
 	<!-- section1 -->
+
+
 	<section>
-		<div align="center">
-			<h1>제목 사진 등등</h1>
-			<h1>연락처및위치정보</h1>
-			<h1>댓글 등등</h1>
+
+		<!--  게시글 클릭시 디테일 창. -->
+		<div class="container">
+			<div class="table-responsive" align="center">
+				<table class="table">
+					<tr>
+						<th colspan="4">제목</th>
+					</tr>
+					<tr>
+						<td rowspan="4"><img src="./img/mal2.png" alt="프사"
+							class="img-rounded" /></td>
+						<td><h5>등록일</h5></td>
+					</tr>
+					<tr>
+						<td>댓글 N개</td>
+					</tr>
+					<tr>
+						<td>평점 6.5/10</td>
+					</tr>
+					<tr>
+						<td>금액</td>
+					</tr>
+					<tr>
+						<td colspan="5">집에 뭘 두고왔는데 대신 가져다 주실분</td>
+					</tr>
+					<tr>
+						<th>연락처</th>
+						<th>지역</th>
+						<th>기한</th>
+					</tr>
+					<tr>
+						<td>010-1234-5678</td>
+						<td>서울시 종로구</td>
+						<td>2017-08-15</td>
+					</tr>
+					<tr>
+					
+					</tr>
+
+				</table>
+				<!--  댓글 테이블. db에서 댓글 조회하여 입력시켜야함. -->
+				<table class="table">
+					<tr>
+						<td>댓글 (2개)</td>
+					</tr>
+					<tr>
+						<td>멍멍이</td>
+						<td>8.5/10</td>
+						<td>2017-08-08 11:35:40</td>
+					</tr>
+					<tr>
+						<td colspan="5">지원하고싶습니다.</td>
+					</tr>
+					<tr>
+
+						<td>멍멍이</td>
+						<td>8.5/10</td>
+						<td>2017-08-08 11:35:40</td>
+					</tr>
+					<tr>
+						<td colspan="5">지원하고싶습니다.</td>
+					</tr>
+				</table>
+			</div>
+			<!--  댓글입력창. form에 액션 추가하고 사용.-->
+			<div class="container">
+				<form>
+					<div class="form-group">
+						<label for="comment">문의하기</label>
+						<textarea class="form-control" rows="5" id="comment"
+							placeholder="궁금하신 점을 작성해주세요~"></textarea>
+						<button type="button" class="btn" id="">등록하기</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</section>
 	<!-- section1 end -->
