@@ -7,6 +7,5 @@
 <typeAliases>
 	<typeAlias type="kr.co.ilque.dto.BoardDto" alias="bdto"/>
 	<typeAlias type="kr.co.ilque.dto.UserDto" alias="udto"/>
-	<typeAlias type="kr.co.ilque.dto.ReviewDto" al
 </typeAliases>
 </configuration>

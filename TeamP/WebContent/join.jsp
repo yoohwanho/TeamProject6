@@ -35,6 +35,16 @@
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
+	
+	
+	$(function(){
+		if("${filePath}"!=""){
+				 $('#imgF').attr('src',"${filePath }");
+		}	
+	});
+	
+	/* ./img/defaultman.png
+	${filePath } */
 </script>
 
 
@@ -62,8 +72,8 @@
 	<!-- header -->
 	<header class="header">
 		<div class="logo">
-			<a href="main"><img
-				src="./img/logo.png" alt="logo" width="50" height="50" /></a>
+			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+				height="50" /></a>
 		</div>
 	</header>
 	<!-- header end -->
@@ -72,64 +82,70 @@
 	<section>
 		<div align="center">
 			<h1>회원가입</h1>
-			<form action="login" method="post" id="re<%  %>gForm">
-			<div class="container">
-				<table class="table">
-					<tr>
-						<th>id</th>
-						<td colspan ="2"><input type="text" name="id" /></td>
-					</tr>
-					<tr>
-						<th>pw</th>
-						<td colspan="2"><input type="password" name="pw" /></td>
-					</tr>
-					<tr>
-						<th>pw확인</th>
-						<td colspan="2"><input type="password" name="repw" /></td>
-					</tr>
-					<tr>
-						<th>이름</th>
-						<td><input type="text" name="" id="" /></td>
-					</tr>
-					<tr>
-						<th>email</th>
-						<td colspan="2"><input type="email" name="email" /></td>
-					</tr>
-					<tr>
-						<th>휴대폰</th>
-						<td colspan="2"><input type="text" name="phone"  placeholder="'-'없이 입력해주세요." /></td>
-					</tr>
-					
-					<tr>
-						<th>성별</th>
-						<td colspan="2"><input type="radio" name="gender" id="male" />남자
-						<input type="radio" name="gender" id="female" />여자
-						</td>
-					</tr>
-					<tr><th>생년월일</th>
-						<td colspan="2"><input type="date" name="birthday" id="" /></td>
-					</tr>
-					<tr>
-						<th>사진 등록</th>
-						<td><img src="./img/defaultman.png" alt="default" width="100" height="100"/></td>
-						<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
-						<td>
-							<input type="button" value="사진 올리기" />
-						<td>
-					</tr>
-					<tr>
-						<td colspan="3">
-						<input type="button" value="회원가입" id="btnJoin" />
-						<!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
-						<input type="button" value="취소" id="btnCancel" />
-						</td>
-					</tr>
-					</div>
-				</table>
+			<form action="join" method="post">
+				<div class="container">
+					<table class="table">
+						<tr>
+							<th>id</th>
+							<td colspan="2"><input type="text" name="id" /></td>
+						</tr>
+						<tr>
+							<th>pw</th>
+							<td colspan="2"><input type="password" name="pw" /></td>
+						</tr>
+						<tr>
+							<th>pw확인</th>
+							<td colspan="2"><input type="password" name="repw" /></td>
+						</tr>
+						<tr>
+							<th>이름</th>
+							<td><input type="text" name="" id="" /></td>
+						</tr>
+						<tr>
+							<th>email</th>
+							<td colspan="2"><input type="email" name="email" /></td>
+						</tr>
+						<tr>
+							<th>휴대폰</th>
+							<td colspan="2"><input type="text" name="phone"
+								placeholder="'-'없이 입력해주세요." /></td>
+						</tr>
+
+						<tr>
+							<th>성별</th>
+							<td colspan="2"><input type="radio" name="gender" id="male" />남자
+								<input type="radio" name="gender" id="female" />여자</td>
+						</tr>
+						<tr>
+							<th>생년월일</th>
+							<td colspan="2"><input type="date" name="birthday" id="" /></td>
+						</tr>
+						<tr>
+							<th>사진 등록</th>
+							<!-- ${filePath }-->
+							<td><img src="./img/defaultman.png" alt="default" width="50"
+								height="50" id="imgF" /></td>
+							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
+							<td><a href="imgPutForm">사진올리기</a>
+							<td>
+						</tr>
+
+						<tr>
+							<td colspan="3"><input type="submit" value="회원가입" /> <!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
+								<input type="button" value="취소" id="btn" /></td>
+						</tr>
+						</div>
+					</table>
 			</form>
 		</div>
 	</section>
 	<!-- section1 end -->
+
+
+
+
+
+
 
 	<!-- Footer -->
 	<footer>
@@ -154,29 +170,6 @@
 	</footer>
 	<!-- Footer END -->
 
-<script>
-$(function(){
-	$("#btnJoin").on("click", chk);
-	$("#btnCancel").on("click", cancel);
-});
 
-
-	function chk(){
-		/* 회원가입 정보가 제대로 입력되었는지 확인 */
-		/* 공란이 없는지, 비밀번호와 비밀번호 확인이 맞는지 */
-		if(true){
-			
-		}else{
-			/* 모든 입력이 확실하면 전송 */
-			$("#regForm").submit();
-		}	
-	}
-	
-	function cancel(){
-		/* 취소버튼을 누르면 이전페이지로 돌아간다 */
-		history.go(-1);				
-	}
-
-</script>
 </body>
 </html>
