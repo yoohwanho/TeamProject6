@@ -29,16 +29,16 @@ public class FileUploadController {
 	}
 	@RequestMapping("/imgPutForm2")
 	public String imgPutForm2() {
-		return "imgPutForm";
+		return "imgPutForm2";
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public ModelAndView upload(@ModelAttribute("uploadFile") UploadFile file, HttpServletRequest req,
-			BindingResult result) {
+			BindingResult result) {  
 		// 업로드한 파일 객체 가져오기
 		// 내부적으로 임의의 경로에 파일을 보관
 		MultipartFile mfile = file.getFile();
-		System.out.println("file : " + file);
+		
 
 		// 파일 유효성 검사후 성공하면 작업 계속
 		// 실패하면 중단
@@ -51,7 +51,6 @@ public class FileUploadController {
 		HttpSession hs = req.getSession();
 		ServletContext application = hs.getServletContext();
 		String filePath = application.getRealPath("/data");
-		System.out.println("실제 파일이 저장되는 경로 : " + filePath);
 		// 파일의 원본 이름
 		String fileName = mfile.getOriginalFilename();
 		// 파일 객체
