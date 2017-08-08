@@ -81,6 +81,7 @@
 					<tr>
 						<td rowspan="4"><img src="./img/mal2.png" alt="프사"
 							class="img-rounded" /></td>
+							<!-- 클릭한 게시글의 정보 -->
 						<td><h5>등록일</h5></td>
 					</tr>
 					<tr>
