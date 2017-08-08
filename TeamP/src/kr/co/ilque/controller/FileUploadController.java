@@ -30,7 +30,7 @@ public class FileUploadController {
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public ModelAndView upload(@ModelAttribute("uploadFile") UploadFile file, HttpServletRequest req,
-			BindingResult result) {
+			BindingResult result) {  
 		// 업로드한 파일 객체 가져오기
 		// 내부적으로 임의의 경로에 파일을 보관
 		MultipartFile mfile = file.getFile();

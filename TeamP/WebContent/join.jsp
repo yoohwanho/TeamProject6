@@ -82,43 +82,65 @@
 	<section>
 		<div align="center">
 			<h1>회원가입</h1>
-			<form action="join" method="post">
+			<form action="login" method="post" id="joinForm">
 				<div class="container">
 					<table class="table">
 						<tr>
 							<th>id</th>
-							<td colspan="2"><input type="text" name="id" /></td>
+							<td colspan="2">
+								<input type="text" name="id" id="id"/><br />
+								<div id="divId" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>pw</th>
-							<td colspan="2"><input type="password" name="pw" /></td>
+							<td colspan="2">
+								<input type="password" name="pw" id="pw"/><br />
+								<div id="divPw" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>pw확인</th>
-							<td colspan="2"><input type="password" name="repw" /></td>
+							<td colspan="2">
+								<input type="password" name="repw" id="repw"/><br />
+								<div id="divRepw" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>이름</th>
-							<td><input type="text" name="" id="" /></td>
+							<td colspan="2">
+								<input type="text" name="name" id="name" /><br />
+								<div id="divName" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>email</th>
-							<td colspan="2"><input type="email" name="email" /></td>
+							<td colspan="2">
+								<input type="email" name="email" id="email"/><br />
+								<div id="divEmail" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>휴대폰</th>
-							<td colspan="2"><input type="text" name="phone"
-								placeholder="'-'없이 입력해주세요." /></td>
+							<td colspan="2">
+								<input type="text" name="phone" id="phone"	placeholder="'-'없이 입력해주세요." /><br />
+								<div id="divPhone" class="warning"></div>
+							</td>
 						</tr>
 
 						<tr>
 							<th>성별</th>
-							<td colspan="2"><input type="radio" name="gender" id="male" />남자
-								<input type="radio" name="gender" id="female" />여자</td>
+							<td colspan="2">
+								<input type="radio" name="gender" id="male" />남자
+								<input type="radio" name="gender" id="female" />여자<br />
+								<div id="divGender" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>생년월일</th>
-							<td colspan="2"><input type="date" name="birthday" id="" /></td>
+								<td colspan="2"><input type="date" name="birth" id="birth" /><br />
+								<div id="divBirth" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>사진 등록</th>
@@ -126,13 +148,18 @@
 							<td><img src="./img/defaultman.png" alt="default" width="50"
 								height="50" id="imgF" /></td>
 							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
-							<td><a href="imgPutForm">사진올리기</a>
+							<td>
+								<a href="imgPutForm">사진올리기</a>
+								<br />
+								<div id="divProfilesrc" class="warning"></div>
+								<input type="hidden" name="isJoin" value="1" />
 							<td>
 						</tr>
 
 						<tr>
-							<td colspan="3"><input type="submit" value="회원가입" /> <!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
-								<input type="button" value="취소" id="btn" /></td>
+							<td colspan="3">
+								<input type="button" value="회원가입" id="btnJoin"/> <!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
+								<input type="button" value="취소" id="btnCancel" /></td>
 						</tr>
 						</div>
 					</table>
@@ -169,7 +196,53 @@
 		</div>
 	</footer>
 	<!-- Footer END -->
+<script>
+$(function(){
+	$("#btnJoin").on("click", chk);
+	$("#btnCancel").on("click", cancel);
+});
 
+
+	function chk(){
+		/* 회원가입 정보가 제대로 입력되었는지 확인 */
+		/* 공란이 없는지, 비밀번호와 비밀번호 확인이 맞는지 */	
+		for(var i in $(".warning")){
+			// 확인할 때마다 모든 warning div를 초기화시킨다. 
+			$(".warning")[i].innerHTML="";
+		}		
+		
+		//	그후 공란이 있는 div에 입력안내 메시지를 띄움
+		if($("#id").val()==""){
+			$("#divId")[0].innerHTML="<p style='color:red'>아이디를 입력해주세요.</p>";				
+		}else if($("#pw").val()==""){
+			$("#divPw")[0].innerHTML="<p style='color:red'>패스워드를 입력해주세요.</p>";
+		}else if($("#repw").val()==""){
+			$("#divRepw")[0].innerHTML="<p style='color:red'>패스워드를 재입력해주세요.</p>";
+		}else if($("#pw").val()!=$("#repw").val()){
+			$("#divRepw")[0].innerHTML="<p style='color:red'>위에 입력한 것과 다릅니다.</p>";			
+		}else if($("#name").val()==""){
+			$("#divName")[0].innerHTML="<p style='color:red'>이름을 입력해주세요.</p>";
+		}else if($("#email").val()==""){
+			$("#divEmail")[0].innerHTML="<p style='color:red'>이메일을 입력해주세요.</p>";
+		}else if($("#phone").val()==""){
+			$("#divPhone")[0].innerHTML="<p style='color:red'>휴대폰번호를 입력해주세요.</p>";
+		}else if($("#gender").val()==""){
+			$("#divGender")[0].innerHTML="<p style='color:red'>성별을 선택해주세요.</p>";			
+		}else if($("#birth").val()==""){
+			$("#divBirth")[0].innerHTML="<p style='color:red'>생일을 선택해주세요.</p>";
+		}else{
+			/* 모든 입력이 확실하면 전송 */
+			$("#regForm").submit();
+	 		console.dir($("#id"));
+		}	
+	}
+	
+	function cancel(){
+		/* 취소버튼을 누르면 이전페이지로 돌아간다 */
+		history.go(-1);				
+	}
+
+</script>
 
 </body>
 </html>
