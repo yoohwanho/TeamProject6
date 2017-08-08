@@ -7,13 +7,13 @@
 	<!-- 유저정보 페이지에서 그사람이 고용됬던 일의 고용주의 리뷰나 그사람이 고용한 일의 고용자의 리뷰가 보여야됨 => 일단 그사람이 
 		관여된 일은 review 테이블의 boardNo로 알수있음. review테이블의 boardNo로 알아온 게시글의 writer와 applicant의 
 		아이디를 보고 본인이 아닌 다른사람의 아이디로 boardNo,id 로 후기글을 검색해서 보여준다. 어어시벌 애초에 리뷰를 언제 어떻게적는거야 -->
-	<select id="showReview" resultType="rdto">
+	<select id="showReview" resultType="brdto">
 		select rno reviewno, bno boardno, rwriter writer, rcontents contents,
-		regdate, imgsrc rscore score
+		regdate, imgsrc rscore score, title
 		from board_review where bwriter=#{member} and bapplicant=rwriter
 		union
 		select rno reviewno, bno boardno, rwriter writer, rcontents contents,
-		regdate, imgsrc, rscore score
+		regdate, imgsrc, rscore score, title
 		from board_review where bwriter=rwriter and bapplicant=#{member}
 
 	</select>
