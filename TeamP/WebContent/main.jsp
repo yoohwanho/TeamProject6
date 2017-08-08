@@ -74,24 +74,23 @@
 
 	<!-- header -->
 	<header class="header">
-	<!-- 헤더의 로고부분 -->
-		<div >
-			<a href="main"><img
-				src="./img/logo.png" alt="logo" width="50" height="50" /></a>
-		
-		
-		<!-- 헤더에서 검색텍스트에어리어와 검색버튼 -->
-			<input type="text" width="50" height="50"
-				style="width: 150px; height: 36px; margin-top: 5px;"> <a
+		<!-- 헤더의 로고부분 -->
+		<div>
+			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+				height="50" /></a>
+
+
+			<!-- 헤더에서 검색텍스트에어리어와 검색버튼 -->
+			<input type="search" width="50" height="50" id="search"
+				placeholder="Search..."
+				style="width: 150px; height: 36px; margin-top: 5px;" /> <a
 				href="search"><img src="./img/search.png" alt="search"
-				width="50" height="40" /></a>
-		
-		
-			<a href="listIcon">
-				<img src="./img/listIcon.png" alt="listIcon" width="50" height="40" style="margin-top: 2px"/>
+				width="50" height="40" /></a> <a href="board"> <img
+				src="./img/listIcon.png" alt="listIcon" width="50" height="40"
+				style="margin-top: 2px" />
 			</a>
 		</div>
-		
+
 	</header>
 	<!-- header end -->
 
