@@ -36,7 +36,55 @@
 		});
 	});
 </script>
+<style type="text/css">
+.filter {
+	text-align: center;
+	height: 30%;
+	left: 1%;
+	position: absolute;
+	width: 10%;
+}
 
+.miniTable {
+	width: 200px;
+	height: 300px;
+}
+
+.val {
+	width: 50px;
+}
+
+.title {
+	text-align: left;
+	font-size: large;
+	font: bold;
+	font-weight: bold;
+	width: 60%;
+}
+
+.type {
+	width: 30%;
+}
+
+.writer {
+	text-align: left;
+	width: 15%;
+}
+
+.loc {
+	text-align: left;
+	font: bold;
+	width: 70%;
+}
+
+.money {
+	text-align: right;
+	font: bold;
+	font-weight: bold;
+	font-size: medium;
+	width: 15%;
+}
+</style>
 </head>
 
 
@@ -46,7 +94,7 @@
 		class="fa fa-bars"></i></a>
 	<nav id="sidebar-wrapper">
 		<ul class="sidebar-nav">
-			<a id="menu-close" href="#"
+			<a href="#" id="menu-close"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
 			<li><a href="main"><h2>일일퀘스트</h2></a></li>
@@ -61,78 +109,132 @@
 	<!-- header -->
 	<header class="header">
 		<div class="logo">
-			<a href="main"><img
-				src="./img/logo.png" alt="logo" width="50" height="50" /></a>
+			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+				height="50" /></a>
 		</div>
 	</header>
 	<!-- header end -->
 
 	<!-- section1 -->
 	<section>
-		<!-- <div align="center">
-			<table>
-					<tr>
-						<td>해주세요</td>
-						<td colspan="2">제목 </td>
-						<td>완료인지아닌지</td>
-					</tr>
-					<tr>
-						<td colspan="2">이름(서울시 종로구)</td>
-						<td>댓글4개</td>
-						<td>금액 1000원</td>
-					</tr>
-				</table>
-				<table>
-					<tr>
-						<td>해주세요</td>
-						<td colspan="2">제목 </td>
-						<td>완료인지아닌지</td>
-					</tr>
-					<tr>
-						<td colspan="2">이름(서울시 종로구)</td>
-						<td>댓글4개</td>
-						<td>금액 1000원</td>
-					</tr>
-				</table>
-				<table>
-					<tr>
-						<td>해주세요</td>
-						<td colspan="2">제목 </td>
-						<td>완료인지아닌지</td>
-					</tr>
-					<tr>
-						<td colspan="2">이름(서울시 종로구)</td>
-						<td>댓글4개</td>
-						<td>금액 1000원</td>
-					</tr>
-				</table> -->
-		<div class="job_info" align="center">
-			<div class="photo">
-				<img src="./img/defaultman.png" width="50" height="50">
+		<div class="container">
+			<div class="filter">
+				<form action="board">
+					<table class="miniTable">
+
+						<tr>
+							<td><label><input type="radio" name="optionJob" value="일감">일감</label></td>
+							<td><label><input type="radio" name="optionJob" value="일손">일손</label></td>
+							<td><label><input type="radio" name="optionJob" value="전체">전체</label></td>
+						</tr>
+						<tr>
+							<td><label><input type="radio" name="optionGender" value="여자">여자</label></td>
+							<td><label><input type="radio" name="optionGender" value="남자">남자</label></td>
+							<td><label><input type="radio" name="optionGender" value="무관">무관</label></td>
+						</tr>
+						<tr>
+							<td><input type="text" class="val" name="minVal"
+								placeholder="0" /></td>
+
+							<td><input type="text" class="val" name="maxVal"
+								placeholder="100000" /></td>
+							<td><input type="submit" value="검색" /></td>
+						</tr>
+					</table>
+				</form>
 			</div>
-			<strong class="title-inline ellipsis-inline"><em>해드립니다</em><a
-				href="/index.php?r=deal/work-detail&amp;id=4887">원고작성/블로그원고/재택근무/바이럴마케팅</a></strong><span
-				class="name-inline name-seller">이**</span><span
-				class="addr-inline ellipsis-inline">경기도 수원시 권선구 세권로101번길</span><span
-				class="state type_04">요청</span><span class="pay-inline">₩5,000</span>
+			<div class="table-responsive" align="center">
+				<table class="table">
+					<tr>
+						<td rowspan="2" width="100px"><img src="./img/mal2.png"
+							alt="userPic" /></td>
+						<td class="type">해주세요.</td>
+						<td class="title" colspan="2">멍멍이좀 찾아주세요</td>
+					</tr>
+					<tr>
+						<td class="writer">개장수</td>
+						<td class="loc">서울시 도봉구 도봉동</td>
+
+						<td class="money">99000</td>
+					</tr>
+
+					<tr>
+						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
+						<td class="type">해드립니다.</td>
+						<td class="title" colspan="2">사람 찾아드립니다.</td>
+					</tr>
+					<tr>
+						<td class="writer">마포갈비</td>
+						<td class="loc">서울시 마포구 상암동</td>
+
+						<td class="money">30000000</td>
+					</tr>
+					<tr>
+						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
+						<td class="type">해드립니다.</td>
+						<td class="title" colspan="2">방학숙제해드립니다.</td>
+					</tr>
+					<tr>
+						<td class="writer">대학생</td>
+						<td class="loc">서울시 관악구 신림동</td>
+
+						<td class="money">20000</td>
+					</tr>
+					<tr>
+						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
+						<td class="type">해주세요.</td>
+						<td class="title" colspan="2">머리풍성 하게 해주세요.</td>
+					</tr>
+					<tr>
+						<td class="writer">김광규</td>
+						<td class="loc">서울시 종로구 창신동</td>
+
+						<td class="money">50000000</td>
+					</tr>
+
+				</table>
+			</div>
+
+
+			<div class="container">
+
+				<!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-info btn-lg"
+					data-toggle="modal" data-target="#myModal">로그인하기</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">로그인</h4>
+							</div>
+							<div class="modal-body">
+								<table class="table">
+									<tr>
+										<th>ID</th>
+										<td><input type="text" name="id" id="" /></td>
+									</tr>
+									<tr>
+										<th>PW</th>
+										<td><input type="password" name="pw" id="" /></td>
+									</tr>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">로그인</button>
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">취소</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-
-
-
-		<c:forEach var="list" items="${list }">
-			<table>
-				<tr>
-					<td>${list.해주세요/해드립니다 }</td>
-					<td colspan="2">${list.제목 }</td>
-					<td>${list.완료인지아닌지 }</td>
-				</tr>
-				<tr>
-					<td colspan="2">${list.이름 }(${list.주소 })</td>
-					<td>${list.댓글 }</td>
-					<td>${list.금액 }</td>
-				</tr>
-			</table>
-		</c:forEach>
 	</section>
 	<!-- section1 end -->
 
