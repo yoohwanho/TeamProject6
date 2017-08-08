@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,13 +80,14 @@
 						<th colspan="5">제목</th>
 					</tr>
 					<tr>
-						<td rowspan="4"><img src="./img/mal2.png" alt="프사"
-							class="img-rounded" /></td>
-							<!-- 클릭한 게시글의 정보 -->
+						<!-- 클릭한 게시글의 정보 -->
+						<td rowspan="4"><a href="userDetail"><img
+								src="./img/mal2.png" alt="프사" class="img-rounded" /></a></td>
+
 						<td><h5>등록일</h5></td>
 					</tr>
 					<tr>
-						<td>댓글 N개</td>
+						<td><b>댓글 N개</b></td>
 					</tr>
 					<tr>
 						<td>평점 6.5/10</td>
@@ -106,65 +108,58 @@
 						<td>서울시 종로구</td>
 						<td>2017-08-15</td>
 					</tr>
-				
+
 				</table>
-				<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=cFEzVHezFowJellMimC4&submodules=geocoder"></script>
-						<div id="map" style="width: 60%; height: 300px;"></div>
-						<script>
-						
-							var map = new naver.maps.Map('map');
-							//입력된 주소에 따라 지도시작위치가 달라짐.
-							var myaddress = '남대문로 117';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
-							naver.maps.Service
-									.geocode(
-											{
-												address : myaddress
-											},
-											function(status, response) {
-												if (status !== naver.maps.Service.Status.OK) {
-													return alert(myaddress
-															+ '의 검색 결과가 없거나 기타 네트워크 에러');
-												}
-												var result = response.result;
-												// 검색 결과 갯수: result.total
-												// 첫번째 결과 결과 주소: result.items[0].address
-												// 첫번째 검색 결과 좌표: result.items[0].point.y, result.items[0].point.x
-												var myaddr = new naver.maps.Point(
-														result.items[0].point.x,
-														result.items[0].point.y);
-												map.setCenter(myaddr); // 검색된 좌표로 지도 이동
-												// 마커 표시
-												var marker = new naver.maps.Marker(
-														{
-															position : myaddr,
-															map : map
-														});
-												// 마커 클릭 이벤트 처리
-												naver.maps.Event
-														.addListener(
-																marker,
-																"click",
-																function(e) {
-																	if (infowindow
-																			.getMap()) {
-																		infowindow
-																				.close();
-																	} else {
-																		infowindow
-																				.open(
-																						map,
-																						marker);
-																	}
-																});
-												// 마크 클릭시 인포윈도우 오픈
-												var infowindow = new naver.maps.InfoWindow(
-														{
-															content : '<h4> [네이버 개발자센터]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
-														});
-											});
-						</script>
+				<script type="text/javascript"
+					src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=cFEzVHezFowJellMimC4&submodules=geocoder"></script>
+				<div id="map" style="width: 60%; height: 300px;"></div>
+				<script>
+					var map = new naver.maps.Map('map');
+					//입력된 주소에 따라 지도시작위치가 달라짐.
+					var myaddress = '남대문로 117';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
+					naver.maps.Service
+							.geocode(
+									{
+										address : myaddress
+									},
+									function(status, response) {
+										if (status !== naver.maps.Service.Status.OK) {
+											return alert(myaddress
+													+ '의 검색 결과가 없거나 기타 네트워크 에러');
+										}
+										var result = response.result;
+										// 검색 결과 갯수: result.total
+										// 첫번째 결과 결과 주소: result.items[0].address
+										// 첫번째 검색 결과 좌표: result.items[0].point.y, result.items[0].point.x
+										var myaddr = new naver.maps.Point(
+												result.items[0].point.x,
+												result.items[0].point.y);
+										map.setCenter(myaddr); // 검색된 좌표로 지도 이동
+										// 마커 표시
+										var marker = new naver.maps.Marker({
+											position : myaddr,
+											map : map
+										});
+										// 마커 클릭 이벤트 처리
+										naver.maps.Event.addListener(marker,
+												"click", function(e) {
+													if (infowindow.getMap()) {
+														infowindow.close();
+													} else {
+														infowindow.open(map,
+																marker);
+													}
+												});
+										// 마크 클릭시 인포윈도우 오픈
+										var infowindow = new naver.maps.InfoWindow(
+												{
+													content : '<h4> [네이버 개발자센터]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
+												});
+									});
+				</script>
 				<!--  댓글 테이블. db에서 댓글 조회하여 입력시켜야함. -->
 				<table class="table">
+
 
 					<tr class="active">
 
@@ -187,6 +182,15 @@
 					<tr>
 						<td colspan="5">지원하고싶습니다.</td>
 					</tr>
+					=======
+					<c:forEach var="cdto" items="${commentlist }">
+						<tr>
+							<td>${cdto.writer }(id:${cdto.id })</td>
+							<td>${cdto.contents}</td>
+						</tr>
+					</c:forEach>
+					>>>>>>> branch 'master' of
+					https://github.com/yoohwanho/TeamProject6.git
 				</table>
 			</div>
 			<!--  댓글입력창. form에 액션 추가하고 사용.-->

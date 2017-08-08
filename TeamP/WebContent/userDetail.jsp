@@ -69,7 +69,74 @@
 	<!-- section1 -->
 	<section>
 		<div align="center">
-			<h1>ddd</h1>
+			<h1>프로필</h1>
+			
+			<<div class="container">
+			<table class="table">
+
+				<tr>
+					<td rowspan="4"><img src="./img/defaultman.png" alt="default"
+						width="100" height="100" /></td>
+					<th>ID</th>
+					<td>${id }</td>
+				</tr>
+				<tr>
+					<th>휴대폰</tj>
+					<td colspan="2">${phone}</td>
+				</tr>
+				<tr>
+					<th>요청자로서의 평점</th>
+					<td colspan="2">평점/10</td>
+					<!--  평정 입력 값이 들어가야함  -->
+				</tr>
+				<tr>
+					<th>지원자로서의 평점</th>
+					<td colspan="2">평점/10</td>
+					<!--  지원자 평점이 들어가야 함  -->
+				</tr>
+
+				<tr>
+					<td><h2>소개</h2></td>
+					<td colspan="2">
+						<div class="panel panel-default">
+							<div class="panel-body">소개글이 들어가면 됩니다 소개글소개글</div>
+						</div>
+					</td>
+					<!-- 소개글이 출력되야함 -->
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td><input type="button" value="수정" /></td>
+				</tr>
+			</table>
+		</div>
+		<div class="container">
+			<table class="table">
+				<div class="container">
+					<div class="panel-group" id="accordion">
+				<tr>
+					<td rowspan="2" width="46" height="225"><img src="./img/defaultman.png" alt="default"
+						width="30" height="30" /></td>
+					<td>후기글 작성자</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion"
+											href="#collapse1"> 후기글 제목</a>
+									</h4>
+								</div>
+								<div id="collapse1" class="panel-collapse collapse">
+									<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur illum doloremque eos labore voluptatem rem explicabo inventore tempora eum necessitatibus dignissimos similique non vero tenetur corporis asperiores minima. Rerum ducimus?</div>
+								</div>
+					</td>
+				</tr>
+			</table>
+
 		</div>
 	</section>
 	<!-- section1 end -->
