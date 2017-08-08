@@ -34,6 +34,25 @@
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
+	
+	$(function (){
+		$("#searchaddrs").click(function(){
+			<!--autoload=false 파라미터를 이용하여 자동으로 로딩되는 것을 막습니다.-->
+			<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+			<script>
+			    //load함수를 이용하여 core스크립트의 로딩이 완료된 후, 우편번호 서비스를 실행합니다.
+			    daum.postcode.load(function(){
+			        new daum.Postcode({
+			            oncomplete: function(data) {
+			                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+			                // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+			            }
+			        }).open();
+			    });
+			</script>
+		})
+		
+	});
 </script>
 
 </head>
@@ -71,21 +90,48 @@
 	<section>
 		<div align="center">
 			<form action="writeOk" method="post">
-				<table>
-					<tr>
-						<th>제목</th>
-						<td><input type="text" name="title" /></td>
-					</tr>
-					<tr>
-						<th>내용</th>
-						<td><textarea rows="" cols=""></textarea></td>
-					</tr>
-				
-					<tr>
-						<td colspan="2"><input type="submit" value="작성/수정" /> <input
-							type="button" value="취소" id="btn" /></td>
-					</tr>
-				</table>
+				<div class="container">
+					<table class="table">
+						<tr>
+							<td><input type="radio" name="category" id="구인" />해주세요 <input
+								type="radio" name="category" id="구직" />해드립니다 <!-- 뒤에 글귀는 후에 변경 가능!!  -->
+							</td>
+						</tr>
+						<tr>
+							<th>제목</th>
+							<td><input type="text" name="title" /></td>
+						</tr>
+						<tr>
+							<th>상세 내용</th>
+							<td><textarea rows="10" cols="30"></textarea></td>
+						</tr>
+						<tr>
+							<th>제안 금액</th>
+							<td><input type="text" name="money" id="" /></td>
+						</tr>
+						<tr>
+							<th>휴대폰</th>
+							<td><input type="text" name="phone" placeholder="${phone}" /></td>
+							<!-- default로 로그인 한 사람의 핸드폰 번호가 들어가지만 후에 본인이 수정 가능!! -->
+						</tr>
+						<tr>
+							<th>지원기한</th>
+							<td><input type="date" name="period" id="" /></td>
+						</tr>
+						<tr>
+							<th>위치</th>
+							<td>
+								<input type="text" name="" id="" />
+								<input type="button" value="주소 검색" id="searchaddrs"/>
+							</td>
+						</tr>
+
+						<tr>
+							<td colspan="2"><input type="submit" value="작성/수정" /> <input
+								type="button" value="취소" id="btn" /></td>
+						</tr>
+					</table>
+				</div>
 			</form>
 		</div>
 	</section>
