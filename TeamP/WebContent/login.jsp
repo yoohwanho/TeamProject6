@@ -36,6 +36,14 @@
 	});
 </script>
 
+<style>
+	/* 알림 세션  */
+	.alert{
+		margin: 0 auto;
+		width: 600px;
+	}
+</style>
+
 </head>
 
 
@@ -67,9 +75,20 @@
 	</header>
 	<!-- header end -->
 	
-	<!-- section1 로그인 실패시 안내 메세지 세션-->
+	<!-- section1 안내 메세지 세션-->
 	<section>
-	${msg}
+		<!-- 로그인 실패시 경고  -->	
+		<div class="alert alert-danger alert-dismissable fade in">
+		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>로그인 실패</strong> 아이디 또는 패스워드가 틀립니다.
+		</div>
+		
+		<!-- 회원가입 성공시 -->
+		<div class="alert alert-success alert-dismissable fade in">
+		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>회원가입 성공!</strong> 이제 서비스를 이용하실 수 있습니다.
+		</div>
+		
 	</section>
 
 	<!-- section2 로그인세션 -->
@@ -87,9 +106,13 @@
 						<td><input type="password" name="pw" /></td>
 					</tr>
 					<tr>
-						<td colspan="3"><input type="submit" value="로그인" /> <input
-							type="button" value="취소" id="btn" /> <input type="button"
-							value="ID/PW찾기" id="btn2" /></td>
+						<td colspan="3">
+							<input type="submit" value="로그인" />
+							<!-- join.jsp로 이동 -->
+							<a href="http://localhost:8080/TeamP/join"><input type="button" value="회원가입" id="btn" /></a>
+							<!-- ID/PW찾기 미구현 -->
+							<!-- <a href="http://localhost:8080/TeamP/"><input type="button" value="ID/PW찾기" id="btn2" /></a> -->
+						</td>
 					</tr>
 				</table>
 			</form>
@@ -97,7 +120,7 @@
 	</section>
 	<!-- section1 end -->
 
-
+ 
 
 
 
