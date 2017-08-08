@@ -16,6 +16,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
@@ -34,14 +35,19 @@
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
+	
+	
+	$(function(){
+		if("${filePath}"!=""){
+				 $('#imgF').attr('src',"${filePath }");
+		}	
+	});
+	
+	/* ./img/defaultman.png
+	${filePath } */
 </script>
 
-<style type="text/css">
-img{
-width: 100px;
-height:100px;
-}
-</style>
+
 </head>
 
 
@@ -54,12 +60,11 @@ height:100px;
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-			<li><a href="http://localhost:8080/TeamP/main.jsp"><h2>일일퀘스트</h2></a></li>
-			<li><a href="http://localhost:8080/TeamP/login">로그인</a></li>
-			<li><a href="http://localhost:8080/TeamP/loginForm">회원가입</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='1'">해주세요</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='2'">해드립니다</a></li>
-			<li><a href="http://localhost:8080/TeamP/List">거래목록</a></li>
+			<li><a href="main"><h2>일일퀘스트</h2></a></li>
+			<li><a href="login">로그인</a></li>
+			<li><a href="join">회원가입</a></li>
+			<li><a href="writeForm">해주세요/해드립니다</a></li>
+			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
 	<!-- Navigation END -->
@@ -67,8 +72,8 @@ height:100px;
 	<!-- header -->
 	<header class="header">
 		<div class="logo">
-			<a href="http://localhost:8080/TeamP/main.jsp"><img
-				src="./img/logo.png" alt="logo" width="50" height="50" /></a>
+			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+				height="50" /></a>
 		</div>
 	</header>
 	<!-- header end -->
@@ -78,62 +83,59 @@ height:100px;
 		<div align="center">
 			<h1>회원가입</h1>
 			<form action="join" method="post">
-			<div class="container">
-				<table class="table">
-					<tr>
-						<th>id</th>
-						<td colspan ="2"><input type="text" name="id" /></td>
-					</tr>
-					<tr>
-						<th>pw</th>
-						<td colspan="2"><input type="password" name="pw" /></td>
-					</tr>
-					<tr>
-						<th>pw확인</th>
-						<td colspan="2"><input type="password" name="repw" /></td>
-					</tr>
-					<tr>
-						<th>이름</th>
-						<td><input type="text" name="" id="" /></td>
-					</tr>
-					<tr>
-						<th>email</th>
-						<td colspan="2"><input type="email" name="email" /></td>
-					</tr>
-					<tr>
-						<th>휴대폰</th>
-						<td colspan="2"><input type="text" name="phone"  placeholder="'-'없이 입력해주세요." /></td>
-					</tr>
-					
-					<tr>
-						<th>성별</th>
-						<td colspan="2"><input type="radio" name="gender" id="male" />남자
-						<input type="radio" name="gender" id="female" />여자
-						</td>
-					</tr>
-					<tr><th>생년월일</th>
-						<td colspan="2"><input type="date" name="birthday" id="" /></td>
-					</tr>
-					<tr rowspan="2">
-						<th>사진 등록</th>
-						<td><img src="./img/defaultman.png" alt="default" /></td>
-						<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
-						<td>
-							<input type="text" name="" id="" />
-							<!-- filePath출력 -->
-							<input type="file" name="file" id="" />
-						<td>
-					</tr>
+				<div class="container">
+					<table class="table">
+						<tr>
+							<th>id</th>
+							<td colspan="2"><input type="text" name="id" /></td>
+						</tr>
+						<tr>
+							<th>pw</th>
+							<td colspan="2"><input type="password" name="pw" /></td>
+						</tr>
+						<tr>
+							<th>pw확인</th>
+							<td colspan="2"><input type="password" name="repw" /></td>
+						</tr>
+						<tr>
+							<th>이름</th>
+							<td><input type="text" name="" id="" /></td>
+						</tr>
+						<tr>
+							<th>email</th>
+							<td colspan="2"><input type="email" name="email" /></td>
+						</tr>
+						<tr>
+							<th>휴대폰</th>
+							<td colspan="2"><input type="text" name="phone"
+								placeholder="'-'없이 입력해주세요." /></td>
+						</tr>
 
-					<tr>
-						<td colspan="3">
-						<input type="submit" value="회원가입" />
-						<!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
-						<input type="button" value="취소" id="btn" />
-						</td>
-					</tr>
-					</div>
-				</table>
+						<tr>
+							<th>성별</th>
+							<td colspan="2"><input type="radio" name="gender" id="male" />남자
+								<input type="radio" name="gender" id="female" />여자</td>
+						</tr>
+						<tr>
+							<th>생년월일</th>
+							<td colspan="2"><input type="date" name="birthday" id="" /></td>
+						</tr>
+						<tr>
+							<th>사진 등록</th>
+							<!-- ${filePath }-->
+							<td><img src="./img/defaultman.png" alt="default" width="50"
+								height="50" id="imgF" /></td>
+							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
+							<td><a href="imgPutForm">사진올리기</a>
+							<td>
+						</tr>
+
+						<tr>
+							<td colspan="3"><input type="submit" value="회원가입" /> <!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
+								<input type="button" value="취소" id="btn" /></td>
+						</tr>
+						</div>
+					</table>
 			</form>
 		</div>
 	</section>

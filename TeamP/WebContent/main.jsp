@@ -44,6 +44,18 @@
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
+	
+	//검색관련 제이쿼리
+	$(function(){
+		$("#searchButton").on("click",function(){
+			if($("#searchText").val() == "" ){
+				alert("검색어를 입력해주세요");
+			}else{
+				$(location).attr('href',"board?keyword="+$("#searchText").val());
+			}
+		})
+		
+	});
 </script>
 <style>
 .carousel-control.right, .carousel-control.left {
@@ -63,36 +75,35 @@
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-			<li><a href="http://localhost:8080/TeamP/main.jsp"><h2>일일퀘스트</h2></a></li>
-			<li><a href="http://localhost:8080/TeamP/login">로그인</a></li>
-			<li><a href="http://localhost:8080/TeamP/loginForm">회원가입</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='1'">해주세요</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='2'">해드립니다</a></li>
-			<li><a href="http://localhost:8080/TeamP/List">거래목록</a></li>
+			<li><a href="main"><h2>일일퀘스트</h2></a></li>
+			<li><a href="login">로그인</a></li>
+			<li><a href="join">회원가입</a></li>
+			<li><a href="writeForm">해주세요/해드립니다</a></li>
+			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
 	<!-- Navigation END -->
 
 	<!-- header -->
 	<header class="header">
-	<!-- 헤더의 로고부분 -->
-		<div >
-			<a href="http://localhost:8080/TeamP/main.jsp"><img
-				src="./img/logo.png" alt="logo" width="50" height="50" /></a>
-		
-		
-		<!-- 헤더에서 검색텍스트에어리어와 검색버튼 -->
-			<input type="text" width="50" height="50"
-				style="width: 150px; height: 36px; margin-top: 5px;"> <a
-				href="search"><img src="./img/search.png" alt="search"
-				width="50" height="40" /></a>
-		
-		
-			<a href="listIcon">
-				<img src="./img/listIcon.png" alt="listIcon" width="50" height="40" style="margin-top: 2px"/>
+		<!-- 헤더의 로고부분 -->
+		<div>
+			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+				height="50" /></a>
+
+
+			<!-- 헤더에서 검색텍스트에어리어와 검색버튼 -->
+			<input type="search" width="50" height="50" id="searchText"
+				placeholder="Search..."
+				style="width: 150px; height: 36px; margin-top: 5px;" />
+			<button id="searchButton">
+				<img src="./img/search.png" alt="search" width="30" height="30" />
+			</button>
+			<a href="board"> <img src="./img/listIcon.png" alt="listIcon"
+				width="50" height="40" style="margin-top: 2px" />
 			</a>
 		</div>
-		
+
 	</header>
 	<!-- header end -->
 

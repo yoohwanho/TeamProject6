@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,55 @@
 		});
 	});
 </script>
+<style type="text/css">
+.filter {
+	text-align: center;
+	height: 30%;
+	left: 1%;
+	position: absolute;
+	width: 10%;
+}
 
+.miniTable {
+	width: 200px;
+	height: 300px;
+}
+
+.val {
+	width: 50px;
+}
+
+.title {
+	text-align: left;
+	font-size: large;
+	font: bold;
+	font-weight: bold;
+	width: 60%;
+}
+
+.type {
+	width: 30%;
+}
+
+.writer {
+	text-align: left;
+	width: 15%;
+}
+
+.loc {
+	text-align: left;
+	font: bold;
+	width: 70%;
+}
+
+.money {
+	text-align: right;
+	font: bold;
+	font-weight: bold;
+	font-size: medium;
+	width: 15%;
+}
+</style>
 </head>
 
 
@@ -45,15 +94,14 @@
 		class="fa fa-bars"></i></a>
 	<nav id="sidebar-wrapper">
 		<ul class="sidebar-nav">
-			<a id="menu-close" href="#"
+			<a href="#" id="menu-close"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-			<li><a href="http://localhost:8080/TeamP/main.jsp"><h2>일일퀘스트</h2></a></li>
-			<li><a href="http://localhost:8080/TeamP/login">로그인</a></li>
-			<li><a href="http://localhost:8080/TeamP/loginForm">회원가입</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='1'">해주세요</a></li>
-			<li><a href="http://localhost:8080/TeamP/WriteForm?category='2'">해드립니다</a></li>
-			<li><a href="http://localhost:8080/TeamP/List">거래목록</a></li>
+			<li><a href="main"><h2>일일퀘스트</h2></a></li>
+			<li><a href="login">로그인</a></li>
+			<li><a href="join">회원가입</a></li>
+			<li><a href="writeForm">해주세요/해드립니다</a></li>
+			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
 	<!-- Navigation END -->
@@ -61,20 +109,131 @@
 	<!-- header -->
 	<header class="header">
 		<div class="logo">
-			<a href="http://localhost:8080/TeamP/main.jsp"><img
-				src="./img/logo.png" alt="logo" width="50" height="50" /></a>
+			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+				height="50" /></a>
 		</div>
 	</header>
 	<!-- header end -->
 
 	<!-- section1 -->
 	<section>
-		<div align="center">
-			<!-- jstl이용해서 포문 돌려버리기 -->
-			<h1>1번 게시물</h1>
-			<h1>2번 게시물</h1>
-			<h1>3번 게시물</h1>
-			<h1>4번 게시물</h1>
+		<div class="container">
+			<div class="filter">
+				<form action="board">
+					<table class="miniTable">
+
+						<tr>
+							<td><label><input type="radio" name="optionJob" value="일감">일감</label></td>
+							<td><label><input type="radio" name="optionJob" value="일손">일손</label></td>
+							<td><label><input type="radio" name="optionJob" value="전체">전체</label></td>
+						</tr>
+						<tr>
+							<td><label><input type="radio" name="optionGender" value="여자">여자</label></td>
+							<td><label><input type="radio" name="optionGender" value="남자">남자</label></td>
+							<td><label><input type="radio" name="optionGender" value="무관">무관</label></td>
+						</tr>
+						<tr>
+							<td><input type="text" class="val" name="minVal"
+								placeholder="0" /></td>
+
+							<td><input type="text" class="val" name="maxVal"
+								placeholder="100000" /></td>
+							<td><input type="submit" value="검색" /></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div class="table-responsive" align="center">
+				<table class="table">
+					<tr>
+						<td rowspan="2" width="100px"><img src="./img/mal2.png"
+							alt="userPic" /></td>
+						<td class="type">해주세요.</td>
+						<td class="title" colspan="2">멍멍이좀 찾아주세요</td>
+					</tr>
+					<tr>
+						<td class="writer">개장수</td>
+						<td class="loc">서울시 도봉구 도봉동</td>
+
+						<td class="money">99000</td>
+					</tr>
+
+					<tr>
+						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
+						<td class="type">해드립니다.</td>
+						<td class="title" colspan="2">사람 찾아드립니다.</td>
+					</tr>
+					<tr>
+						<td class="writer">마포갈비</td>
+						<td class="loc">서울시 마포구 상암동</td>
+
+						<td class="money">30000000</td>
+					</tr>
+					<tr>
+						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
+						<td class="type">해드립니다.</td>
+						<td class="title" colspan="2">방학숙제해드립니다.</td>
+					</tr>
+					<tr>
+						<td class="writer">대학생</td>
+						<td class="loc">서울시 관악구 신림동</td>
+
+						<td class="money">20000</td>
+					</tr>
+					<tr>
+						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
+						<td class="type">해주세요.</td>
+						<td class="title" colspan="2">머리풍성 하게 해주세요.</td>
+					</tr>
+					<tr>
+						<td class="writer">김광규</td>
+						<td class="loc">서울시 종로구 창신동</td>
+
+						<td class="money">50000000</td>
+					</tr>
+
+				</table>
+			</div>
+
+
+			<div class="container">
+
+				<!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-info btn-lg"
+					data-toggle="modal" data-target="#myModal">로그인하기</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">로그인</h4>
+							</div>
+							<div class="modal-body">
+								<table class="table">
+									<tr>
+										<th>ID</th>
+										<td><input type="text" name="id" id="" /></td>
+									</tr>
+									<tr>
+										<th>PW</th>
+										<td><input type="password" name="pw" id="" /></td>
+									</tr>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">로그인</button>
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">취소</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 	<!-- section1 end -->
