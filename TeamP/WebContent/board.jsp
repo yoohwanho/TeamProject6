@@ -35,7 +35,38 @@
 		});
 	});
 </script>
+<style type="text/css">
+.title {
+	text-align: left;
+	font-size: large;
+	font: bold;
+	font-weight: bold;
+	width: 60%;
+}
 
+.type {
+	width: 30%;
+}
+
+.writer {
+	text-align: left;
+	width: 15%;
+}
+
+.loc {
+	text-align: left;
+	font: bold;
+	width: 70%;
+}
+
+.money {
+	text-align: right;
+	font: bold;
+	font-weight: bold;
+	font-size: medium;
+	width: 15%;
+}
+</style>
 </head>
 
 
@@ -69,33 +100,55 @@
 
 	<!-- section1 -->
 	<section>
-	
+
 		<div class="container">
 			<div class="table-responsive" align="center">
 				<table class="table">
-					<tr class="danger">
-						<td>해주세요</td>
-						<td>멍멍이좀 찾아주세요</td>
-						<td>99000</td>
-						<td>서울시 도봉구 도봉동</td>
+					<tr>
+						<td rowspan="2" width="100px"><img src="./img/mal2.png"
+							alt="userPic" /></td>
+						<td class="type">해주세요.</td>
+						<td class="title" colspan="2">멍멍이좀 찾아주세요</td>
 					</tr>
-					<tr class="info">
-						<td>해드립니다.</td>
-						<td>숙제해드려요</td>
-						<td>5000</td>
-						<td>서울시 종로구 창신동</td>
+					<tr>
+						<td class="writer">개장수</td>
+						<td class="loc">서울시 도봉구 도봉동</td>
+
+						<td class="money">99000</td>
 					</tr>
-					<tr class="danger">
-						<td>해주세요</td>
-						<td>사람좀 찾아주세요</td>
-						<td>20000000</td>
-						<td>서울시 동대문구 을지로</td>
+
+					<tr>
+						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
+						<td class="type">해드립니다.</td>
+						<td class="title" colspan="2">사람 찾아드립니다.</td>
 					</tr>
-					<tr class="danger">
-						<td>해주세요</td>
-						<td>40평 집청소좀 해주세요</td>
-						<td>200000</td>
-						<td>서울시 마포구 상암동</td>
+					<tr>
+						<td class="writer">마포갈비</td>
+						<td class="loc">서울시 마포구 상암동</td>
+
+						<td class="money">30000000</td>
+					</tr>
+					<tr>
+						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
+						<td class="type">해드립니다.</td>
+						<td class="title" colspan="2">방학숙제해드립니다.</td>
+					</tr>
+					<tr>
+						<td class="writer">대학생</td>
+						<td class="loc">서울시 관악구 신림동</td>
+
+						<td class="money">20000</td>
+					</tr>
+					<tr>
+						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
+						<td class="type">해주세요.</td>
+						<td class="title" colspan="2">머리풍성 하게 해주세요.</td>
+					</tr>
+					<tr>
+						<td class="writer">김광규</td>
+						<td class="loc">서울시 종로구 창신동</td>
+
+						<td class="money">50000000</td>
 					</tr>
 
 				</table>
