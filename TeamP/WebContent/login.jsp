@@ -77,13 +77,13 @@
 	<!-- section1 안내 메세지 세션-->
 	<section>
 		<!-- 로그인 실패시 경고  -->	
-		<div class="alert alert-danger alert-dismissable fade in">
+		<div class="alert alert-danger alert-dismissable fade in" id="loginFailAlert">
 		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<strong>로그인 실패</strong> 아이디 또는 패스워드가 틀립니다.
 		</div>
 		
 		<!-- 회원가입 성공시 -->
-		<div class="alert alert-success alert-dismissable fade in">
+		<div class="alert alert-success alert-dismissable fade in" id="joinSuccessAlert">
 		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<strong>회원가입 성공!</strong> 이제 서비스를 이용하실 수 있습니다.
 		</div>
@@ -94,7 +94,7 @@
 	<section>
 		<div align="center">
 			<h1>로그인</h1>
-			<form action="login" method="post">
+			<form action="login" method="post" id="loginForm">
 				<table>
 					<tr>
 						<th>id</th>
@@ -106,9 +106,9 @@
 					</tr>
 					<tr>
 						<td colspan="3">
-							<input type="submit" value="로그인" />
+							<input type="button" value="로그인" onclick="loginChk();"/>
 							<!-- join.jsp로 이동 -->
-							<a href="http://localhost:8080/TeamP/join"><input type="button" value="회원가입" id="btn" /></a>
+							<a href="join"><input type="button" value="회원가입" id="btn" /></a>
 							<!-- ID/PW찾기 미구현 -->
 							<!-- <a href="http://localhost:8080/TeamP/"><input type="button" value="ID/PW찾기" id="btn2" /></a> -->
 						</td>
@@ -147,7 +147,20 @@
 		</div>
 	</footer>
 	<!-- Footer END -->
-
+<script>
+	function loginChk(){
+		/* DB의 정보와 일치하는지 확인한 후 로그인해야함 */
+		if(true){
+			console.log("로그인버튼눌림")
+			$("#loginFailAlert").show();		
+		}
+		else{
+			/* 로그인 정보를 세션에 저장하고 이전 페이지로 돌아감 */
+			$("#loginForm").submit();
+			history.go(-1);
+		}
+	}
+</script>
 
 </body>
 </html>
