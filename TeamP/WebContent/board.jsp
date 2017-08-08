@@ -69,12 +69,37 @@
 
 	<!-- section1 -->
 	<section>
-		<div align="center">
-			<!-- jstl이용해서 포문 돌려버리기 -->
-			<h1>1번 게시물</h1>
-			<h1>2번 게시물</h1>
-			<h1>3번 게시물</h1>
-			<h1>4번 게시물</h1>
+	
+		<div class="container">
+			<div class="table-responsive" align="center">
+				<table class="table">
+					<tr class="danger">
+						<td>해주세요</td>
+						<td>멍멍이좀 찾아주세요</td>
+						<td>99000</td>
+						<td>서울시 도봉구 도봉동</td>
+					</tr>
+					<tr class="info">
+						<td>해드립니다.</td>
+						<td>숙제해드려요</td>
+						<td>5000</td>
+						<td>서울시 종로구 창신동</td>
+					</tr>
+					<tr class="danger">
+						<td>해주세요</td>
+						<td>사람좀 찾아주세요</td>
+						<td>20000000</td>
+						<td>서울시 동대문구 을지로</td>
+					</tr>
+					<tr class="danger">
+						<td>해주세요</td>
+						<td>40평 집청소좀 해주세요</td>
+						<td>200000</td>
+						<td>서울시 마포구 상암동</td>
+					</tr>
+
+				</table>
+			</div>
 		</div>
 	</section>
 	<!-- section1 end -->
