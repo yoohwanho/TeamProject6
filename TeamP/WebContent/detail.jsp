@@ -77,7 +77,7 @@
 			<div class="table-responsive" align="center">
 				<table class="table">
 					<tr>
-						<th colspan="4">제목</th>
+						<th colspan="5">제목</th>
 					</tr>
 					<tr>
 						<td rowspan="4"><img src="./img/mal2.png" alt="프사"
@@ -107,13 +107,15 @@
 						<td>2017-08-15</td>
 					</tr>
 					<tr>
-					
+
 					</tr>
 
 				</table>
 				<!--  댓글 테이블. db에서 댓글 조회하여 입력시켜야함. -->
 				<table class="table">
-					<tr>
+					
+					<tr class="active">
+						
 						<td>댓글 (2개)</td>
 					</tr>
 					<tr>
@@ -137,10 +139,10 @@
 			</div>
 			<!--  댓글입력창. form에 액션 추가하고 사용.-->
 			<div class="container">
-				<form>
+				<form action="writecomments" method="post">
 					<div class="form-group">
 						<label for="comment">문의하기</label>
-						<textarea class="form-control" rows="5" id="comment"
+						<textarea class="form-control" rows="5" name="comments" id="comment"
 							placeholder="궁금하신 점을 작성해주세요~"></textarea>
 						<button type="button" class="btn" id="">등록하기</button>
 					</div>
