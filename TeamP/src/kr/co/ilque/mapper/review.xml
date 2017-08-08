@@ -9,7 +9,7 @@
 		아이디를 보고 본인이 아닌 다른사람의 아이디로 boardNo,id 로 후기글을 검색해서 보여준다. 어어시벌 애초에 리뷰를 언제 어떻게적는거야 -->
 	<select id="showReview" resultType="rdto">
 		select rno reviewno, bno boardno, rwriter writer, rcontents contents,
-		regdate, imgsrc rscore score
+		regdate, imgsrc, rscore score
 		from board_review where bwriter=#{member} and bapplicant=rwriter
 		union
 		select rno reviewno, bno boardno, rwriter writer, rcontents contents,

@@ -232,7 +232,7 @@ $(function(){
 			$("#divBirth")[0].innerHTML="<p style='color:red'>생일을 선택해주세요.</p>";
 		}else{
 			/* 모든 입력이 확실하면 전송 */
-			$("#regForm").submit();
+			$("#joinForm").submit();
 	 		console.dir($("#id"));
 		}	
 	}

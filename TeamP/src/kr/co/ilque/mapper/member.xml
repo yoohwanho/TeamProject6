@@ -2,38 +2,43 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <!-- 조회 입력 수정  -->
-  <mapper namespace="kr.co.ilque.member">
-  <select id="showMember" resultType="mdto">
-  select * from member where memberid=#{member}
-  </select>
-  <insert id="insertOne" parameterType="mdto">
-  insert into member values(#{memberid},#{memberpwd},#{membername},sysdate,0,0,
-  #{profilesrc},#{phone},#{contents},#{gender},#{brith})
-  </insert>
-  
-  <update id="updateOne" parameterType="mdto">
-  update member set memberpwd=#{memberpwd}, membername=#{membername},profilesrc=
-  #{profilesrc},phone=#{phone},contents=#{contents},gender=#{gender} 
-  where memberid=#{memberid}
-  </update>
-  
-  <!-- 후기 입력될때마다 회원펑점 업데이트하기 - 
-  잘됬네 board_review view 만들어둔거 한번 더 써먹자
-  근데 구직/구인 등급 따로메기려면 다시 -->
-  <update id="updateGrade">
-  	update member 
-  	set buygrade=
-  	((select avg(score) from board_review where bwriter=#{memberid}, category='구인', rwriter= bapplicant)
-	+(select avg(score) from board_review where applicant=#{memberid}, category='구직', rwriter=bwriter))/2
 
-  	and selgrade=
-  	((select avg(score) from board_review where bwriter=#{memberid}, category='구직', rwriter= bapplicant)
-	+(select avg(score) from board_review where applicant=#{memberid}, category='구인', rwriter=bwriter))/2
+<!-- 조회 입력 수정 -->
+<mapper namespace="kr.co.ilque.member">
+	<select id="showMember" resultType="mdto">
+		select * from member where memberid=#{member}
+	</select>
+	<insert id="insertOne" parameterType="mdto">
+		insert into member
+		values(#{memberid},#{memberpwd},#{membername},sysdate,0,0,
+		#{profilesrc},#{phone},#{contents},#{gender},#{birth})
+	</insert>
 
-  	where memberid=#{memberid}
-  </update>
-  
-  </mapper>
+	<update id="updateOne" parameterType="mdto">
+		update member set memberpwd=#{memberpwd},
+		membername=#{membername},profilesrc=#{profilesrc},
+		phone=#{phone},contents=#{contents},gender=#{gender}
+		where memberid=#{memberid}
+	</update>
+
+	<!-- 후기 입력될때마다 회원펑점 업데이트하기 - 잘됬네 board_review view 만들어둔거 한번 더 써먹자 근데 구직/구인 
+		등급 따로메기려면 다시 -->
+	<update id="updateGrade">
+		update member
+		set buygrade=
+		((select avg(score) from board_review where bwriter=#{memberid},
+		category='구인', rwriter= bapplicant)
+		+(select avg(score) from board_review where applicant=#{memberid},
+		category='구직', rwriter=bwriter))/2
+
+		and selgrade=
+		((select avg(score) from board_review where bwriter=#{memberid},
+		category='구직', rwriter= bapplicant)
+		+(select avg(score) from board_review where applicant=#{memberid},
+		category='구인', rwriter=bwriter))/2
+
+		where memberid=#{memberid}
+	</update>
+
+</mapper>
   
