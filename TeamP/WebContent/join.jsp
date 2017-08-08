@@ -36,6 +36,12 @@
 	});
 </script>
 
+<style type="text/css">
+img{
+width: 100px;
+height:100px;
+}
+</style>
 </head>
 
 
@@ -75,27 +81,57 @@
 				<table>
 					<tr>
 						<th>id</th>
-						<td><input type="text" name="id" /></td>
+						<td colspan ="2"><input type="text" name="id" /></td>
 					</tr>
 					<tr>
 						<th>pw</th>
-						<td><input type="password" name="pw" /></td>
+						<td colspan="2"><input type="password" name="pw" /></td>
 					</tr>
 					<tr>
 						<th>pw확인</th>
-						<td><input type="password" name="repw" /></td>
+						<td colspan="2"><input type="password" name="repw" /></td>
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td><input type="text" name="" id="" /></td>
 					</tr>
 					<tr>
 						<th>email</th>
-						<td><input type="text" name="email" /></td>
+						<td colspan="2"><input type="email" name="email" /></td>
 					</tr>
 					<tr>
 						<th>휴대폰</th>
-						<td><input type="text" name="phone" /></td>
+						<td colspan="2"><input type="text" name="phone"  placeholder="'-'없이 입력해주세요." /></td>
+					</tr>
+					
+					<tr>
+						<th>성별</th>
+						<td colspan="2"><input type="radio" name="gender" id="male" />남자
+						<input type="radio" name="gender" id="female" />여자
+						</td>
+					</tr>
+					<tr><th>생년월일</th>
+						<td colspan="2"><input type="date" name="birthday" id="" /></td>
+					</tr>
+					<tr rowspan="2">
+						<th>사진 등록</th>
+						<td><img src="./img/defaultman.png" alt="default" /></td>
+						<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
+						<td>
+							<input type="text" name="" id="" />
+							<!-- filePath출력 -->
+							<input type="file" name="file" id="" />
+						<td>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="submit" value="회원가입" /> <input
-							type="button" value="취소" id="btn" /></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="3">
+						<input type="submit" value="회원가입" />
+						<!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
+						<input type="button" value="취소" id="btn" />
+							</td>
 					</tr>
 				</table>
 			</form>
