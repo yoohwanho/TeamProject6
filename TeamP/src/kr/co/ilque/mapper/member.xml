@@ -24,11 +24,14 @@
   근데 구직/구인 등급 따로메기려면 다시 -->
   <update id="updateGrade">
   	update member 
-  	set buygrade=(
-  		select avg(rscore) 
-  		from board_review 
-  		where bwriter=#{member} and bapplicant=rwriter   ) 
-  	and selgrade=()
+  	set buygrade=
+  	((select avg(score) from board_review where bwriter=#{memberid}, category='구인', rwriter= bapplicant)
+	+(select avg(score) from board_review where applicant=#{memberid}, category='구직', rwriter=bwriter))/2
+
+  	and selgrade=
+  	((select avg(score) from board_review where bwriter=#{memberid}, category='구직', rwriter= bapplicant)
+	+(select avg(score) from board_review where applicant=#{memberid}, category='구인', rwriter=bwriter))/2
+
   	where memberid=#{memberid}
   </update>
   
