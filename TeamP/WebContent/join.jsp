@@ -78,7 +78,8 @@ height:100px;
 		<div align="center">
 			<h1>회원가입</h1>
 			<form action="join" method="post">
-				<table>
+			<div class="container">
+				<table class="table">
 					<tr>
 						<th>id</th>
 						<td colspan ="2"><input type="text" name="id" /></td>
@@ -123,16 +124,15 @@ height:100px;
 							<input type="file" name="file" id="" />
 						<td>
 					</tr>
-					<tr>
-						<td></td>
-					</tr>
+
 					<tr>
 						<td colspan="3">
 						<input type="submit" value="회원가입" />
 						<!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
 						<input type="button" value="취소" id="btn" />
-							</td>
+						</td>
 					</tr>
+					</div>
 				</table>
 			</form>
 		</div>
