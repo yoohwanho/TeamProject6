@@ -75,54 +75,67 @@
 
 	<!-- header -->
 	<header class="header">
-		<div class="logo">
+	<!-- 헤더의 로고부분 -->
+		<div >
 			<a href="http://localhost:8080/TeamP/main.jsp"><img
 				src="./img/logo.png" alt="logo" width="50" height="50" /></a>
+		
+		
+		<!-- 헤더에서 검색텍스트에어리어와 검색버튼 -->
+			<input type="text" width="50" height="50"
+				style="width: 150px; height: 36px; margin-top: 5px;"> <a
+				href="search"><img src="./img/search.png" alt="search"
+				width="50" height="40" /></a>
+		
+		
+			<a href="listIcon">
+				<img src="./img/listIcon.png" alt="listIcon" width="50" height="40" style="margin-top: 2px"/>
+			</a>
 		</div>
+		
 	</header>
 	<!-- header end -->
 
 	<!-- section1 -->
 	<section id="myCarousel" class="carousel slide text-center"
-			data-ride="carousel">
-			<!-- Indicators -->
-			<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-				<li data-target="#myCarousel" data-slide-to="3"></li>
-				<li data-target="#myCarousel" data-slide-to="4"></li>
-			</ol>
+		data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+			<li data-target="#myCarousel" data-slide-to="3"></li>
+			<li data-target="#myCarousel" data-slide-to="4"></li>
+		</ol>
 
-			<!-- Wrapper for slides -->
-			<div class="carousel-inner" role="listbox">
-				<div class="item active">
-					<img src="./img/mainSlide1.jpg" alt="" />
-				</div>
-				<div class="item">
-					<img src="./img/mainSlide2.jpg" alt="" />
-				</div>
-				<div class="item">
-					<img src="./img/mainSlide3.jpg" alt="" />
-				</div>
-				<div class="item">
-					<img src="./img/mainSlide4.jpg" alt="" />
-				</div>
-				<div class="item">
-					<img src="./img/mainSlide5.jpg" alt="" />
-				</div>
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="./img/mainSlide1.jpg" alt="" />
 			</div>
+			<div class="item">
+				<img src="./img/mainSlide2.jpg" alt="" />
+			</div>
+			<div class="item">
+				<img src="./img/mainSlide3.jpg" alt="" />
+			</div>
+			<div class="item">
+				<img src="./img/mainSlide4.jpg" alt="" />
+			</div>
+			<div class="item">
+				<img src="./img/mainSlide5.jpg" alt="" />
+			</div>
+		</div>
 
-			<!-- Left and right controls -->
-			<a class="left carousel-control" href="#myCarousel" role="button"
-				data-slide="prev"> <span
-				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a> <a class="right carousel-control" href="#myCarousel" role="button"
-				data-slide="next"> <span
-				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
+		<!-- Left and right controls -->
+		<a class="left carousel-control" href="#myCarousel" role="button"
+			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
+			aria-hidden="true"></span> <span class="sr-only">Previous</span>
+		</a> <a class="right carousel-control" href="#myCarousel" role="button"
+			data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
 	</section>
 	<!-- section1 end -->
 
