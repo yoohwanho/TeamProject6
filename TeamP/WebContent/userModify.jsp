@@ -35,7 +35,12 @@
 		});
 	});
 </script>
-
+<style type="text/css">
+img{
+width:100px;
+height: 100px;
+}
+</style>
 </head>
 
 
@@ -70,7 +75,41 @@
 	<!-- section1 -->
 	<section>
 		<div align="center">
-			<h1>ddd</h1>
+			<h1>프로필</h1>
+			<div class="container">
+			<form action="">
+			<!-- 수정 버튼을 누르면 userDetail.jsp로 이동  -->
+			<table class="table">
+				<tr>
+					<td rowspan="5"><img src="./img/defaultman.png" alt="default" /></td>
+					<td>ID</td>
+					<td>${id }</td>
+				</tr>
+				<tr>
+					<td>휴대폰</td>
+					<td colspan="2"><input type="text" name="phone" id="" /></td>
+				</tr>
+				<tr>
+					<td>성별</td>
+					<td colspan="2">
+					<input type="radio" name="gender" id="male" /> 남자
+					<input type="radio" name="gender" id="female" /> 여자				
+					</td>
+				</tr>
+				<tr>
+					<td><h2>소개</h2></td>
+					<td colspan="2"><textarea name="contents" id="contents" cols="30" rows="10"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+					<input type="submit" value="수정" />
+					<!-- 수정 버튼을 누르면 userDetail.jsp로 이동  -->
+					<input type="button" value="돌아가기" />
+					</td>
+				</tr>
+			</table>
+			</form>
+			</div>
 		</div>
 	</section>
 	<!-- section1 end -->

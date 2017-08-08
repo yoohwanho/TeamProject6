@@ -114,7 +114,7 @@ height:100px;
 					<tr><th>생년월일</th>
 						<td colspan="2"><input type="date" name="birthday" id="" /></td>
 					</tr>
-					<tr rowspan="2">
+					<tr>
 						<th>사진 등록</th>
 						<td><img src="./img/defaultman.png" alt="default" /></td>
 						<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
