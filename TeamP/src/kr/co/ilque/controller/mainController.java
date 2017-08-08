@@ -24,6 +24,8 @@ public class mainController {
 		return "join";
 	}
 	
+	
+	
 	@RequestMapping("/writeForm")
 	public String writeForm() {
 		return "writeForm";
