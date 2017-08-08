@@ -103,6 +103,7 @@ height:100px;
 						<th>휴대폰</th>
 						<td colspan="2"><input type="text" name="phone"  placeholder="'-'없이 입력해주세요." /></td>
 					</tr>
+					
 					<tr>
 						<th>성별</th>
 						<td colspan="2"><input type="radio" name="gender" id="male" />남자
