@@ -85,7 +85,14 @@
 						</tr>
 						<tr>
 							<th>사진첨부</th>
-							<td></td>
+							<td><input type="button" value="사진첨부하기" /><td><img src="./img/defaultman.png" alt="default" width="50"
+								height="50" id="imgF" /></td>
+							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
+							<td><a href="imgPutForm2">사진올리기</a>
+						</td></tr>
+						<tr>
+							<td><img src="./img/defaultman.png" alt="default"
+								width="100" height="100" /></td>
 						</tr>
 
 						<tr>
