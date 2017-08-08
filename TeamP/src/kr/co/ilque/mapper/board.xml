@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapConfig파일에서 bdto 별칭 지정 필요  -->
+<mapper namespace="kr.co.ilque.board">
+<select id="showAll" resultType="bdto">
+select * from board
+</select>
+<select id="searchbyKeyword" resultType="bdto">
+select * from board where title like '%#{str}%' or contents like '%#{str}%'
+</select>
+<!--필터링해서 조회 구인/구직, 성별, 금액 3가지 기준이있음 and로 적용시켜야되는데
+뭐하나 null값 들어오면 어쩌냐 - 다이나믹 sql쓰자-->
+<select id="searchbyFilter" resultType="bdto" >
+select * from board where 1=1
+<if test="gender!=null"> and gender=#{gender} </if>
+<if test="category!=null">and category=#{category}</if>
+<if test="min!=null and max!=null">and reward between min and max</if> 
+</select>
+<select id="searchbyWriter" resultType="bdto">
+select * from board where contents like '%#{writer}%'
+</select>
+
+<insert id="insertOne" parameterType="bdto">
+insert into board values(board_seq,#{category},#{title},#{contents},
+	#{writer},0,#{loc},#{time},#{phone},#{reward},null,'거래대기'
+	,sysdate)
+</insert>
+<!--업데이트는 수정할떄 or 거래상태 바뀔때 를 따로따로 만들지않고 같이쓴다
+ 페이지에서 bdto 받은거 잘 갖고있다가 컨트롤러에 도로 잘 돌려주자  -->
+<update id="updateOne">
+update board set title=#{title} , contents=#{contents}, loc=#{loc}, 
+	time=#{time},phone=#phone,reward=#{reward},applicant=#{applicant},
+	status=#{status}
+where boardno=#{boardno}
+</update>
+<delete id="deleteOne">
+delete board where boardno=#{boardno}
+</delete>
+</mapper>
