@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,12 +80,13 @@
 						<th colspan="4">제목</th>
 					</tr>
 					<tr>
-						<td rowspan="4"><img src="./img/mal2.png" alt="프사"
-							class="img-rounded" /></td>
+						<td rowspan="4">
+							<a href="userDetail"><img src="./img/mal2.png" alt="프사" class="img-rounded" /></a>
+						</td>
 						<td><h5>등록일</h5></td>
 					</tr>
 					<tr>
-						<td>댓글 N개</td>
+						<td><b>댓글 N개</b></td>
 					</tr>
 					<tr>
 						<td>평점 6.5/10</td>
@@ -112,26 +114,12 @@
 				</table>
 				<!--  댓글 테이블. db에서 댓글 조회하여 입력시켜야함. -->
 				<table class="table">
-					<tr>
-						<td>댓글 (2개)</td>
-					</tr>
-					<tr>
-						<td>멍멍이</td>
-						<td>8.5/10</td>
-						<td>2017-08-08 11:35:40</td>
-					</tr>
-					<tr>
-						<td colspan="5">지원하고싶습니다.</td>
-					</tr>
-					<tr>
-
-						<td>멍멍이</td>
-						<td>8.5/10</td>
-						<td>2017-08-08 11:35:40</td>
-					</tr>
-					<tr>
-						<td colspan="5">지원하고싶습니다.</td>
-					</tr>
+					<c:forEach var="cdto" items="${commentlist }">
+						<tr>
+							<td>${cdto.writer } (id:${cdto.id })</td>
+							<td>${cdto.contents}</td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
 			<!--  댓글입력창. form에 액션 추가하고 사용.-->

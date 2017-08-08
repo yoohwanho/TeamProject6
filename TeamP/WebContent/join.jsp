@@ -119,9 +119,9 @@
 					</tr>
 					<tr>
 						<td colspan="3">
-						<input type="button" value="회원가입" onclick="chk()"/>
+						<input type="button" value="회원가입" id="btnJoin" />
 						<!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
-						<input type="button" value="취소" id="btn" onclick="cancel()"/>
+						<input type="button" value="취소" id="btnCancel" />
 						</td>
 					</tr>
 					</div>
@@ -155,13 +155,23 @@
 	<!-- Footer END -->
 
 <script>
+$(function(){
+	$("#btnJoin").on("click", chk);
+	$("#btnCancel").on("click", cancel);
+});
+
+
 	function chk(){
 		/* 회원가입 정보가 제대로 입력되었는지 확인 */
 		/* 공란이 없는지, 비밀번호와 비밀번호 확인이 맞는지 */
-		
-		$("#regForm").submit();
-		
+		if(true){
+			
+		}else{
+			/* 모든 입력이 확실하면 전송 */
+			$("#regForm").submit();
+		}	
 	}
+	
 	function cancel(){
 		/* 취소버튼을 누르면 이전페이지로 돌아간다 */
 		history.go(-1);				

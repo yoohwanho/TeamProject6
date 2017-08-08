@@ -44,5 +44,11 @@ public class mainController {
 		mav.setViewName("writeForm");
 		return mav;
 	}
+
+	@RequestMapping("/userDetail")
+	public String detail() {
+		
+		return "userDetail";
+	}
 	
 }
