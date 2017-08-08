@@ -155,11 +155,9 @@
 						</tr>
 
 						<tr>
-							<td colspan="2"><input type="submit" value="작성" />
-							<!-- 작성 버튼을 누르면 detail창으로 넘어간다.  -->
-							 <input type="button" value="취소" id="btn" />
-							 <!-- 취소 버튼을 누르면 board창으로 넘어간다.  -->
-							 </td>
+							<td colspan="2"><input type="submit" value="수정" />
+								<!-- detail로 넘어간다 -->
+							 <input type="button" value="취소" id="btn" /></td>
 						</tr>
 					</table>
 				</div>
