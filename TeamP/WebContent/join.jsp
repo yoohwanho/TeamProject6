@@ -36,12 +36,7 @@
 	});
 </script>
 
-<style type="text/css">
-img{
-width: 100px;
-height:100px;
-}
-</style>
+
 </head>
 
 
@@ -116,7 +111,7 @@ height:100px;
 					</tr>
 					<tr>
 						<th>사진 등록</th>
-						<td><img src="./img/defaultman.png" alt="default" /></td>
+						<td><img src="./img/defaultman.png" alt="default" width="100" height="100"/></td>
 						<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
 						<td>
 							<input type="text" name="" id="" />
