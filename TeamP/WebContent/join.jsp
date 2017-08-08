@@ -16,6 +16,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
@@ -71,7 +72,7 @@
 	<section>
 		<div align="center">
 			<h1>회원가입</h1>
-			<form action="join" method="post">
+			<form action="login" method="post" id="re<%  %>gForm">
 			<div class="container">
 				<table class="table">
 					<tr>
@@ -116,12 +117,11 @@
 							<input type="button" value="사진 올리기" />
 						<td>
 					</tr>
-
 					<tr>
 						<td colspan="3">
-						<input type="submit" value="회원가입" />
+						<input type="button" value="회원가입" onclick="chk()"/>
 						<!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
-						<input type="button" value="취소" id="btn" />
+						<input type="button" value="취소" id="btn" onclick="cancel()"/>
 						</td>
 					</tr>
 					</div>
@@ -130,12 +130,6 @@
 		</div>
 	</section>
 	<!-- section1 end -->
-
-
-
-
-
-
 
 	<!-- Footer -->
 	<footer>
@@ -160,6 +154,19 @@
 	</footer>
 	<!-- Footer END -->
 
+<script>
+	function chk(){
+		/* 회원가입 정보가 제대로 입력되었는지 확인 */
+		/* 공란이 없는지, 비밀번호와 비밀번호 확인이 맞는지 */
+		
+		$("#regForm").submit();
+		
+	}
+	function cancel(){
+		/* 취소버튼을 누르면 이전페이지로 돌아간다 */
+		history.go(-1);				
+	}
 
+</script>
 </body>
 </html>

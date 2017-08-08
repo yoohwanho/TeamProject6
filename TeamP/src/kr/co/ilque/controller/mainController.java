@@ -10,18 +10,22 @@ public class mainController {
 	public String main() {
 		return "main";
 	}
+	
 	@RequestMapping("/login")
 	public String login() {
 		return "login";
 	}
+	
 	@RequestMapping("/join")
 	public String join() {
 		return "join";
 	}
+	
 	@RequestMapping("/writeForm")
 	public String writeForm() {
 		return "writeForm";
 	}
+	
 	@RequestMapping("/board")
 	public String board() {
 		return "board";
