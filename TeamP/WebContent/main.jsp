@@ -44,6 +44,18 @@
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
+	
+	//검색관련 제이쿼리
+	$(function(){
+		$("#searchButton").on("click",function(){
+			if($("#searchText").val() == "" ){
+				alert("검색어를 입력해주세요");
+			}else{
+				$(location).attr('href',"board?"+$("#searchText").val());
+			}
+		})
+		
+	});
 </script>
 <style>
 .carousel-control.right, .carousel-control.left {
@@ -81,13 +93,14 @@
 
 
 			<!-- 헤더에서 검색텍스트에어리어와 검색버튼 -->
-			<input type="search" width="50" height="50" id="search"
+			<input type="search" width="50" height="50" id="searchText"
 				placeholder="Search..."
-				style="width: 150px; height: 36px; margin-top: 5px;" /> <a
-				href="search"><img src="./img/search.png" alt="search"
-				width="50" height="40" /></a> <a href="board"> <img
-				src="./img/listIcon.png" alt="listIcon" width="50" height="40"
-				style="margin-top: 2px" />
+				style="width: 150px; height: 36px; margin-top: 5px;" />
+			<button id="searchButton">
+				<img src="./img/search.png" alt="search" width="30" height="30" />
+			</button>
+			<a href="board"> <img src="./img/listIcon.png" alt="listIcon"
+				width="50" height="40" style="margin-top: 2px" />
 			</a>
 		</div>
 
