@@ -35,6 +35,52 @@
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
+	
+	// 게시판 페이징
+	// 이클립스/web프로젝트/webContent/d20170710/75번라인부터
+	$(function(){
+	//총게시물 건수(dao.getTotal()로 받아올 예정)
+	var totalCount = 38;
+	//한 페이지당 게시물 건수 10개로 고정
+	var countPerPage = 10;
+	//총페이지개수
+	var totalPage = (totalCount%countPerPage==0)?
+			totalCount/countPerPage:totalCount/countPerPage+1;
+	
+	// 변수들 잘 들어갔나 확인
+	console.log(totalCount);
+	console.log(countPerPage);
+	console.log(totalPage);
+	
+	//초기 현재 페이지1로 설정 
+    var currentPage = 1;
+	console.log(currentPage);
+	
+	// 다른페이지 눌렀을때 파라미터값을 받아 현재페이지를 설정
+	// (컨트롤러에서 누른페이지값을 받아 cPage오브젝트에 add해서 쏴줬다고 가정 ${cPage})
+	var cPage = "2";
+	if(cPage != null){
+		currentPage = Number(cPage);
+	}
+	console.log(currentPage);
+	
+	//화면에 보이는 시작하는 페이지숫자설정
+	var startNo=(currentPage-1)*10+1;
+	console.log(startNo);
+	
+	//화면에 보이는 마지막 페이지숫자설정
+	if(totalCount>=(currentPage*10)){
+		var endNo = currentPage*10;
+	}else{
+		var endNo = (currentPage-1)*10 + totalCount%10;
+	}
+	console.log(endNo);
+	
+	
+	
+	
+	});
+	
 </script>
 <style type="text/css">
 .filter {
@@ -123,14 +169,20 @@
 					<table class="miniTable">
 
 						<tr>
-							<td><label><input type="radio" name="optionJob" value="일감">일감</label></td>
-							<td><label><input type="radio" name="optionJob" value="일손">일손</label></td>
-							<td><label><input type="radio" name="optionJob" value="전체">전체</label></td>
+							<td><label><input type="radio" name="optionJob"
+									value="일감">일감</label></td>
+							<td><label><input type="radio" name="optionJob"
+									value="일손">일손</label></td>
+							<td><label><input type="radio" name="optionJob"
+									value="전체">전체</label></td>
 						</tr>
 						<tr>
-							<td><label><input type="radio" name="optionGender" value="여자">여자</label></td>
-							<td><label><input type="radio" name="optionGender" value="남자">남자</label></td>
-							<td><label><input type="radio" name="optionGender" value="무관">무관</label></td>
+							<td><label><input type="radio" name="optionGender"
+									value="여자">여자</label></td>
+							<td><label><input type="radio" name="optionGender"
+									value="남자">남자</label></td>
+							<td><label><input type="radio" name="optionGender"
+									value="무관">무관</label></td>
 						</tr>
 						<tr>
 							<td><input type="text" class="val" name="minVal"
