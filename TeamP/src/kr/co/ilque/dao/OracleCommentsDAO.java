@@ -1,5 +1,8 @@
 package kr.co.ilque.dao;
 
-public class OracleCommentsDAO {
+import org.apache.ibatis.session.SqlSession;
 
+public class OracleCommentsDAO {
+	SqlSession ss;
+	
 }
