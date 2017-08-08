@@ -131,7 +131,16 @@
 									</h4>
 								</div>
 								<div id="collapse1" class="panel-collapse collapse">
-									<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur illum doloremque eos labore voluptatem rem explicabo inventore tempora eum necessitatibus dignissimos similique non vero tenetur corporis asperiores minima. Rerum ducimus?</div>
+									<div class="panel-body">
+									<table>
+									<tr>
+										<td><img src="./img/worker.jpg" alt="후기 이미지"  width="100" height="100"/>
+									<!-- 후기 이미지 넣기 --></td>
+										<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur illum doloremque eos labore voluptatem rem explicabo inventore tempora eum necessitatibus dignissimos similique non vero tenetur corporis asperiores minima. Rerum ducimus?</td>
+									</tr>
+									</table>
+									
+									</div>
 								</div>
 					</td>
 				</tr>
