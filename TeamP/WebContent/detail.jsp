@@ -78,7 +78,7 @@
 	<!-- header -->
 	<header class="header">
 		<div class="logo">
-			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+			<a href="main"><img src="./img/logo1.png" alt="logo" width="50"
 				height="50" /></a>
 		</div>
 	</header>
@@ -93,15 +93,16 @@
 		<div class="container">
 			<div class="table-responsive" align="center">
 				<table class="table">
+				
 					<tr>
-						<th colspan="5">제목</th>
+						<th colspan="5">${bdto.title} </th>
 					</tr>
 					<tr>
 						<!-- 클릭한 게시글의 정보 -->
 						<td rowspan="4"><a href="userDetail"><img
 								src="./img/mal2.png" alt="프사" class="img-rounded" /></a></td>
 
-						<td><h5>등록일</h5></td>
+						<td><h5>${bdto.regdate}</h5></td>
 					</tr>
 					<tr>
 						<td><b>댓글 N개</b></td>
@@ -113,7 +114,7 @@
 						<td>금액</td>
 					</tr>
 					<tr>
-						<td colspan="5">집에 뭘 두고왔는데 대신 가져다 주실분</td>
+						<td colspan="5">${bdto.contents}</td>
 					</tr>
 					<tr>
 						<th>연락처</th>
@@ -121,9 +122,9 @@
 						<th>기한</th>
 					</tr>
 					<tr>
-						<td>010-1234-5678</td>
-						<td>서울시 종로구</td>
-						<td>2017-08-15</td>
+						<td>${bdto.phone }</td>
+						<td>${bdto.loc }</td>
+						<td>${bdto.time }</td>
 					</tr>
 
 				</table>
@@ -132,6 +133,7 @@
 				<div id="map" style="width: 60%; height: 300px;"></div>
 				<script>
 					var map = new naver.maps.Map('map');
+					
 					//입력된 주소에 따라 지도시작위치가 달라짐.
 					var myaddress = '남대문로 117';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
 					naver.maps.Service
