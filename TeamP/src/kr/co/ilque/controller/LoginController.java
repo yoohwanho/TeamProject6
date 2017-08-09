@@ -27,14 +27,14 @@ public class LoginController {
 		System.out.println("id,pw = " + memberId + "," + memberPwd);
 		System.out.println("url:" + req.getParameter("url"));
 
-		// 로그인
-		// 로그인 성공: 세션에 로그인 정보.
+		// 濡쒓렇�씤
+		// 濡쒓렇�씤 �꽦怨�: �꽭�뀡�뿉 濡쒓렇�씤 �젙蹂�.
 		MemberDto mdto = new MemberDto();
 		mdto.setMemberId(memberId);
 		mdto.setMemberPwd(memberPwd);
 		mdto = sv.chkLogin(mdto);
 		if ( mdto!= null) {
-			// 로그인 성공
+			// 濡쒓렇�씤 �꽦怨�
 			isLogin = true;
 			ss.setAttribute("mdto", mdto);
 			ss.setAttribute("isLogin", isLogin);
@@ -47,7 +47,7 @@ public class LoginController {
 
 	}
 	
-	//	로그아웃시도
+	//	濡쒓렇�븘�썐�떆�룄
 	@RequestMapping(value="/logout")
 	public String logout(HttpSession ss) {
 		isLogin=false;
