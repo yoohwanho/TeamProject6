@@ -2,15 +2,16 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  
+
 <configuration>
-<typeAliases>
-	<typeAlias type="kr.co.ilque.dto.BoardDto" alias="bdto"/>
-	<typeAlias type="kr.co.ilque.dto.BoardReviewDto" alias="brdto"/>
-	<typeAlias type="kr.co.ilque.dto.CommentsDto" alias="cdto"/>
-	<typeAlias type="kr.co.ilque.dto.KeywordsDto" alias="kdto"/>
-	<typeAlias type="kr.co.ilque.dto.MemberDto" alias="mdto"/>
-	<typeAlias type="kr.co.ilque.dto.ReviewDto" alias="rdto"/>
-	<typeAlias type="kr.co.ilque.dto.SelectInfo" alias="info"/>
-</typeAliases>
+	<typeAliases>
+		<typeAlias type="kr.co.ilque.dto.StartEnd" alias="se" />
+		<typeAlias type="kr.co.ilque.dto.BoardDto" alias="bdto" />
+		<typeAlias type="kr.co.ilque.dto.BoardReviewDto" alias="brdto" />
+		<typeAlias type="kr.co.ilque.dto.CommentsDto" alias="cdto" />
+		<typeAlias type="kr.co.ilque.dto.KeywordsDto" alias="kdto" />
+		<typeAlias type="kr.co.ilque.dto.MemberDto" alias="mdto" />
+		<typeAlias type="kr.co.ilque.dto.ReviewDto" alias="rdto" />
+		<typeAlias type="kr.co.ilque.dto.SelectInfo" alias="info" />
+	</typeAliases>
 </configuration>

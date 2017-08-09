@@ -35,51 +35,6 @@
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
-	
-	// 게시판 페이징
-	// 이클립스/web프로젝트/webContent/d20170710/75번라인부터
-	$(function(){
-	//총게시물 건수(dao.getTotal()로 받아올 예정)
-	var totalCount = 38;
-	//한 페이지당 게시물 건수 10개로 고정
-	var countPerPage = 10;
-	//총페이지개수
-	var totalPage = (totalCount%countPerPage==0)?totalCount/countPerPage:totalCount/countPerPage+1;
-	
-	// 변수들 잘 들어갔나 확인
-	console.log(totalCount);
-	console.log(countPerPage);
-	console.log(totalPage);
-	
-	//초기 현재 페이지1로 설정 
-    var currentPage = 1;
-	console.log(currentPage);
-	
-	// 다른페이지 눌렀을때 파라미터값을 받아 현재페이지를 설정
-	// (컨트롤러에서 누른페이지값을 받아 cPage오브젝트에 add해서 쏴줬다고 가정 ${cPage})
-	var cPage = "2";
-	if(cPage != null){
-		currentPage = Number(cPage);
-	}
-	console.log(currentPage);
-	
-	//화면에 보이는 시작하는 페이지숫자설정
-	var startNo=(currentPage-1)*10+1;
-	console.log(startNo);
-	
-	//화면에 보이는 마지막 페이지숫자설정
-	if(totalCount>=(currentPage*10)){
-		var endNo = currentPage*10;
-	}else{
-		var endNo = (currentPage-1)*10 + totalCount%10;
-	}
-	console.log(endNo);
-	
-	
-	
-	
-	});
-	
 </script>
 <style type="text/css">
 .filter {
@@ -205,8 +160,11 @@
 
 			<!-- 페이징처리할 구간 -->
 			<div class="table-responsive" align="center">
+
+
+
 				<table class="table">
-					<c:forEach var="list" items="${customList }">
+					<c:forEach var="list" items="${list }">
 						<tr>
 							<td rowspan="2" width="100px"><img src="${list.filePath }"
 								alt="userPic" /></td>
@@ -218,19 +176,31 @@
 							<td class="loc">${list.loc }</td>
 
 							<td class="money">${list.reward }</td>
-						</tr>	
+						</tr>
 					</c:forEach>
 
 					<tr>
-						<td><button id="leftArrow" hidden="true">&lt;</button></td>
-						<td><c:forEach var="m" begin="${currentPage }"
-								end="10">
+
+						<td><c:choose>
+								<c:when test="${prev}">
+									<a href="boardList?currentPage=${currentPage-5 }">[이전]</a>
+								</c:when>
+							</c:choose></td>
+						<td><c:forEach var="m" begin="${currentPage }" end="10">
 								<a href="board?currentPage=${m }"></a>
 							</c:forEach></td>
-						<td><button id="rightArrow" hidden="true">&gt;</button></td>
+						<td><c:choose>
+								<c:when test="${next }">
+									<a href="boardList?currentPage=${currentPage+5 }">[다음]</a>
+								</c:when>
+							</c:choose></td>
 					</tr>
-
 				</table>
+
+
+
+
+
 			</div>
 
 

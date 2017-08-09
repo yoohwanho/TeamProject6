@@ -48,18 +48,6 @@ public class mainController {
 		return "writeForm";
 	}
 	
-	//	[거래목록] 버튼을 누르면 최신순으로 거래목록이 뜸
-	//	db에서 리스트 가져오기
-	@RequestMapping(value="/board")
-	public ModelAndView boardList(@RequestParam(name="currentPage", defaultValue="1") int currentPage) {
-		ModelAndView mav = new ModelAndView();
-		
-		
-		mav.addObject("currentPage",currentPage);
-		mav.setViewName("board");
-		return mav;
-	}
-	
 	//	[마이페이지]
 	//	세션에서 id값을 받아와서 자기 정보 보기
 	@RequestMapping("/myPage")

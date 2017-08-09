@@ -1,8 +1,6 @@
 package kr.co.ilque.dto;
 
 public class SelectInfo {
-	//성별, 카테고리, 검색어, 최대금액 최소금액, 페이지번호 있어야
-	//mapper xml에 변수넘기기가 편해진다.
 		
 		private int startNo;
 		private int endNo;

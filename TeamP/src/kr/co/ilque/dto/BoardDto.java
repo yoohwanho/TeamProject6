@@ -6,7 +6,7 @@ public class BoardDto{
 	private String title;
 	private String contents;
 	private String writer;
-	private String hits;
+	private int hits;
 	private String loc;
 	private String time;
 	private String phone;
@@ -49,10 +49,10 @@ public class BoardDto{
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getHits() {
+	public int getHits() {
 		return hits;
 	}
-	public void setHits(String hits) {
+	public void setHits(int hits) {
 		this.hits = hits;
 	}
 	public String getLoc() {

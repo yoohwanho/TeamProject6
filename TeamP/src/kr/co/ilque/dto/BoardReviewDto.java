@@ -1,8 +1,6 @@
 package kr.co.ilque.dto;
 
 public class BoardReviewDto extends ReviewDto{
-	//후기 조회할떄 board의 title도 뜨게하려고 만든 dto임
-	//ReviewDto 상속받아 쓰면 뭔가 좋지 않을까??
 	
 	private String bWriter;
 	private String bApplicants;
