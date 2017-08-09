@@ -125,7 +125,7 @@
 							<td><a href="imgPutForm">사진올리기</a>
 							<input type="hidden" name="filePath" value="${filePath}"/>
 
-							<td>
+							</td>
 						</tr>
 						
 						<tr>
