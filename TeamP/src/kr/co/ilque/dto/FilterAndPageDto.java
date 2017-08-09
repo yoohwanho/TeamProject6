@@ -1,6 +1,6 @@
 package kr.co.ilque.dto;
 
-public class FilterAndPageDTO {
+public class FilterAndPageDto {
 
 	
 	

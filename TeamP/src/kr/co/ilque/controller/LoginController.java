@@ -32,14 +32,18 @@ public class LoginController {
 		MemberDto dto = new MemberDto();
 		dto.setMemberId(memberId);
 		dto.setMemberPwd(memberPwd);
-		if (sv.chkLogin(dto) != null) {
-			// 로그인 성공
-			isLogin = true;
-			ss.setAttribute("id", memberId);
-		}
-		ss.setAttribute("isLoin", isLogin);
+		
+		System.out.println("dto"+dto.getMemberId()+" " + dto.getMemberPwd());
+		System.out.println(sv.chkLogin(dto));
+//		if (sv.chkLogin(dto) != null) {
+//			// 로그인 성공
+//			isLogin = true;
+//			ss.setAttribute("id", memberId);
+//		}
+//		ss.setAttribute("isLoin", isLogin);
 
-		return req.getHeader("referer");
+//		return req.getHeader("referer");
+		return null;
 	}
 
 }

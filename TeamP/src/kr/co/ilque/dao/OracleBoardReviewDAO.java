@@ -1,9 +1,11 @@
 package kr.co.ilque.dao;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class OracleBoardReviewDAO {
-//¸®ºä°¡ ¾²ÀÏ°÷ÀÌ ´çÀåÀº °³ÀÎÁ¤º¸¿¡¼­¹Û¿¡ ¾øÀ¸´Ï OracleReviewDAO´Â µû·Î ¸¸µéÁö ¾Æ´ÏÇÑ´Ù.
+//ï¿½ï¿½ï¿½ä°¡ ï¿½ï¿½ï¿½Ï°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ OracleReviewDAOï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ï¿½Ñ´ï¿½.
+	@Autowired
 	SqlSession ss;
 	
 }
