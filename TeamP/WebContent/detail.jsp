@@ -135,7 +135,7 @@
 					var map = new naver.maps.Map('map');
 					
 					//입력된 주소에 따라 지도시작위치가 달라짐.
-					var myaddress = '남대문로 117';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
+					var myaddress = '마들로 859-19';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
 					naver.maps.Service
 							.geocode(
 									{
