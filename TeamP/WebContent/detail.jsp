@@ -61,7 +61,7 @@
 	<!-- header -->
 	<header class="header">
 		<div class="logo">
-			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+			<a href="main"><img src="./img/logo1.png" alt="logo" width="50"
 				height="50" /></a>
 		</div>
 	</header>
@@ -182,15 +182,7 @@
 					<tr>
 						<td colspan="5">지원하고싶습니다.</td>
 					</tr>
-					=======
-					<c:forEach var="cdto" items="${commentlist }">
-						<tr>
-							<td>${cdto.writer }(id:${cdto.id })</td>
-							<td>${cdto.contents}</td>
-						</tr>
-					</c:forEach>
-					>>>>>>> branch 'master' of
-					https://github.com/yoohwanho/TeamProject6.git
+					
 				</table>
 			</div>
 			<!--  댓글입력창. form에 액션 추가하고 사용.-->

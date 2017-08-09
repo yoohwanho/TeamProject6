@@ -69,7 +69,7 @@
 	<header class="header">
 		<div class="logo">
 			<a href="main"><img
-				src="./img/logo.png" alt="logo" width="50" height="50" /></a>
+				src="./img/logo1.png" alt="logo" width="50" height="50" /></a>
 		</div>
 	</header>
 	<!-- header end -->
