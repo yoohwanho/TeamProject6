@@ -2,7 +2,7 @@ package kr.co.ilque.dto;
 
 public class MemberDto {
 	private String memberId;
-	private String membeberPwd;
+	private String memberPwd;
 	private String memberName;
 	private String regdate;
 	private int buyGrade;
@@ -22,11 +22,11 @@ public class MemberDto {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	public String getMembeberPwd() {
-		return membeberPwd;
+	public String getMemberPwd() {
+		return memberPwd;
 	}
-	public void setMembeberPwd(String membeberPwd) {
-		this.membeberPwd = membeberPwd;
+	public void setMemberPwd(String memberPwd) {
+		this.memberPwd = memberPwd;
 	}
 	public String getMemberName() {
 		return memberName;

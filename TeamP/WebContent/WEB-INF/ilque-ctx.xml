@@ -10,8 +10,6 @@
 	<mvc:annotation-driven />
 
 
-
-
 	<!-- 사진올리기에 관한 빈 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
