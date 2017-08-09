@@ -8,12 +8,15 @@
 	<select id="showMember" resultType="mdto">
 		select * from member where memberid=#{member}
 	</select>
+	<select id="login" parameterType="mdto" resultType="mdto">
+		select * from member where memeberid=#{memberid} and memberpwd=#{memberpwd}
+	</select>
 	<insert id="insertOne" parameterType="mdto">
 		insert into member
 		values(#{memberid},#{memberpwd},#{membername},sysdate,0,0,
 		#{profilesrc},#{phone},#{contents},#{gender},#{birth})
 	</insert>
-
+	
 	<update id="updateOne" parameterType="mdto">
 		update member set memberpwd=#{memberpwd},
 		membername=#{membername},profilesrc=#{profilesrc},

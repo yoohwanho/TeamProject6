@@ -78,7 +78,7 @@
 			<li><a href="main"><h2>일일퀘스트</h2></a></li>
 			<li><a href="login">로그인</a></li>
 			<li><a href="join">회원가입</a></li>
-			<li><a href="writeForm">해주세요/해드립니다</a></li>
+			<li><a href="write">해주세요/해드립니다</a></li>
 			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
