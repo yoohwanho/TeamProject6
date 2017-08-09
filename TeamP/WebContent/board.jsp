@@ -44,8 +44,7 @@
 	//한 페이지당 게시물 건수 10개로 고정
 	var countPerPage = 10;
 	//총페이지개수
-	var totalPage = (totalCount%countPerPage==0)?
-			totalCount/countPerPage:totalCount/countPerPage+1;
+	var totalPage = (totalCount%countPerPage==0)?totalCount/countPerPage:totalCount/countPerPage+1;
 	
 	// 변수들 잘 들어갔나 확인
 	console.log(totalCount);
@@ -202,57 +201,41 @@
 					</table>
 				</form>
 			</div>
+			
+			
+			<!-- 페이징처리할 구간 -->
 			<div class="table-responsive" align="center">
 				<table class="table">
+					<c:forEach var="list" items="${customList }">
 					<tr>
-						<td rowspan="2" width="100px"><img src="./img/mal2.png"
+						<td rowspan="2" width="100px"><img src="${list.filePath }"
 							alt="userPic" /></td>
-						<td class="type">해주세요.</td>
-						<td class="title" colspan="2">멍멍이좀 찾아주세요</td>
+						<td class="type">${list.category }</td>
+						<td class="title" colspan="2">${list.title }</td>
 					</tr>
 					<tr>
-						<td class="writer">개장수</td>
-						<td class="loc">서울시 도봉구 도봉동</td>
+						<td class="writer">${list.writer }</td>
+						<td class="loc">${list.loc }</td>
 
-						<td class="money">99000</td>
+						<td class="money">${list.reward }</td>
 					</tr>
+					</c:forEach>
 
 					<tr>
-						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
-						<td class="type">해드립니다.</td>
-						<td class="title" colspan="2">사람 찾아드립니다.</td>
-					</tr>
-					<tr>
-						<td class="writer">마포갈비</td>
-						<td class="loc">서울시 마포구 상암동</td>
-
-						<td class="money">30000000</td>
-					</tr>
-					<tr>
-						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
-						<td class="type">해드립니다.</td>
-						<td class="title" colspan="2">방학숙제해드립니다.</td>
-					</tr>
-					<tr>
-						<td class="writer">대학생</td>
-						<td class="loc">서울시 관악구 신림동</td>
-
-						<td class="money">20000</td>
-					</tr>
-					<tr>
-						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
-						<td class="type">해주세요.</td>
-						<td class="title" colspan="2">머리풍성 하게 해주세요.</td>
-					</tr>
-					<tr>
-						<td class="writer">김광규</td>
-						<td class="loc">서울시 종로구 창신동</td>
-
-						<td class="money">50000000</td>
+						<td><button id="leftArrow" hidden="true">&lt;	</button></td>
+						<td>
+						<c:forEach var="m" begin="${startPageNo }" end="${endPageNo }">
+							<button id="pageButton${m }">${m }</button>
+						</c:forEach>
+						</td>
+						<td><button id="rightArrow" hidden="true">&gt;	</button></td>
 					</tr>
 
 				</table>
 			</div>
+			
+			
+			<!-- 페이징처리할 구간 end -->
 
 
 			<div class="container">
