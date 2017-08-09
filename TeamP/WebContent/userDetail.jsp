@@ -36,11 +36,6 @@
 		});
 	});
 	
-	$(function(){
-		$("#goModify").on("click", function(){
-			location.href="";
-		});
-	});
 </script>
 
 </head>
@@ -95,18 +90,20 @@
 		<div align="center">
 			<h1>프로필</h1>
 			
-			<<div class="container">
+			<div class="container">
 			<table class="table">
 
 				<tr>
 					<td rowspan="4"><img src="./img/defaultman.png" alt="default"
 						width="100" height="100" /></td>
 					<th>ID</th>
-					<td></td>
+					<td>${memberID}</td>
+				
 				</tr>
 				<tr>
 					<th>휴대폰</tj>
 					<td colspan="2">${phone}</td>
+					
 				</tr>
 				<tr>
 					<th>요청자로서의 평점</th>
@@ -128,11 +125,20 @@
 					</td>
 					<!-- 소개글이 출력되야함 -->
 				</tr>
+				<%-- <c:if test="session.id=${memberId}"> --%>
 				<tr>
 					<td></td>
 					<td></td>
-					<td><input type="button" value="수정" id="goModify" /></td>
+					<td><a href="modifyForm"><input type="button" value="수정" id="goModify" /></a></td>
 				</tr>
+			<%-- 	</c:if> --%>
+				<input type="hidden" name="memberID" value="${memberID }"/>
+				<input type="hidden" name="memberPwd" value="${memberPwd }"/>
+				<input type="hidden" name="memberName" value="${memberName }"/>
+				<input type="hidden" name="profileSrc" value="${profileSrc }"/>
+				<input type="hidden" name="phone" value="${phone }"/>
+				<input type="hidden" name="contents" vaule="${contents }"/>
+				<input type="hidden" name="gender" value="${gender }"/>
 			</table>
 		</div>
 		<div class="container">
