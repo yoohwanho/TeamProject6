@@ -44,6 +44,7 @@ public class JoinController {
 		dto.setGender(gender);
 		dto.setPhone(phone);
 		dto.setContents(contents);
+		System.out.println(profileSrc);
 		//contents?
 		dto.setBirth(birth);
 		us.insertOne(dto);
