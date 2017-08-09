@@ -14,7 +14,7 @@ import kr.co.ilque.service.UserService;
 //	회원가입 화면에서의 화면이동
 @Controller
 public class JoinController {
-	@Resource(name="UserService")
+	@Resource(name="userService")
 	UserService us;
 
 	public void setUs(UserService us) {

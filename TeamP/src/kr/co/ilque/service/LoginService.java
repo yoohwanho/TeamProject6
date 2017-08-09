@@ -9,7 +9,7 @@ import kr.co.ilque.dto.MemberDto;
 
 @Service("loginService")
 public class LoginService implements QuestService{
-	@Resource(name="MemberDAO")
+	@Resource(name="memberDAO")
 	OracleMemberDAO dao;
 	
 	public void setDao(OracleMemberDAO dao) {
