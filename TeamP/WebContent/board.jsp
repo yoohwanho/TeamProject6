@@ -156,14 +156,14 @@
 		<div class="logo">
 			<a href="main"><img src="./img/logo1.png" alt="logo" width="50"
 				height="50" /></a>
-					<!-- Trigger the modal with a button -->
-				<button type="searchButton" class="btn btn-info btn-lg"
-					data-toggle="modal" data-target="#myModal">
+			<!-- Trigger the modal with a button -->
+			<button type="searchButton" class="btn btn-info btn-lg"
+				data-toggle="modal" data-target="#myModal">
 				<img src="./img/search.png" alt="search" width="30" height="30" />
 			</button>
-		
+
 		</div>
-				
+
 	</header>
 	<!-- header end -->
 
@@ -201,46 +201,45 @@
 					</table>
 				</form>
 			</div>
-			
-			
+
+
 			<!-- 페이징처리할 구간 -->
 			<div class="table-responsive" align="center">
 				<table class="table">
 					<c:forEach var="list" items="${customList }">
-					<tr>
-						<td rowspan="2" width="100px"><img src="${list.filePath }"
-							alt="userPic" /></td>
-						<td class="type">${list.category }</td>
-						<td class="title" colspan="2">${list.title }</td>
-					</tr>
-					<tr>
-						<td class="writer">${list.writer }</td>
-						<td class="loc">${list.loc }</td>
+						<tr>
+							<td rowspan="2" width="100px"><img src="${list.filePath }"
+								alt="userPic" /></td>
+							<td class="type">${list.category }</td>
+							<td class="title" colspan="2">${list.title }</td>
+						</tr>
+						<tr>
+							<td class="writer">${list.writer }</td>
+							<td class="loc">${list.loc }</td>
 
-						<td class="money">${list.reward }</td>
-					</tr>
+							<td class="money">${list.reward }</td>
+						</tr>	
 					</c:forEach>
 
 					<tr>
-						<td><button id="leftArrow" hidden="true">&lt;	</button></td>
-						<td>
-						<c:forEach var="m" begin="${startPageNo }" end="${endPageNo }">
-							<button id="pageButton${m }">${m }</button>
-						</c:forEach>
-						</td>
-						<td><button id="rightArrow" hidden="true">&gt;	</button></td>
+						<td><button id="leftArrow" hidden="true">&lt;</button></td>
+						<td><c:forEach var="m" begin="${currentPage }"
+								end="10">
+								<a href="board?currentPage=${m }"></a>
+							</c:forEach></td>
+						<td><button id="rightArrow" hidden="true">&gt;</button></td>
 					</tr>
 
 				</table>
 			</div>
-			
-			
+
+
 			<!-- 페이징처리할 구간 end -->
 
 
 			<div class="container">
 
-	
+
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" role="dialog">
 					<div class="modal-dialog">

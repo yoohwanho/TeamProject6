@@ -1,16 +1,17 @@
 package kr.co.ilque.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 //	탭으로 언제든지 접근할 수 있는 버튼에 의한 페이지이동.
 
 @Controller
 public class mainController {
+	
+	
 
 	//	메인 페이지
 	@RequestMapping("/main")
@@ -49,9 +50,14 @@ public class mainController {
 	
 	//	[거래목록] 버튼을 누르면 최신순으로 거래목록이 뜸
 	//	db에서 리스트 가져오기
-	@RequestMapping("/board")
-	public String showBoard() {
-		return "board";
+	@RequestMapping(value="/board")
+	public ModelAndView boardList(@RequestParam(name="currentPage", defaultValue="1") int currentPage) {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		mav.addObject("currentPage",currentPage);
+		mav.setViewName("board");
+		return mav;
 	}
 	
 	//	[마이페이지]
