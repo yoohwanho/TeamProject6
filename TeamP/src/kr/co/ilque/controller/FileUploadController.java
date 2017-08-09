@@ -37,6 +37,7 @@ public class FileUploadController {
 		return "imgPutForm3";
 	}
 
+
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public ModelAndView upload(@ModelAttribute("uploadFile") UploadFile file, HttpServletRequest req,
 			BindingResult result) {  

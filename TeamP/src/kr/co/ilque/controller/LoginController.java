@@ -21,7 +21,7 @@ public class LoginController {
 	boolean isLogin = false;
 
 	@RequestMapping(value = "/tryLogin", method = RequestMethod.POST)
-	public String tryLogin(@RequestParam("id") String memberId, @RequestParam("pw") String memberPwd,
+	public ModelAndView tryLogin(@RequestParam("id") String memberId, @RequestParam("pw") String memberPwd,
 			HttpServletRequest req, HttpSession ss) {
 
 		System.out.println("id,pw = " + memberId + "," + memberPwd);
@@ -29,21 +29,31 @@ public class LoginController {
 
 		// 로그인
 		// 로그인 성공: 세션에 로그인 정보.
-		MemberDto dto = new MemberDto();
-		dto.setMemberId(memberId);
-		dto.setMemberPwd(memberPwd);
-		
-		System.out.println("dto"+dto.getMemberId()+" " + dto.getMemberPwd());
-		System.out.println(sv.chkLogin(dto));
-//		if (sv.chkLogin(dto) != null) {
-//			// 로그인 성공
-//			isLogin = true;
-//			ss.setAttribute("id", memberId);
-//		}
-//		ss.setAttribute("isLoin", isLogin);
+		MemberDto mdto = new MemberDto();
+		mdto.setMemberId(memberId);
+		mdto.setMemberPwd(memberPwd);
+		mdto = sv.chkLogin(mdto);
+		if ( mdto!= null) {
+			// 로그인 성공
+			isLogin = true;
+			ss.setAttribute("mdto", mdto);
+			ss.setAttribute("isLogin", isLogin);
+			return new ModelAndView("main");
+		}else {
+			ss.setAttribute("isLogin", isLogin);
+			
+			return new ModelAndView("login","isFail",true);
+		}
 
-//		return req.getHeader("referer");
-		return null;
+	}
+	
+	//	로그아웃시도
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession ss) {
+		isLogin=false;
+		ss.setAttribute("isLogin", isLogin);
+		ss.removeAttribute("mdto");		
+		return "main";
 	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,10 +50,27 @@
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-			<li><a href="main"><h2>일일퀘스트</h2></a></li>
-			<li><a href="login">로그인</a></li>
-			<li><a href="join">회원가입</a></li>
-			<li><a href="writeForm">해주세요/해드립니다</a></li>
+		<li><a href="main"><h2>
+			<c:choose>
+				<c:when test="${isLogin }">
+					${mdto.memberName }님					
+				</c:when>
+				<c:otherwise>
+					로그인하세요
+				</c:otherwise>
+			</c:choose>
+			</h2></a></li>
+			<c:choose>
+				<c:when test="${isLogin }">
+					<li><a href="logout">로그아웃</a></li>
+					<li><a href="myPage">마이페이지</a></li>					
+				</c:when>
+				<c:otherwise>
+					<li><a href="login">로그인</a></li>
+					<li><a href="join">회원가입</a></li>
+				</c:otherwise>
+			</c:choose>
+			<li><a href="write">해주세요/해드립니다</a></li>
 			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
@@ -74,8 +92,8 @@
 				<div class="container">
 					<table class="table">
 						<tr>
-							<td><input type="radio" name="category" id="구인" />해주세요 <input
-								type="radio" name="category" id="구직" />해드립니다 <!-- 뒤에 글귀는 후에 변경 가능!!  -->
+							<td><input type="radio" name="category" id="구인" value="구인" />해주세요 <input
+								type="radio" name="category" id="구직" value="구직" />해드립니다 <!-- 뒤에 글귀는 후에 변경 가능!!  -->
 							</td>
 						</tr>
 						<tr>
@@ -84,11 +102,11 @@
 						</tr>
 						<tr>
 							<th>상세 내용</th>
-							<td><textarea rows="5" cols="40"></textarea></td>
+							<td><textarea rows="5" cols="40" name="contents"></textarea></td>
 						</tr>
 						<tr>
 							<th>제안 금액</th>
-							<td><input type="text" name="money" id="" /></td>
+							<td><input type="text" name="reward" id="reward" /></td>
 						</tr>
 						<tr>
 							<th>휴대폰</th>
@@ -97,7 +115,7 @@
 						</tr>
 						<tr>
 							<th>지원기한</th>
-							<td><input type="date" name="period" id="" /></td>
+							<td><input type="date" name="time" id="" /></td>
 						</tr>
 						<tr>
 							<th>위치</th>
