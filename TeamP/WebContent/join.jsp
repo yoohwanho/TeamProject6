@@ -171,8 +171,8 @@
 	<!-- Footer END -->
 
 
-<<<<<<< HEAD
-=======
+<script>
+
 	function chk(){
 		/* 회원가입 정보가 제대로 입력되었는지 확인 */
 		/* 공란이 없는지, 비밀번호와 비밀번호 확인이 맞는지 */	
@@ -214,6 +214,5 @@
 
 </script>
 
->>>>>>> branch 'master' of https://github.com/yoohwanho/TeamProject6.git
 </body>
 </html>
