@@ -20,10 +20,12 @@
 		댓글개수까지 표시해야됨??
 		-->
 	<select id="searchbyFilter" resultType="bdto" parameterType="info">
-		select rownum rn, boardno, category, title, writer,hits, regdate, reward, time from
-		(select rownum rn, boardno, category, title, writer,hits, regdate, reward, time from
-		(select rownum rn, boardno, category, title, writer,hits, regdate, reward, time 
-		from board where 1=1
+		select rn, boardno, category, title, writer,hits, regdate, reward, time, commentCounts from
+		(select rn, boardno, category, title, writer,hits, regdate, reward, time,commentCounts from
+		(select rownum rn, b.boardno boardno, b.category category, b.title title,
+		 b.writer writer, b.hits hits, b.regdate regdate, b.reward reward, b.time time, commentCounts 
+		from board b,(select boardno, count(*) commentCounts counts from comments group by boardno) c 
+		where b.boardno = c.boardno
 		<if test="gender!=null"> and gender=#{gender} </if>
 		<if test="category!=null">and category=#{category}</if>
 		<if test="min!=null and max!=null">and reward between min and max</if>
