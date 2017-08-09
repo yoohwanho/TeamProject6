@@ -33,7 +33,7 @@
 
 		and selgrade=
 		((select avg(score) from board_review where bwriter=#{memberid},
-		category='구직', rwriter= bapplicant)
+		category= '구직', rwriter= bapplicant)
 		+(select avg(score) from board_review where applicant=#{memberid},
 		category='구인', rwriter=bwriter))/2
 
