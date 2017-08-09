@@ -151,7 +151,7 @@
 	</footer>
 	<!-- Footer END -->
 <script>
-	$(function(){
+ 	$(function(){
 		$("#btnLogin").on("click",chkLogin)
 	});
 	
@@ -167,7 +167,7 @@
 			$("#loginForm").submit();
 			console.log("submit함");
 		}
-	}
+	} 
 </script>
 </body>
 </html>
