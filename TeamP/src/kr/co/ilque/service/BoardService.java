@@ -1,5 +1,5 @@
 package kr.co.ilque.service;
 
-public class BoardService implements Service{
+public class BoardService implements QuestService{
 
 }
