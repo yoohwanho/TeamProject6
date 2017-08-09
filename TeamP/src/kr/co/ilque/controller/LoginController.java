@@ -21,7 +21,7 @@ public class LoginController {
 	boolean isLogin = false;
 
 	@RequestMapping(value = "/tryLogin", method = RequestMethod.POST)
-	public String tryLogin(@RequestParam("id") String memberId, @RequestParam("pw") String memberPwd,
+	public ModelAndView tryLogin(@RequestParam("id") String memberId, @RequestParam("pw") String memberPwd,
 			HttpServletRequest req, HttpSession ss) {
 
 		System.out.println("id,pw = " + memberId + "," + memberPwd);
@@ -37,10 +37,14 @@ public class LoginController {
 			// 로그인 성공
 			isLogin = true;
 			ss.setAttribute("mdto", mdto);
+			ss.setAttribute("isLogin", isLogin);
+			return new ModelAndView("main");
+		}else {
+			ss.setAttribute("isLogin", isLogin);
+			
+			return new ModelAndView("login","isFail",true);
 		}
-		ss.setAttribute("isLogin", isLogin);
 
-		return "main";
 	}
 	
 	//	로그아웃시도
