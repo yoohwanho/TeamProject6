@@ -1,5 +1,5 @@
 package kr.co.ilque.service;
 
-public class UserService implements Service{
+public class UserService implements QuestService{
 
 }
