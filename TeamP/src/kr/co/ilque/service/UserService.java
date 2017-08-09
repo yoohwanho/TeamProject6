@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.co.ilque.dao.OracleMemberDAO;
 import kr.co.ilque.dto.MemberDto;
 
-@Service("userService")
+@Service(value="UserService")
 public class UserService implements QuestService{
 	//회원 가입, 수정
 	@Resource(name="memberDAO")
