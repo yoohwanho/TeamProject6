@@ -19,7 +19,7 @@
 	</select>
 	<insert id="insertOne" parameterType="rdto">
 		insert into review values(review_seq,#{boardno},#{writer},#{contents},
-		#{regdate}, #{imgsrc} )
+		sysdate, #{imgsrc} )
 	</insert>
 	
 </mapper>
