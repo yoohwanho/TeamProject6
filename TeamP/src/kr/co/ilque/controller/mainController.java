@@ -1,24 +1,32 @@
 package kr.co.ilque.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.dto.MemberDto;
+import kr.co.ilque.service.KeywordsService;
 
 //	탭으로 언제든지 접근할 수 있는 버튼에 의한 페이지이동.
 
 @Controller
 public class mainController {
 	
-	
+	@Resource(name = "keywordsService")
+	KeywordsService ks;
 
 	//	메인 페이지
 	@RequestMapping("/main")
-	public String main() {
-		return "main";
+	public ModelAndView main() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("list",ks.select10());
+		mav.setViewName("main");
+		return mav;
 	}
 	
 	//	[로그인] 페이지로 넘어감

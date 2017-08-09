@@ -174,13 +174,9 @@
 
 	<!-- section2 -->
 	<section class="mid-down">
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
-		<h2>키워드들넣을자리</h2>
+		<c:forEach var="list" items="${list }">
+		<a href="board?keyword=${list.kword }">${list.kword }</a>
+		</c:forEach>
 	</section>
 	<!-- section2 END -->
 
