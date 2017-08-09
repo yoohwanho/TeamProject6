@@ -1,11 +1,15 @@
 package kr.co.ilque.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import kr.co.ilque.dto.MemberDto;
 
 //	탭으로 언제든지 접근할 수 있는 버튼에 의한 페이지이동.
 
@@ -29,11 +33,6 @@ public class mainController {
 	
 	//	(로그인 상태일때)로그아웃 버튼을 누르면 세션에서 로그인 정보를 지우고 페이지 유지
 	//	menu의 [로그아웃]버튼과 [마이페이지]버튼을 [로그인]버튼과 [회원가입]버튼으로 바꿈
-	@RequestMapping("/logout")
-	public String logout() {
-		return null;
-//		return 	"redirect:/(현재페이지)";
-	}
 	
 	//	(로그아웃 상태일때)회원가입 페이지로 넘어감
 	@RequestMapping(value="/join",method=RequestMethod.GET)
@@ -57,8 +56,8 @@ public class mainController {
 	//	[마이페이지]
 	//	세션에서 id값을 받아와서 자기 정보 보기
 	@RequestMapping("/myPage")
-	public String showMyPage() {
-		return null;
-		//return "userDetail?id="+id;
+	public String showMyPage( HttpSession ss) {
+		MemberDto mdto =(MemberDto)ss.getAttribute("mdto");
+		return "userDetail?id="+mdto.getMemberId();
 	}
 }
