@@ -6,6 +6,11 @@
 <configuration>
 <typeAliases>
 	<typeAlias type="kr.co.ilque.dto.BoardDto" alias="bdto"/>
-	<typeAlias type="kr.co.ilque.dto.UserDto" alias="udto"/>
+	<typeAlias type="kr.co.ilque.dto.BoardReviewDAO" alias="brdto"/>
+	<typeAlias type="kr.co.ilque.dto.CommentsDto" alias="cdto"/>
+	<typeAlias type="kr.co.ilque.dto.KeywordsDto" alias="kdto"/>
+	<typeAlias type="kr.co.ilque.dto.MemberDto" alias="mdto"/>
+	<typeAlias type="kr.co.ilque.dto.ReviewDto" alias="rdto"/>
+	<typeAlias type="kr.co.ilque.dto.SelectInfo" alias="info"/>
 </typeAliases>
 </configuration>

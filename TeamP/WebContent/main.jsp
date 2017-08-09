@@ -88,7 +88,7 @@
 	<header class="header">
 		<!-- 헤더의 로고부분 -->
 		<div>
-			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+			<a href="main"><img src="./img/logo1.png" alt="logo" width="50"
 				height="50" /></a>
 
 
