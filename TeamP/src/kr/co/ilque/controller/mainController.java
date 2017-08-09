@@ -51,8 +51,8 @@ public class mainController {
 	//	[마이페이지]
 	//	세션에서 id값을 받아와서 자기 정보 보기
 	@RequestMapping("/myPage")
-	public String showMyPage() {
-		return null;
-		//return "userDetail?id="+id;
+	public String showMyPage( HttpSession ss) {
+		MemberDto mdto =(MemberDto)ss.getAttribute("mdto");
+		return "userDetail?id="+mdto.getMemberId();
 	}
 }

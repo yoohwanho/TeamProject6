@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,10 +49,27 @@
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-			<li><a href="main"><h2>일일퀘스트</h2></a></li>
-			<li><a href="login">로그인</a></li>
-			<li><a href="join">회원가입</a></li>
-			<li><a href="writeForm">해주세요/해드립니다</a></li>
+		<li><a href="main"><h2>
+			<c:choose>
+				<c:when test="${isLogin }">
+					${mdto.memberName }님					
+				</c:when>
+				<c:otherwise>
+					로그인하세요
+				</c:otherwise>
+			</c:choose>
+			</h2></a></li>
+			<c:choose>
+				<c:when test="${isLogin }">
+					<li><a href="logout">로그아웃</a></li>
+					<li><a href="myPage">마이페이지</a></li>					
+				</c:when>
+				<c:otherwise>
+					<li><a href="login">로그인</a></li>
+					<li><a href="join">회원가입</a></li>
+				</c:otherwise>
+			</c:choose>
+			<li><a href="write">해주세요/해드립니다</a></li>
 			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
@@ -78,20 +96,20 @@
 					<td rowspan="4"><img src="./img/defaultman.png" alt="default"
 						width="100" height="100" /></td>
 					<th>ID</th>
-					<td>${id }</td>
+					<td>${mdto.memberId }</td>
 				</tr>
 				<tr>
 					<th>휴대폰</tj>
-					<td colspan="2">${phone}</td>
+					<td colspan="2">${mdto.phone}</td>
 				</tr>
 				<tr>
 					<th>요청자로서의 평점</th>
-					<td colspan="2">평점/10</td>
+					<td colspan="2">${mdto.buyGrade }/10</td>
 					<!--  평정 입력 값이 들어가야함  -->
 				</tr>
 				<tr>
 					<th>지원자로서의 평점</th>
-					<td colspan="2">평점/10</td>
+					<td colspan="2">${mdto.sellGrade }/10</td>
 					<!--  지원자 평점이 들어가야 함  -->
 				</tr>
 
@@ -99,7 +117,7 @@
 					<td><h2>소개</h2></td>
 					<td colspan="2">
 						<div class="panel panel-default">
-							<div class="panel-body">소개글이 들어가면 됩니다 소개글소개글</div>
+							<div class="panel-body">${mdto.contents }</div>
 						</div>
 					</td>
 					<!-- 소개글이 출력되야함 -->

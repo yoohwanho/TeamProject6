@@ -97,10 +97,27 @@
 			<a href="#" id="menu-close"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-			<li><a href="main"><h2>일일퀘스트</h2></a></li>
-			<li><a href="login">로그인</a></li>
-			<li><a href="join">회원가입</a></li>
-			<li><a href="writeForm">해주세요/해드립니다</a></li>
+			<li><a href="main"><h2>
+						<c:choose>
+							<c:when test="${isLogin }">
+					${mdto.memberName }님					
+				</c:when>
+							<c:otherwise>
+					로그인하세요
+				</c:otherwise>
+						</c:choose>
+					</h2></a></li>
+			<c:choose>
+				<c:when test="${isLogin }">
+					<li><a href="logout">로그아웃</a></li>
+					<li><a href="myPage">마이페이지</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="login">로그인</a></li>
+					<li><a href="join">회원가입</a></li>
+				</c:otherwise>
+			</c:choose>
+			<li><a href="write">해주세요/해드립니다</a></li>
 			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
@@ -166,8 +183,8 @@
 				<table class="table">
 					<c:forEach var="list" items="${list }">
 						<tr>
-							<td rowspan="2" width="100px"><img src="${list.filePath }"
-								alt="userPic" /></td>
+							<td rowspan="2" width="100px"><img
+								src="./img/defaultman.png" alt="userPic" height="50" width="50" /></td>
 							<td class="type">${list.category }</td>
 							<td class="title" colspan="2">${list.title }</td>
 						</tr>
@@ -183,15 +200,13 @@
 
 						<td><c:choose>
 								<c:when test="${prev}">
-									<a href="boardList?currentPage=${currentPage-5 }">[이전]</a>
+									<a href="board?currentPage=${currentPage-5 }">[이전]</a>
 								</c:when>
-							</c:choose></td>
-						<td><c:forEach var="m" begin="${currentPage }" end="10">
-								<a href="board?currentPage=${m }"></a>
-							</c:forEach></td>
-						<td><c:choose>
+							</c:choose> <c:forEach var="i" begin="${startPage }" end="${endPage }">
+								<a href="board?currentPage=${i }">${i }</a>
+							</c:forEach> <c:choose>
 								<c:when test="${next }">
-									<a href="boardList?currentPage=${currentPage+5 }">[다음]</a>
+									<a href="board?currentPage=${currentPage+5 }">[다음]</a>
 								</c:when>
 							</c:choose></td>
 					</tr>

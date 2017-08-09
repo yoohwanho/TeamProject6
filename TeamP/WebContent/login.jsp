@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,10 +57,27 @@
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-			<li><a href="main"><h2>일일퀘스트</h2></a></li>
-			<li><a href="login">로그인</a></li>
-			<li><a href="join">회원가입</a></li>
-			<li><a href="writeForm">해주세요/해드립니다</a></li>
+<li><a href="main"><h2>
+			<c:choose>
+				<c:when test="${isLogin }">
+					${mdto.memberName }님					
+				</c:when>
+				<c:otherwise>
+					로그인하세요
+				</c:otherwise>
+			</c:choose>
+			</h2></a></li>
+			<c:choose>
+				<c:when test="${isLogin }">
+					<li><a href="logout">로그아웃</a></li>
+					<li><a href="myPage">마이페이지</a></li>					
+				</c:when>
+				<c:otherwise>
+					<li><a href="login">로그인</a></li>
+					<li><a href="join">회원가입</a></li>
+				</c:otherwise>
+			</c:choose>
+			<li><a href="write">해주세요/해드립니다</a></li>
 			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
@@ -77,16 +95,22 @@
 	<!-- section1 안내 메세지 세션-->
 	<section>
 		<!-- 로그인 실패시 경고  -->	
-		<div class="alert alert-danger alert-dismissable fade in" id="loginFailAlert">
-		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>로그인 실패</strong> 아이디 또는 패스워드가 틀립니다.
-		</div>
+		<c:choose>
+			<c:when test="${isJoin }">
+				<!-- 회원가입 성공시 -->
+				<div class="alert alert-success alert-dismissable fade in" id="joinSuccessAlert">
+				  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>회원가입 성공!</strong> 이제 서비스를 이용하실 수 있습니다.
+				</div>
+			</c:when>
+			<c:when test="${isFail }">
+				<div class="alert alert-danger alert-dismissable fade in" id="loginFailAlert">
+		  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>로그인 실패</strong> 아이디 또는 패스워드가 틀립니다.
+				</div>			
+			</c:when>
+		</c:choose>
 		
-		<!-- 회원가입 성공시 -->
-		<div class="alert alert-success alert-dismissable fade in" id="joinSuccessAlert">
-		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>회원가입 성공!</strong> 이제 서비스를 이용하실 수 있습니다.
-		</div>
 		
 	</section>
 

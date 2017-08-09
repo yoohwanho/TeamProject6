@@ -49,10 +49,27 @@
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-			<li><a href="main"><h2>일일퀘스트</h2></a></li>
-			<li><a href="login">로그인</a></li>
-			<li><a href="join">회원가입</a></li>
-			<li><a href="writeForm">해주세요/해드립니다</a></li>
+<li><a href="main"><h2>
+			<c:choose>
+				<c:when test="${isLogin }">
+					${mdto.memberName }님					
+				</c:when>
+				<c:otherwise>
+					로그인하세요
+				</c:otherwise>
+			</c:choose>
+			</h2></a></li>
+			<c:choose>
+				<c:when test="${isLogin }">
+					<li><a href="logout">로그아웃</a></li>
+					<li><a href="myPage">마이페이지</a></li>					
+				</c:when>
+				<c:otherwise>
+					<li><a href="login">로그인</a></li>
+					<li><a href="join">회원가입</a></li>
+				</c:otherwise>
+			</c:choose>
+			<li><a href="write">해주세요/해드립니다</a></li>
 			<li><a href="board">거래목록</a></li>
 		</ul>
 	</nav>
@@ -61,7 +78,7 @@
 	<!-- header -->
 	<header class="header">
 		<div class="logo">
-			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+			<a href="main"><img src="./img/logo1.png" alt="logo" width="50"
 				height="50" /></a>
 		</div>
 	</header>
@@ -76,15 +93,16 @@
 		<div class="container">
 			<div class="table-responsive" align="center">
 				<table class="table">
+				
 					<tr>
-						<th colspan="5">제목</th>
+						<th colspan="5">${bdto.title} </th>
 					</tr>
 					<tr>
 						<!-- 클릭한 게시글의 정보 -->
 						<td rowspan="4"><a href="userDetail"><img
 								src="./img/mal2.png" alt="프사" class="img-rounded" /></a></td>
 
-						<td><h5>등록일</h5></td>
+						<td><h5>${bdto.regdate}</h5></td>
 					</tr>
 					<tr>
 						<td><b>댓글 N개</b></td>
@@ -96,7 +114,7 @@
 						<td>금액</td>
 					</tr>
 					<tr>
-						<td colspan="5">집에 뭘 두고왔는데 대신 가져다 주실분</td>
+						<td colspan="5">${bdto.contents}</td>
 					</tr>
 					<tr>
 						<th>연락처</th>
@@ -104,9 +122,9 @@
 						<th>기한</th>
 					</tr>
 					<tr>
-						<td>010-1234-5678</td>
-						<td>서울시 종로구</td>
-						<td>2017-08-15</td>
+						<td>${bdto.phone }</td>
+						<td>${bdto.loc }</td>
+						<td>${bdto.time }</td>
 					</tr>
 
 				</table>
@@ -115,8 +133,9 @@
 				<div id="map" style="width: 60%; height: 300px;"></div>
 				<script>
 					var map = new naver.maps.Map('map');
+					
 					//입력된 주소에 따라 지도시작위치가 달라짐.
-					var myaddress = '남대문로 117';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
+					var myaddress = '마들로 859-19';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
 					naver.maps.Service
 							.geocode(
 									{

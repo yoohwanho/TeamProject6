@@ -20,6 +20,9 @@
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(*) cnt from board
 	</select>
+	<select id="showDetails" resultType="bdto" >
+	select * from board where boardno = #{boardno}
+	</select>
 </mapper>
 
 

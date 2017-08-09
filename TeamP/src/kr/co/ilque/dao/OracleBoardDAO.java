@@ -29,5 +29,10 @@ public class OracleBoardDAO {
 	public int getData() {
 		return ss.selectOne("kr.co.ilque.board.getTotal");
 	}
+	public BoardDto selectOne(int boardno){
+		System.out.println(boardno);
+		return ss.selectOne("kr.co.ilque.board.showDetails",boardno);
+		
+	}
 
 }
