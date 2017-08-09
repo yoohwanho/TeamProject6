@@ -26,6 +26,7 @@ public class LoginController {
 
 		System.out.println("id,pw = " + memberId + "," + memberPwd);
 		System.out.println("url:" + req.getParameter("url"));
+		System.out.println();
 
 		// 로그인
 		// 로그인 성공: 세션에 로그인 정보.

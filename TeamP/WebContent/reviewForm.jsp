@@ -103,7 +103,7 @@
 
 						<tr>
 							<th>평점</th>
-							<td></td>
+							<td><input type="number" name="score" id="" maxlength="10"/></td>
 						</tr>
 						<tr>
 							<th>사진첨부</th>

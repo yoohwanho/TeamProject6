@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.service.BoardService;
+import kr.co.ilque.service.CommentsService;
 
 @Controller
 public class BoardController {
 	@Resource(name="boardService")
 	BoardService bs;
+	@Resource(name="commentsService")
+	CommentsService cs;
 
 	// 거래목록에서 글 누르면 상세페이지로 넘어감
 	// bno를 통하여 db에서 글의 상세정보 가져오기
@@ -22,6 +25,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("bdto", bs.read(boardno));
+		mav.addObject("list", cs.read(boardno));
 		mav.setViewName("detail");
 		
 		
