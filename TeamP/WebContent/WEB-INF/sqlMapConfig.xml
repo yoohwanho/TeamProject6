@@ -13,4 +13,7 @@
 	<typeAlias type="kr.co.ilque.dto.ReviewDto" alias="rdto"/>
 	<typeAlias type="kr.co.ilque.dto.SelectInfo" alias="info"/>
 </typeAliases>
+<mappers>
+<mapper/> 
+</mappers>
 </configuration>
