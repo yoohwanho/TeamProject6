@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,16 +95,22 @@
 	<!-- section1 안내 메세지 세션-->
 	<section>
 		<!-- 로그인 실패시 경고  -->	
-		<div class="alert alert-danger alert-dismissable fade in" id="loginFailAlert">
-		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>로그인 실패</strong> 아이디 또는 패스워드가 틀립니다.
-		</div>
+		<c:choose>
+			<c:when test="${isJoin }">
+				<!-- 회원가입 성공시 -->
+				<div class="alert alert-success alert-dismissable fade in" id="joinSuccessAlert">
+				  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>회원가입 성공!</strong> 이제 서비스를 이용하실 수 있습니다.
+				</div>
+			</c:when>
+			<c:when test="${isFail }">
+				<div class="alert alert-danger alert-dismissable fade in" id="loginFailAlert">
+		  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>로그인 실패</strong> 아이디 또는 패스워드가 틀립니다.
+				</div>			
+			</c:when>
+		</c:choose>
 		
-		<!-- 회원가입 성공시 -->
-		<div class="alert alert-success alert-dismissable fade in" id="joinSuccessAlert">
-		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>회원가입 성공!</strong> 이제 서비스를 이용하실 수 있습니다.
-		</div>
 		
 	</section>
 

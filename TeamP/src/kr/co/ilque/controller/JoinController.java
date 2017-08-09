@@ -1,6 +1,7 @@
 package kr.co.ilque.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,8 @@ public class JoinController {
 			@RequestParam("phone")	String phone,
 			@RequestParam("gender") String gender,
 			@RequestParam("birth") String birth,
-			@RequestParam("contents") String contents
+			@RequestParam("contents") String contents,
+			HttpServletRequest req
 			) {
 		MemberDto dto = new MemberDto();
 		dto.setMemberId(memberId);
@@ -49,6 +51,7 @@ public class JoinController {
 		dto.setBirth(birth);
 		us.insertOne(dto);
 		
+		req.setAttribute("isJoin", true);
 		return "login";
 	}
 

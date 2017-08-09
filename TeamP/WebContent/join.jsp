@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +61,7 @@
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-<li><a href="main"><h2>
+			<li><a href="main"><h2>
 			<c:choose>
 				<c:when test="${isLogin }">
 					${mdto.memberName }님					
@@ -99,39 +100,53 @@
 	<section>
 		<div align="center">
 			<h1>회원가입</h1>
-			<form action="join" method="post">
+			<form action="login" method="post" id="joinForm">
 				<div class="container">
 					<table class="table">
 						<tr>
 							<th>id</th>
-							<td colspan="2"><input type="text" name="memberId" /></td>
+							<td colspan="2"><input type="text" name="memberId" id="memberId" /><br />
+							<div id="divId" class="warning"></div>							
+							</td>
 						</tr>
 						<tr>
 							<th>pw</th>
-							<td colspan="2"><input type="password" name="memberPwd" /></td>
+							<td colspan="2"><input type="password" name="memberPwd" id="memberPwd"/><br />
+							<div id="divPw" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>pw확인</th>
-							<td colspan="2"><input type="password" name="repw" /></td>
+							<td colspan="2"><input type="password" name="repw" id="repw"/><br />
+							<div id="divRepw" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>이름</th>
-							<td><input type="text" name="memberName" id="" /></td>
+							<td><input type="text" name="memberName" id="memberName"  /><br />
+							<div id="divName" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>휴대폰</th>
 							<td colspan="2"><input type="text" name="phone"
-								placeholder="'-'없이 입력해주세요." /></td>
+								placeholder="'-'없이 입력해주세요." id="phone"/><br />
+							<div id="divPhone" class="warning"></div>
+							</td>
 						</tr>
 
 						<tr>
 							<th>성별</th>
 							<td colspan="2"><input type="radio" name="gender" id="male" value="male" />남자
-								<input type="radio" name="gender" id="female" value="female"/>여자</td>
+								<input type="radio" name="gender" id="female" value="female"/>여자<br />
+							<div id="divGender" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>생년월일</th>
-							<td colspan="2"><input type="date" name="birth" id="" /></td>
+							<td colspan="2"><input type="date" name="birth" id="birth" /><br />
+							<div id="divBirth" class="warning"></div>
+							</td>
 						</tr>
 						<tr>
 							<th>사진 등록</th>
@@ -141,6 +156,7 @@
 							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
 							<td><a href="imgPutForm">사진올리기</a>
 							<input type="hidden" name="filePath" value="${filePath}"/>
+							
 
 							</td>
 						</tr>
@@ -151,7 +167,7 @@
 						</tr>
 
 						<tr>
-							<td colspan="3"><input type="submit" value="회원가입" /> 
+							<td colspan="3"><input type="button" value="회원가입" id="btnJoin" /> 
 							<!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
 								<input type="button" value="취소" id="btn" /></td>
 						</tr>
@@ -193,6 +209,9 @@
 
 
 <script>
+	$(function(){
+		$("#btnJoin").on("click",chk);	
+	});
 
 	function chk(){
 		/* 회원가입 정보가 제대로 입력되었는지 확인 */
@@ -203,15 +222,15 @@
 		}		
 		
 		//	그후 공란이 있는 div에 입력안내 메시지를 띄움
-		if($("#id").val()==""){
+		if($("#memberId").val()==""){
 			$("#divId")[0].innerHTML="<p style='color:red'>아이디를 입력해주세요.</p>";				
-		}else if($("#pw").val()==""){
+		}else if($("#memberPwd").val()==""){
 			$("#divPw")[0].innerHTML="<p style='color:red'>패스워드를 입력해주세요.</p>";
 		}else if($("#repw").val()==""){
 			$("#divRepw")[0].innerHTML="<p style='color:red'>패스워드를 재입력해주세요.</p>";
 		}else if($("#memberPwd").val()!=$("#repw").val()){
 			$("#divRepw")[0].innerHTML="<p style='color:red'>위에 입력한 것과 다릅니다.</p>";			
-		}else if($("#name").val()==""){
+		}else if($("#memberName").val()==""){
 			$("#divName")[0].innerHTML="<p style='color:red'>이름을 입력해주세요.</p>";
 		}else if($("#phone").val()==""){
 			$("#divPhone")[0].innerHTML="<p style='color:red'>휴대폰번호를 입력해주세요.</p>";
