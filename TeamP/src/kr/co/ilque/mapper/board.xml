@@ -39,6 +39,7 @@
 		b.hits hits, b.loc loc, b.time time, b.phone phone, b.reward reward,
 		b.applicant applicant, b.status stastus,
 		b.regdate regdate, m.profilesrc profilesrc
+		, b.sellgrade sellgrade, b.buygrade buygrade
 		from board b, member m
 		where b.writer= m.memberid
 	</select>

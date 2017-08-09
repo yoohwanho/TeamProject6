@@ -6,6 +6,8 @@ public class DetailViewDto {
 	String title;
 	String contents;
 	String writer;
+	int buygrade;
+	int sellgrade;
 	int hits;
 	String loc;
 	String time;
@@ -15,6 +17,22 @@ public class DetailViewDto {
 	String status;
 	String regdate;
 	String profilesrc;
+	public int getBuygrade() {
+		return buygrade;
+	}
+
+	public void setBuygrade(int buygrade) {
+		this.buygrade = buygrade;
+	}
+
+	public int getSellgrade() {
+		return sellgrade;
+	}
+
+	public void setSellgrade(int sellgrade) {
+		this.sellgrade = sellgrade;
+	}
+
 	
 	public DetailViewDto() {
 	
