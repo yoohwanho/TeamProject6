@@ -13,15 +13,15 @@
 	</select>
 	<insert id="insertOne" parameterType="mdto">
 		insert into member
-		values(#{memberid},#{memberpwd},#{membername},sysdate,0,0,
-		#{profilesrc},#{phone},#{contents},#{gender},#{birth})
+		values(#{memberId},#{memberPwd},#{memberName},sysdate,0,0,
+		#{profileSrc},#{phone},#{contents},#{gender},#{birth})
 	</insert>
 	
 	<update id="updateOne" parameterType="mdto">
 		update member set memberpwd=#{memberpwd},
 		membername=#{membername},profilesrc=#{profilesrc},
 		phone=#{phone},contents=#{contents},gender=#{gender}
-		where memberid=#{memberid}
+		where memberid=#{memberId}
 	</update>
 
 	<!-- 후기 입력될때마다 회원펑점 업데이트하기 - 잘됬네 board_review view 만들어둔거 한번 더 써먹자 근데 구직/구인 

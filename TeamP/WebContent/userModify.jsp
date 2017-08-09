@@ -40,6 +40,13 @@
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
+	
+	$(function(){
+		if("${filePath}"!= ""){
+			$('#imgF').attr('src',"${filePath}")
+		}
+		
+	})
 </script>
 </head>
 
@@ -91,39 +98,59 @@
 	<!-- section1 -->
 	<section>
 		<div align="center">
-			<h1>프로필</h1>
+			<h1>프로필 수정</h1>
 			<div class="container">
-			<form action="">
+			<form action="modify">
 			<!-- 수정 버튼을 누르면 userDetail.jsp로 이동  -->
 			<table class="table">
-				<tr>
-					<td rowspan="5"><img src="./img/defaultman.png" alt="default" /></td>
-					<td>ID</td>
-					<td>${id }</td>
-				</tr>
-				<tr>
-					<td>휴대폰</td>
-					<td colspan="2"><input type="text" name="phone" id="" /></td>
-				</tr>
-				<tr>
-					<td>성별</td>
-					<td colspan="2">
-					<input type="radio" name="gender" id="male" /> 남자
-					<input type="radio" name="gender" id="female" /> 여자				
-					</td>
-				</tr>
-				<tr>
-					<td><h2>소개</h2></td>
-					<td colspan="2"><textarea name="contents" id="contents" cols="30" rows="10"></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="3">
-					<input type="submit" value="수정" />
-					<!-- 수정 버튼을 누르면 userDetail.jsp로 이동  -->
-					<input type="button" value="돌아가기" />
-					</td>
-				</tr>
-			</table>
+						<tr>
+							<th>id</th>
+							<td colspan="2">${memberId}</td>
+							<input type="hidden" name="memberId" value="${memberId }" />
+						</tr>
+						<tr>
+							<th>pw</th>
+							<td colspan="2"><input type="password" name="memberPwd" value="${memberPwd }"/></td>
+						</tr>
+						<tr>
+							<th>이름</th>
+							<td><input type="text" name="memberName" id="" value="${memberName }"/></td>
+						</tr>
+						<tr>
+							<th>휴대폰</th>
+							<td colspan="2"><input type="text" name="phone"
+								placeholder="'-'없이 입력해주세요." value="${phone}"/></td>
+						</tr>
+
+						<tr>
+							<th>성별</th>
+							<td colspan="2"><input type="radio" name="gender" id="male" value="male" />남자
+								<input type="radio" name="gender" id="female" value="female"/>여자</td>
+						</tr>
+						<tr>
+							<th>사진 등록</th>
+							<!-- ${filePath }-->
+							<td><img src="./img/defaultman.png" alt="default" width="50"
+								height="50" id="imgF" /></td>
+							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
+							<td><a href="imgPutForm3">사진올리기</a>
+							<input type="hidden" name="filePath" value="${filePath}"/>
+
+							</td>
+						</tr>
+						
+						<tr>
+							<th>자기 소개</th>
+							<td><textarea name="contents" id="contents" cols="50" rows="5"></textarea></td>
+						</tr>
+
+						<tr>
+							<td colspan="3"><input type="submit" value="수정" /> 
+							
+								<input type="button" value="취소" id="btn" /></td>
+						</tr>
+						</div>
+					</table>
 			</form>
 			</div>
 		</div>

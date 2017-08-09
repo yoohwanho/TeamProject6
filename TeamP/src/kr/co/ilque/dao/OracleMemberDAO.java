@@ -28,5 +28,8 @@ public class OracleMemberDAO {
 	}
 	
 	//	정보수정
+	public void updateOne(MemberDto dto) {
+		ss.update("kr.co.ilque.member.updateOne", dto);
+	}
 	
 }
