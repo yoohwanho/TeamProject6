@@ -85,7 +85,7 @@
 						<td rowspan="4"><a href="userDetail"><img
 								src="./img/mal2.png" alt="프사" class="img-rounded" /></a></td>
 
-						<td><h5>등록일</h5></td>
+						<td><h5>${bdto.regdate}</h5></td>
 					</tr>
 					<tr>
 						<td><b>댓글 N개</b></td>
@@ -105,9 +105,9 @@
 						<th>기한</th>
 					</tr>
 					<tr>
-						<td>010-1234-5678</td>
-						<td>서울시 종로구</td>
-						<td>언제까지</td>
+						<td>${bdto.phone }</td>
+						<td>${bdto.loc }</td>
+						<td>${bdto.time }</td>
 					</tr>
 
 				</table>
@@ -116,6 +116,7 @@
 				<div id="map" style="width: 60%; height: 300px;"></div>
 				<script>
 					var map = new naver.maps.Map('map');
+					
 					//입력된 주소에 따라 지도시작위치가 달라짐.
 					var myaddress = '남대문로 117';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
 					naver.maps.Service
