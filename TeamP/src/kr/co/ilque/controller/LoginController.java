@@ -1,5 +1,6 @@
 package kr.co.ilque.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +16,7 @@ import kr.co.ilque.service.Service;
 
 @Controller
 public class LoginController {
+	@Resource(name="loginService")
 	LoginService sv;
 	boolean isLogin=false;
 	
