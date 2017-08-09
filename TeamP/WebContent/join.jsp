@@ -82,7 +82,7 @@
 	<section>
 		<div align="center">
 			<h1>회원가입</h1>
-			<form action="join" method="post">
+			<form action="login" method="post">
 				<div class="container">
 					<table class="table">
 						<tr>

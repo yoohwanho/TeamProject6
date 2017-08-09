@@ -17,4 +17,8 @@ public class UserService implements QuestService{
 	public void insertOne(MemberDto dto) {
 		dao.insertOne(dto);
 	}
+	
+	public void updateOne(MemberDto dto) {
+		dao.updateOne(dto);
+	}
 }

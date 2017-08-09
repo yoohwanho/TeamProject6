@@ -34,6 +34,12 @@
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
+	
+	$(function(){
+		$("#goModify").on("click", function(){
+			location.href="";
+		});
+	});
 </script>
 
 </head>
@@ -78,7 +84,7 @@
 					<td rowspan="4"><img src="./img/defaultman.png" alt="default"
 						width="100" height="100" /></td>
 					<th>ID</th>
-					<td>${id }</td>
+					<td></td>
 				</tr>
 				<tr>
 					<th>휴대폰</tj>
@@ -107,7 +113,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><input type="button" value="수정" /></td>
+					<td><input type="button" value="수정" id="goModify" /></td>
 				</tr>
 			</table>
 		</div>
