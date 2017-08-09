@@ -186,15 +186,12 @@
 					</tr>
 					<c:forEach var="cs" items="${list}">
 						<tr>
-							<td><input type="hidden" name="commentno" value="${commentno}" /></td>
+							<td><input type="hidden" name="commentno"
+								value="${commentno}" /></td>
 							<td>${cs.writer}</td>
-
+							<td colspan="3">${cs.contents}</td>
 							<td>${cs.regdate}</td>
 						</tr>
-						<tr>
-							<td colspan="5">${cs.contents}</td>
-						</tr>
-
 					</c:forEach>
 				</table>
 			</div>
