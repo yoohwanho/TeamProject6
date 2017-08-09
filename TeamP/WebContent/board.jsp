@@ -45,11 +45,11 @@
 	width: 10%;
 }
 
-.miniTable {
+/* .miniTable {
 	width: 200px;
 	height: 300px;
 }
-
+ */
 .val {
 	width: 50px;
 }
@@ -111,38 +111,20 @@
 		<div class="logo">
 			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
 				height="50" /></a>
+					<!-- Trigger the modal with a button -->
+				<button type="searchButton" class="btn btn-info btn-lg"
+					data-toggle="modal" data-target="#myModal">
+				<img src="./img/search.png" alt="search" width="30" height="30" />
+			</button>
+		
 		</div>
+				
 	</header>
 	<!-- header end -->
 
 	<!-- section1 -->
 	<section>
 		<div class="container">
-			<div class="filter">
-				<form action="board">
-					<table class="miniTable">
-
-						<tr>
-							<td><label><input type="radio" name="optionJob" value="일감">일감</label></td>
-							<td><label><input type="radio" name="optionJob" value="일손">일손</label></td>
-							<td><label><input type="radio" name="optionJob" value="전체">전체</label></td>
-						</tr>
-						<tr>
-							<td><label><input type="radio" name="optionGender" value="여자">여자</label></td>
-							<td><label><input type="radio" name="optionGender" value="남자">남자</label></td>
-							<td><label><input type="radio" name="optionGender" value="무관">무관</label></td>
-						</tr>
-						<tr>
-							<td><input type="text" class="val" name="minVal"
-								placeholder="0" /></td>
-
-							<td><input type="text" class="val" name="maxVal"
-								placeholder="100000" /></td>
-							<td><input type="submit" value="검색" /></td>
-						</tr>
-					</table>
-				</form>
-			</div>
 			<div class="table-responsive" align="center">
 				<table class="table">
 					<tr>
@@ -198,10 +180,7 @@
 
 			<div class="container">
 
-				<!-- Trigger the modal with a button -->
-				<button type="button" class="btn btn-info btn-lg"
-					data-toggle="modal" data-target="#myModal">로그인하기</button>
-
+	
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" role="dialog">
 					<div class="modal-dialog">
@@ -210,25 +189,48 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">로그인</h4>
+								<h4 class="modal-title">검색키워드</h4>
 							</div>
 							<div class="modal-body">
-								<table class="table">
+								<table class="miniTable">
+
 									<tr>
-										<th>ID</th>
-										<td><input type="text" name="id" id="" /></td>
+										<td><label><input type="radio" name="optionJob"
+												value="일감">일감</label></td>
+										<td><label><input type="radio" name="optionJob"
+												value="일손">일손</label></td>
+										<td><label><input type="radio" name="optionJob"
+												value="전체">전체</label></td>
 									</tr>
 									<tr>
-										<th>PW</th>
-										<td><input type="password" name="pw" id="" /></td>
+										<td><label><input type="radio"
+												name="optionGender" value="여자">여자</label></td>
+										<td><label><input type="radio"
+												name="optionGender" value="남자">남자</label></td>
+										<td><label><input type="radio"
+												name="optionGender" value="무관">무관</label></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="val" name="minVal"
+											placeholder="0" /></td>
+										<td>~</td>
+
+										<td><input type="text" class="val" name="maxVal"
+											placeholder="100000" /></td>
 									</tr>
 								</table>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">로그인</button>
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">취소</button>
+								<form>
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Search">
+										<div class="input-group-btn">
+											<button class="btn btn-default" type="submit">
+												<i class="glyphicon glyphicon-search"></i>
+											</button>
+										</div>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>

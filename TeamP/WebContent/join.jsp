@@ -171,5 +171,49 @@
 	<!-- Footer END -->
 
 
+<<<<<<< HEAD
+=======
+	function chk(){
+		/* 회원가입 정보가 제대로 입력되었는지 확인 */
+		/* 공란이 없는지, 비밀번호와 비밀번호 확인이 맞는지 */	
+		for(var i in $(".warning")){
+			// 확인할 때마다 모든 warning div를 초기화시킨다. 
+			$(".warning")[i].innerHTML="";
+		}		
+		
+		//	그후 공란이 있는 div에 입력안내 메시지를 띄움
+		if($("#id").val()==""){
+			$("#divId")[0].innerHTML="<p style='color:red'>아이디를 입력해주세요.</p>";				
+		}else if($("#pw").val()==""){
+			$("#divPw")[0].innerHTML="<p style='color:red'>패스워드를 입력해주세요.</p>";
+		}else if($("#repw").val()==""){
+			$("#divRepw")[0].innerHTML="<p style='color:red'>패스워드를 재입력해주세요.</p>";
+		}else if($("#pw").val()!=$("#repw").val()){
+			$("#divRepw")[0].innerHTML="<p style='color:red'>위에 입력한 것과 다릅니다.</p>";			
+		}else if($("#name").val()==""){
+			$("#divName")[0].innerHTML="<p style='color:red'>이름을 입력해주세요.</p>";
+		}else if($("#email").val()==""){
+			$("#divEmail")[0].innerHTML="<p style='color:red'>이메일을 입력해주세요.</p>";
+		}else if($("#phone").val()==""){
+			$("#divPhone")[0].innerHTML="<p style='color:red'>휴대폰번호를 입력해주세요.</p>";
+		}else if($("#gender").val()==""){
+			$("#divGender")[0].innerHTML="<p style='color:red'>성별을 선택해주세요.</p>";			
+		}else if($("#birth").val()==""){
+			$("#divBirth")[0].innerHTML="<p style='color:red'>생일을 선택해주세요.</p>";
+		}else{
+			/* 모든 입력이 확실하면 전송 */
+			$("#joinForm").submit();
+	 		console.dir($("#id"));
+		}	
+	}
+	
+	function cancel(){
+		/* 취소버튼을 누르면 이전페이지로 돌아간다 */
+		history.go(-1);				
+	}
+
+</script>
+
+>>>>>>> branch 'master' of https://github.com/yoohwanho/TeamProject6.git
 </body>
 </html>
