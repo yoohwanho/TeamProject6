@@ -33,7 +33,7 @@
 		where rn &gt;=#{startNo}
 	</select>
 	
-	<select id="showDetails" resultType="bdto">
+	<select id="showDetails" resultType="bdto" >
 	select * from board where boardno = #{boardno}
 	</select>
 	

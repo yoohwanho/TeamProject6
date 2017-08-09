@@ -61,7 +61,7 @@
 	<!-- header -->
 	<header class="header">
 		<div class="logo">
-			<a href="main"><img src="./img/logo.png" alt="logo" width="50"
+			<a href="main"><img src="./img/logo1.png" alt="logo" width="50"
 				height="50" /></a>
 		</div>
 	</header>
@@ -76,8 +76,9 @@
 		<div class="container">
 			<div class="table-responsive" align="center">
 				<table class="table">
+				
 					<tr>
-						<th colspan="5">제목</th>
+						<th colspan="5">${bdto.title} </th>
 					</tr>
 					<tr>
 						<!-- 클릭한 게시글의 정보 -->
@@ -96,7 +97,7 @@
 						<td>금액</td>
 					</tr>
 					<tr>
-						<td colspan="5">집에 뭘 두고왔는데 대신 가져다 주실분</td>
+						<td colspan="5">${bdto.contents}</td>
 					</tr>
 					<tr>
 						<th>연락처</th>
@@ -106,7 +107,7 @@
 					<tr>
 						<td>010-1234-5678</td>
 						<td>서울시 종로구</td>
-						<td>2017-08-15</td>
+						<td>언제까지</td>
 					</tr>
 
 				</table>
