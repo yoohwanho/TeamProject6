@@ -126,7 +126,7 @@
 							<td><img src="./img/defaultman.png" alt="default" width="50"
 								height="50" id="imgF" /></td>
 							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
-							<td><a href="imgPutForm2">사진올리기</a>
+							<td><a href="imgPutForm">사진올리기</a>
 							<td>
 						</tr>
 
