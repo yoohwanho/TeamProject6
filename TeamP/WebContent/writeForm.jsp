@@ -91,8 +91,8 @@
 				<div class="container">
 					<table class="table">
 						<tr>
-							<td><input type="radio" name="category" id="구인" />해주세요 <input
-								type="radio" name="category" id="구직" />해드립니다 <!-- 뒤에 글귀는 후에 변경 가능!!  -->
+							<td><input type="radio" name="category" id="구인" value="구인" />해주세요 <input
+								type="radio" name="category" id="구직" value="구직" />해드립니다 <!-- 뒤에 글귀는 후에 변경 가능!!  -->
 							</td>
 						</tr>
 						<tr>
@@ -101,11 +101,11 @@
 						</tr>
 						<tr>
 							<th>상세 내용</th>
-							<td><textarea rows="5" cols="40"></textarea></td>
+							<td><textarea rows="5" cols="40" name="contents"></textarea></td>
 						</tr>
 						<tr>
 							<th>제안 금액</th>
-							<td><input type="text" name="money" id="" /></td>
+							<td><input type="text" name="reward" id="reward" /></td>
 						</tr>
 						<tr>
 							<th>휴대폰</th>
@@ -114,7 +114,7 @@
 						</tr>
 						<tr>
 							<th>지원기한</th>
-							<td><input type="date" name="period" id="" /></td>
+							<td><input type="date" name="time" id="" /></td>
 						</tr>
 						<tr>
 							<th>위치</th>
