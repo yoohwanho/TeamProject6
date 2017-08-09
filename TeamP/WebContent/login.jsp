@@ -151,7 +151,7 @@
 	</footer>
 	<!-- Footer END -->
 <script>
-	$(function(){
+ 	$(function(){
 		$("#btnLogin").on("click",chkLogin)
 	});
 	
@@ -163,11 +163,11 @@
 			alert("패스워드를 입력해주세요.");
 		}else{
 			//	비어있지 않으면 request에 현재 페이지 저장해서 입력받은 id,pw랑 같이 db로 보냄
-
-
-			$("#loginForm").submit();		
+			console.log("로그인준비");
+			$("#loginForm").submit();
+			console.log("submit함");
 		}
-	}
+	} 
 </script>
 </body>
 </html>
