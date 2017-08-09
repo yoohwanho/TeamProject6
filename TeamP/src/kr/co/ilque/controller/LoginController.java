@@ -29,21 +29,27 @@ public class LoginController {
 
 		// 로그인
 		// 로그인 성공: 세션에 로그인 정보.
-		MemberDto dto = new MemberDto();
-		dto.setMemberId(memberId);
-		dto.setMemberPwd(memberPwd);
-		
-		System.out.println("dto"+dto.getMemberId()+" " + dto.getMemberPwd());
-		System.out.println(sv.chkLogin(dto));
-//		if (sv.chkLogin(dto) != null) {
-//			// 로그인 성공
-//			isLogin = true;
-//			ss.setAttribute("id", memberId);
-//		}
-//		ss.setAttribute("isLoin", isLogin);
+		MemberDto mdto = new MemberDto();
+		mdto.setMemberId(memberId);
+		mdto.setMemberPwd(memberPwd);
+		mdto = sv.chkLogin(mdto);
+		if ( mdto!= null) {
+			// 로그인 성공
+			isLogin = true;
+			ss.setAttribute("mdto", mdto);
+		}
+		ss.setAttribute("isLogin", isLogin);
 
-//		return req.getHeader("referer");
-		return null;
+		return "main";
+	}
+	
+	//	로그아웃시도
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession ss) {
+		isLogin=false;
+		ss.setAttribute("isLogin", isLogin);
+		ss.removeAttribute("mdto");		
+		return "main";
 	}
 
 }
