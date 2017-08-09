@@ -87,11 +87,11 @@
 					<table class="table">
 						<tr>
 							<th>id</th>
-							<td colspan="2"><input type="text" name="id" /></td>
+							<td colspan="2"><input type="text" name="memberId" /></td>
 						</tr>
 						<tr>
 							<th>pw</th>
-							<td colspan="2"><input type="password" name="pw" /></td>
+							<td colspan="2"><input type="password" name="memberPwd" /></td>
 						</tr>
 						<tr>
 							<th>pw확인</th>
@@ -99,11 +99,7 @@
 						</tr>
 						<tr>
 							<th>이름</th>
-							<td><input type="text" name="" id="" /></td>
-						</tr>
-						<tr>
-							<th>email</th>
-							<td colspan="2"><input type="email" name="email" /></td>
+							<td><input type="text" name="memberName" id="" /></td>
 						</tr>
 						<tr>
 							<th>휴대폰</th>
@@ -113,12 +109,12 @@
 
 						<tr>
 							<th>성별</th>
-							<td colspan="2"><input type="radio" name="gender" id="male" />남자
-								<input type="radio" name="gender" id="female" />여자</td>
+							<td colspan="2"><input type="radio" name="gender" id="male" value="male" />남자
+								<input type="radio" name="gender" id="female" value="female"/>여자</td>
 						</tr>
 						<tr>
 							<th>생년월일</th>
-							<td colspan="2"><input type="date" name="birthday" id="" /></td>
+							<td colspan="2"><input type="date" name="birth" id="" /></td>
 						</tr>
 						<tr>
 							<th>사진 등록</th>
@@ -126,12 +122,20 @@
 							<td><img src="./img/defaultman.png" alt="default" width="50"
 								height="50" id="imgF" /></td>
 							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
-							<td><a href="imgPutForm2">사진올리기</a>
-							<td>
+							<td><a href="imgPutForm">사진올리기</a>
+							<input type="hidden" name="filePath" value="${filePath}"/>
+
+							</td>
+						</tr>
+						
+						<tr>
+							<th>자기 소개</th>
+							<td><textarea name="contents" id="contents" cols="50" rows="5"></textarea></td>
 						</tr>
 
 						<tr>
-							<td colspan="3"><input type="submit" value="회원가입" /> <!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
+							<td colspan="3"><input type="submit" value="회원가입" /> 
+							<!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
 								<input type="button" value="취소" id="btn" /></td>
 						</tr>
 						</div>
@@ -188,12 +192,10 @@
 			$("#divPw")[0].innerHTML="<p style='color:red'>패스워드를 입력해주세요.</p>";
 		}else if($("#repw").val()==""){
 			$("#divRepw")[0].innerHTML="<p style='color:red'>패스워드를 재입력해주세요.</p>";
-		}else if($("#pw").val()!=$("#repw").val()){
+		}else if($("#memberPwd").val()!=$("#repw").val()){
 			$("#divRepw")[0].innerHTML="<p style='color:red'>위에 입력한 것과 다릅니다.</p>";			
 		}else if($("#name").val()==""){
 			$("#divName")[0].innerHTML="<p style='color:red'>이름을 입력해주세요.</p>";
-		}else if($("#email").val()==""){
-			$("#divEmail")[0].innerHTML="<p style='color:red'>이메일을 입력해주세요.</p>";
 		}else if($("#phone").val()==""){
 			$("#divPhone")[0].innerHTML="<p style='color:red'>휴대폰번호를 입력해주세요.</p>";
 		}else if($("#gender").val()==""){

@@ -94,19 +94,22 @@
 	<section>
 		<div align="center">
 			<h1>로그인</h1>
-			<form action="login" method="post" id="loginForm">
+			<form action="tryLogin" method="post" id="loginForm">
 				<table>
 					<tr>
 						<th>id</th>
-						<td><input type="text" name="id" /></td>
+						<td><input type="text" name="id" id="id" /></td>
 					</tr>
 					<tr>
 						<th>pw</th>
-						<td><input type="password" name="pw" /></td>
+						<td>
+							<input type="password" name="pw" id="pw"/>
+							<input type="hidden" name="url" value="location.href" />
+						</td>
 					</tr>
 					<tr>
 						<td colspan="3">
-							<input type="button" value="로그인" onclick="loginChk();"/>
+							<input type="button" id="btnLogin" value="로그인" />
 							<!-- join.jsp로 이동 -->
 							<a href="join"><input type="button" value="회원가입" id="btn" /></a>
 							<!-- ID/PW찾기 미구현 -->
@@ -148,19 +151,23 @@
 	</footer>
 	<!-- Footer END -->
 <script>
-	function loginChk(){
-		/* DB의 정보와 일치하는지 확인한 후 로그인해야함 */
-		if(true){
-			console.log("로그인버튼눌림")
-			$("#loginFailAlert").show();		
-		}
-		else{
-			/* 로그인 정보를 세션에 저장하고 이전 페이지로 돌아감 */
+ 	$(function(){
+		$("#btnLogin").on("click",chkLogin)
+	});
+	
+	function chkLogin(){
+		//	값이 비어있지 않은지 확인
+		if($("#id").val()==""){
+			alert("아이디를 입력해주세요.");		
+		}else if($("#pw").val()==""){
+			alert("패스워드를 입력해주세요.");
+		}else{
+			//	비어있지 않으면 request에 현재 페이지 저장해서 입력받은 id,pw랑 같이 db로 보냄
+			console.log("로그인준비");
 			$("#loginForm").submit();
-			history.go(-1);
+			console.log("submit함");
 		}
-	}
+	} 
 </script>
-
 </body>
 </html>

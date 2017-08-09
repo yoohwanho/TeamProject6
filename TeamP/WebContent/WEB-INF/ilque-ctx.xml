@@ -6,11 +6,33 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<mvc:annotation-driven />	
+	<!-- kr.co.ilque 아래의 bean을 모두 스캔 -->
 	<context:component-scan base-package="kr.co.ilque.*" />
-	<mvc:annotation-driven />
-
-
-
+	
+	<!-- db연결관련 bean -->
+	<bean id="property" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="/WEB-INF/db.properties"></property>
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+	</bean>
+	
+	<!-- myBatis에 필요한 bean -->
+	<bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="/WEB-INF/sqlMapConfig.xml"></property>
+		<property name="mapperLocations" value="kr.co.ilque.mapper.*"></property>
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="factory"></constructor-arg>
+	</bean>
 
 	<!-- 사진올리기에 관한 빈 -->
 	<bean id="multipartResolver"
@@ -18,13 +40,8 @@
 		<property name="uploadTempDir" value="/WEB-INF/tmp/" />
 	</bean>
 	
-	
-	
-	
+	<mvc:default-servlet-handler />
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/" suffix=".jsp" />
 	</mvc:view-resolvers>
-
-	<mvc:default-servlet-handler />
-
 </beans>

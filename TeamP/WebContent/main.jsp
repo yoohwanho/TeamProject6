@@ -40,21 +40,25 @@
 	// 사이드바 메뉴 오픈시키는 함수
 	$(function() {
 		$("#menu-toggle").click(function(e) {
+			
 			e.preventDefault();
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
-	
+
 	//검색관련 제이쿼리
-	$(function(){
-		$("#searchButton").on("click",function(){
-			if($("#searchText").val() == "" ){
-				alert("검색어를 입력해주세요");
-			}else{
-				$(location).attr('href',"board?keyword="+$("#searchText").val());
-			}
-		})
-		
+	$(function() {
+		$("#searchButton").on(
+				"click",
+				function() {
+					if ($("#searchText").val() == "") {
+						alert("검색어를 입력해주세요");
+					} else {
+						$(location).attr('href',
+								"board?keyword=" + $("#searchText").val());
+					}
+				})
+
 	});
 </script>
 <style>
