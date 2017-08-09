@@ -1,13 +1,10 @@
 package kr.co.ilque.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.dto.MemberDto;
 
@@ -15,6 +12,8 @@ import kr.co.ilque.dto.MemberDto;
 
 @Controller
 public class mainController {
+	
+	
 
 	//	메인 페이지
 	@RequestMapping("/main")
@@ -33,6 +32,7 @@ public class mainController {
 	
 	//	(로그인 상태일때)로그아웃 버튼을 누르면 세션에서 로그인 정보를 지우고 페이지 유지
 	//	menu의 [로그아웃]버튼과 [마이페이지]버튼을 [로그인]버튼과 [회원가입]버튼으로 바꿈
+//		return 	"redirect:/(현재페이지)";
 	
 	//	(로그아웃 상태일때)회원가입 페이지로 넘어감
 	@RequestMapping(value="/join",method=RequestMethod.GET)
@@ -44,13 +44,6 @@ public class mainController {
 	@RequestMapping("/write")
 	public String writeForm() {
 		return "writeForm";
-	}
-	
-	//	[거래목록] 버튼을 누르면 최신순으로 거래목록이 뜸
-	//	db에서 리스트 가져오기
-	@RequestMapping("/board")
-	public String showBoard() {
-		return "board";
 	}
 	
 	//	[마이페이지]

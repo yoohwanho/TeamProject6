@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.dto.MemberDto;
 import kr.co.ilque.service.LoginService;
-import kr.co.ilque.service.QuestService;
 
 @Controller
 public class LoginController {
@@ -27,14 +26,14 @@ public class LoginController {
 		System.out.println("id,pw = " + memberId + "," + memberPwd);
 		System.out.println("url:" + req.getParameter("url"));
 
-		// 濡쒓렇�씤
-		// 濡쒓렇�씤 �꽦怨�: �꽭�뀡�뿉 濡쒓렇�씤 �젙蹂�.
+		// 로그인
+		// 로그인 성공: 세션에 로그인 정보.
 		MemberDto mdto = new MemberDto();
 		mdto.setMemberId(memberId);
 		mdto.setMemberPwd(memberPwd);
 		mdto = sv.chkLogin(mdto);
 		if ( mdto!= null) {
-			// 濡쒓렇�씤 �꽦怨�
+			// 로그인 성공
 			isLogin = true;
 			ss.setAttribute("mdto", mdto);
 			ss.setAttribute("isLogin", isLogin);
@@ -47,7 +46,7 @@ public class LoginController {
 
 	}
 	
-	//	濡쒓렇�븘�썐�떆�룄
+	//	로그아웃시도
 	@RequestMapping(value="/logout")
 	public String logout(HttpSession ss) {
 		isLogin=false;
