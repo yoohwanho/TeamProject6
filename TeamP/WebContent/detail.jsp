@@ -124,9 +124,9 @@
 						<td><b>기간 : ${dvdto.time}</b></td>
 						<td><c:choose>
 								<c:when test="${id eq dvdto.writer}">
-									<button type="submit" class="btn btn-default" id="">
+									<a href="modifyBoard?boardNo=${dvdto.boardNo}"><button type="submit" class="btn btn-default" id="">
 										<h4>글 수정하기</h4>
-									</button>
+									</button></a>
 
 									<input type="hidden" name="id" value="${id}" />
 								</c:when>
@@ -144,11 +144,12 @@
 						</c:if>
 						<td><c:choose>
 								<c:when test="${id eq dvdto.writer}">
+								<a href="deleteBoard?boardNo=${dvdto.boardNo}">
 									<button type="submit" class="btn btn-default" id="">
 										<h4>글 삭제하기</h4>
 									</button>
-
-									<input type="hidden" name="id" value="${id}" />
+									</a>
+									
 								</c:when>
 								<c:otherwise>
 
