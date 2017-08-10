@@ -8,8 +8,9 @@
 
 <mapper namespace="kr.co.ilque.comment">
 	<select id="getTotal" resultType="int">
-		select count(#{boardNo}) from
+		select count(*) from
 		comments
+		WHERE boardno = #{boardNo}
 	</select>
 	<select id="showComments" resultType="cdto">
 		select * from comments
