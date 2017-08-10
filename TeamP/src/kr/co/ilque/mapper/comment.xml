@@ -8,16 +8,16 @@
 
 <mapper namespace="kr.co.ilque.comment">
 	<select id="showComments" resultType="cdto">
-		select * from comments where boardno=#{boardno}
+		select * from comments where boardno=#{boardNo}
 	</select>
 	<insert id="insertOne" parameterType="cdto">
 		insert into comments values
-		(comment_seq,#{boardno},#{writer},#{contents},sysdate)
+		(comment_seq,#{boardNo},#{writer},#{contents},sysdate)
 	</insert>
 	<update id="updateOne" parameterType="cdto">
 		update comments set contents=#{contents}, regdate=sysdate
 	</update>
 	<delete id="deleteOne">
-		delete comments where commentno=#{commentno}
+		delete comments where commentno=#{commentNo}
 	</delete>
 </mapper>
