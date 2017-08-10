@@ -203,7 +203,7 @@
 					</p>
 					<ul class="list-unstyled">
 						<li><i class="fa fa-phone fa-fw"></i> (033) 123-4567</li>
-						<li><i class="fa fa-envelope-o fa-fw"></i>acorn@google.com</a></li>
+						<li><i class="fa fa-envelope-o fa-fw"></i>acorn@google.com</li>
 					</ul>
 					<hr class="small">
 					<p class="text-muted">Copyright &copy; Your Website 2014</p>
