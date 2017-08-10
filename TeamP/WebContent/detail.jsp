@@ -50,12 +50,10 @@
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
 			<li><a href="main"><h2>
-						<%
-							String id = (String) session.getAttribute("id");
-						%>
 						<c:choose>
 							<c:when test="${isLogin }">
-					<%=id %>님					
+							
+					${id}님					
 				</c:when>
 							<c:otherwise>
 					로그인하세요

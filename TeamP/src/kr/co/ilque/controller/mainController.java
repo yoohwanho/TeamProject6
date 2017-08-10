@@ -1,5 +1,6 @@
 package kr.co.ilque.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -14,9 +15,15 @@ import kr.co.ilque.service.LoginService;
 
 @Controller
 public class mainController {
-	
+	@Resource(name="loginService")
+	LoginService ls;
 	
 
+	public void setLs(LoginService ls) {
+		this.ls = ls;
+	}
+
+	
 	//	메인 페이지
 	@RequestMapping("/main")
 	public String main() {
@@ -60,7 +67,7 @@ public class mainController {
 		}
 		System.out.println(mdto.getMemberId());
 		//	id가 저장된 멤버객체로 관련 정보 담아오기
-		LoginService ls = new LoginService();
+//		LoginService ls = new LoginService();
 		mdto=ls.pickMemberInfo(mdto);
 		
 		return new ModelAndView("userDetail","mdto",mdto);

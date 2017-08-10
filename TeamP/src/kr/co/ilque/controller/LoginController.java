@@ -16,7 +16,7 @@ import kr.co.ilque.service.LoginService;
 @Controller
 public class LoginController {
 	@Resource(name="loginService")
-	LoginService sv;
+	LoginService ls;
 	boolean isLogin = false;
 
 	@RequestMapping(value = "/tryLogin", method = RequestMethod.POST)
@@ -33,7 +33,7 @@ public class LoginController {
 		MemberDto mdto = new MemberDto();
 		mdto.setMemberId(memberId);
 		mdto.setMemberPwd(memberPwd);
-		if ( sv.chkLogin(mdto)!=null) {
+		if ( ls.chkLogin(mdto)!=null) {
 			// 로그인 성공
 			
 			//	로그인 여부를 true로
@@ -42,6 +42,7 @@ public class LoginController {
 			//	session에 id를 저장
 			//	로그인여부를 저장
 			ss.setAttribute("id", mdto.getMemberId());
+			System.out.println("로그인성공후 mdto에서 가져온 id: "+mdto.getMemberId());
 			ss.setAttribute("isLogin", isLogin);
 			
 			//	요청이 write인 경우 writeForm.jsp로 이동
