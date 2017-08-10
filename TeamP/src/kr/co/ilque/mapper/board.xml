@@ -20,6 +20,7 @@
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(*) cnt from board
 	</select>
+	
 	<select id="showDetails" resultType="dvd">
 		SELECT boardno, category,
 		title, contents, writer, hits, loc,
