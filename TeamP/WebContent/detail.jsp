@@ -49,20 +49,20 @@
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-<li><a href="main"><h2>
-			<c:choose>
-				<c:when test="${isLogin }">
+			<li><a href="main"><h2>
+						<c:choose>
+							<c:when test="${isLogin }">
 					${mdto.memberName }님					
 				</c:when>
-				<c:otherwise>
+							<c:otherwise>
 					로그인하세요
 				</c:otherwise>
-			</c:choose>
-			</h2></a></li>
+						</c:choose>
+					</h2></a></li>
 			<c:choose>
 				<c:when test="${isLogin }">
 					<li><a href="logout">로그아웃</a></li>
-					<li><a href="myPage">마이페이지</a></li>					
+					<li><a href="myPage">마이페이지</a></li>
 				</c:when>
 				<c:otherwise>
 					<li><a href="login">로그인</a></li>
@@ -93,9 +93,9 @@
 		<div class="container">
 			<div class="table-responsive" align="center">
 				<table class="table">
-				
+
 					<tr>
-						<th colspan="5">${bdto.title} </th>
+						<th colspan="5">${bdto.title}</th>
 					</tr>
 					<tr>
 						<!-- 클릭한 게시글의 정보 -->
@@ -133,7 +133,7 @@
 				<div id="map" style="width: 60%; height: 300px;"></div>
 				<script>
 					var map = new naver.maps.Map('map');
-					
+
 					//입력된 주소에 따라 지도시작위치가 달라짐.
 					var myaddress = '마들로 859-19';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
 					naver.maps.Service
@@ -184,24 +184,15 @@
 
 						<td>댓글 (2개)</td>
 					</tr>
-					<tr>
-						<td>멍멍이</td>
-						<td>8.5/10</td>
-						<td>2017-08-08 11:35:40</td>
-					</tr>
-					<tr>
-						<td colspan="5">지원하고싶습니다.</td>
-					</tr>
-					<tr>
-
-						<td>멍멍이</td>
-						<td>8.5/10</td>
-						<td>2017-08-08 11:35:40</td>
-					</tr>
-					<tr>
-						<td colspan="5">지원하고싶습니다.</td>
-					</tr>
-					
+					<c:forEach var="cs" items="${list}">
+						<tr>
+							<td><input type="hidden" name="commentno"
+								value="${commentno}" /></td>
+							<td>${cs.writer}</td>
+							<td colspan="3">${cs.contents}</td>
+							<td>${cs.regdate}</td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
 			<!--  댓글입력창. form에 액션 추가하고 사용.-->

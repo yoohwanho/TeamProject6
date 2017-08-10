@@ -35,52 +35,6 @@
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
-	
-	// 게시판 페이징
-	// 이클립스/web프로젝트/webContent/d20170710/75번라인부터
-	$(function(){
-	//총게시물 건수(dao.getTotal()로 받아올 예정)
-	var totalCount = 38;
-	//한 페이지당 게시물 건수 10개로 고정
-	var countPerPage = 10;
-	//총페이지개수
-	var totalPage = (totalCount%countPerPage==0)?
-			totalCount/countPerPage:totalCount/countPerPage+1;
-	
-	// 변수들 잘 들어갔나 확인
-	console.log(totalCount);
-	console.log(countPerPage);
-	console.log(totalPage);
-	
-	//초기 현재 페이지1로 설정 
-    var currentPage = 1;
-	console.log(currentPage);
-	
-	// 다른페이지 눌렀을때 파라미터값을 받아 현재페이지를 설정
-	// (컨트롤러에서 누른페이지값을 받아 cPage오브젝트에 add해서 쏴줬다고 가정 ${cPage})
-	var cPage = "2";
-	if(cPage != null){
-		currentPage = Number(cPage);
-	}
-	console.log(currentPage);
-	
-	//화면에 보이는 시작하는 페이지숫자설정
-	var startNo=(currentPage-1)*10+1;
-	console.log(startNo);
-	
-	//화면에 보이는 마지막 페이지숫자설정
-	if(totalCount>=(currentPage*10)){
-		var endNo = currentPage*10;
-	}else{
-		var endNo = (currentPage-1)*10 + totalCount%10;
-	}
-	console.log(endNo);
-	
-	
-	
-	
-	});
-	
 </script>
 <style type="text/css">
 .filter {
@@ -144,19 +98,19 @@
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
 			<li><a href="main"><h2>
-			<c:choose>
-				<c:when test="${isLogin }">
+						<c:choose>
+							<c:when test="${isLogin }">
 					${mdto.memberName }님					
 				</c:when>
-				<c:otherwise>
+							<c:otherwise>
 					로그인하세요
 				</c:otherwise>
-			</c:choose>
-			</h2></a></li>
+						</c:choose>
+					</h2></a></li>
 			<c:choose>
 				<c:when test="${isLogin }">
 					<li><a href="logout">로그아웃</a></li>
-					<li><a href="myPage">마이페이지</a></li>					
+					<li><a href="myPage">마이페이지</a></li>
 				</c:when>
 				<c:otherwise>
 					<li><a href="login">로그인</a></li>
@@ -174,14 +128,14 @@
 		<div class="logo">
 			<a href="main"><img src="./img/logo1.png" alt="logo" width="50"
 				height="50" /></a>
-					<!-- Trigger the modal with a button -->
-				<button type="searchButton" class="btn btn-info btn-lg"
-					data-toggle="modal" data-target="#myModal">
+			<!-- Trigger the modal with a button -->
+			<button type="searchButton" class="btn btn-info btn-lg"
+				data-toggle="modal" data-target="#myModal">
 				<img src="./img/search.png" alt="search" width="30" height="30" />
 			</button>
-		
+
 		</div>
-				
+
 	</header>
 	<!-- header end -->
 
@@ -219,62 +173,59 @@
 					</table>
 				</form>
 			</div>
+
+
+			<!-- 페이징처리할 구간 -->
 			<div class="table-responsive" align="center">
+
+
+
 				<table class="table">
-					<tr>
-						<td rowspan="2" width="100px"><img src="./img/mal2.png"
-							alt="userPic" /></td>
-						<td class="type">해주세요.</td>
-						<td class="title" colspan="2">멍멍이좀 찾아주세요</td>
-					</tr>
-					<tr>
-						<td class="writer">개장수</td>
-						<td class="loc">서울시 도봉구 도봉동</td>
+					<c:forEach var="list" items="${list }">
+						<tr>
+							<td rowspan="2" width="100px"><img
+								src="./img/defaultman.png" alt="userPic" height="50" width="50" /></td>
+							<td class="type">${list.category }</td>
+							<td class="title" colspan="2"><a
+								href="detail?boardno=${list.boardno}">${list.title}</a></td>
+						</tr>
+						<tr>
+							<td class="writer">${list.writer }</td>
+							<td class="loc">${list.loc }</td>
 
-						<td class="money">99000</td>
-					</tr>
+							<td class="money">${list.reward }</td>
+						</tr>
+					</c:forEach>
 
 					<tr>
-						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
-						<td class="type">해드립니다.</td>
-						<td class="title" colspan="2">사람 찾아드립니다.</td>
-					</tr>
-					<tr>
-						<td class="writer">마포갈비</td>
-						<td class="loc">서울시 마포구 상암동</td>
 
-						<td class="money">30000000</td>
+						<td><c:choose>
+								<c:when test="${prev}">
+									<a href="board?currentPage=${currentPage-5 }">[이전]</a>
+								</c:when>
+							</c:choose> <c:forEach var="i" begin="${startPage }" end="${endPage }">
+								<a href="board?currentPage=${i }">${i }</a>
+							</c:forEach> <c:choose>
+								<c:when test="${next }">
+									<a href="board?currentPage=${currentPage+5 }">[다음]</a>
+								</c:when>
+							</c:choose></td>
 					</tr>
-					<tr>
-						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
-						<td class="type">해드립니다.</td>
-						<td class="title" colspan="2">방학숙제해드립니다.</td>
-					</tr>
-					<tr>
-						<td class="writer">대학생</td>
-						<td class="loc">서울시 관악구 신림동</td>
-
-						<td class="money">20000</td>
-					</tr>
-					<tr>
-						<td rowspan="2"><img src="./img/mal2.png" alt="userPic" /></td>
-						<td class="type">해주세요.</td>
-						<td class="title" colspan="2">머리풍성 하게 해주세요.</td>
-					</tr>
-					<tr>
-						<td class="writer">김광규</td>
-						<td class="loc">서울시 종로구 창신동</td>
-
-						<td class="money">50000000</td>
-					</tr>
-
 				</table>
+
+
+
+
+
 			</div>
+
+
+			<!-- 페이징처리할 구간 end -->
 
 
 			<div class="container">
 
-	
+
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" role="dialog">
 					<div class="modal-dialog">
