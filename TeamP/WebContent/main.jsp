@@ -91,7 +91,7 @@
 			<c:choose>
 				<c:when test="${isLogin }">
 					<li><a href="logout">로그아웃</a></li>
-					<li><a href="myPage">마이페이지</a></li>					
+					<li><a href="myPage?id=${id }">마이페이지</a></li>					
 				</c:when>
 				<c:otherwise>
 					<li><a href="login">로그인</a></li>
