@@ -186,7 +186,8 @@
 							<td rowspan="2" width="100px"><img
 								src="./img/defaultman.png" alt="userPic" height="50" width="50" /></td>
 							<td class="type">${list.category }</td>
-							<td class="title" colspan="2">${list.title }</td>
+							<td class="title" colspan="2"><a
+								href="detail?boardno=${list.boardno}">${list.title}</a></td>
 						</tr>
 						<tr>
 							<td class="writer">${list.writer }</td>
