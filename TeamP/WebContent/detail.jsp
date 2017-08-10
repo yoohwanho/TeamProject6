@@ -50,9 +50,12 @@
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
 			<li><a href="main"><h2>
+						<%
+							String id = (String) session.getAttribute("id");
+						%>
 						<c:choose>
 							<c:when test="${isLogin }">
-					${mdto.memberName }님					
+					<%=id %>님					
 				</c:when>
 							<c:otherwise>
 					로그인하세요
@@ -206,6 +209,7 @@
 				<form action="writecomments" method="post">
 					<div class="form-group">
 						<label for="comment">문의하기</label>
+
 						<textarea class="form-control" rows="5" name="comments"
 							id="comment" placeholder="궁금하신 점을 작성해주세요~"></textarea>
 						<button type="button" class="btn" id="">등록하기</button>
