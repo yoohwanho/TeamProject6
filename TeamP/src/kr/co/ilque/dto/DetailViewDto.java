@@ -1,7 +1,7 @@
 package kr.co.ilque.dto;
 
 public class DetailViewDto {
-	int boardno;
+	int boardNo;
 	String category;
 	String title;
 	String contents;
@@ -17,6 +17,10 @@ public class DetailViewDto {
 	String status;
 	String regdate;
 	String profilesrc;
+	
+	
+	
+	
 	public int getBuygrade() {
 		return buygrade;
 	}
@@ -38,11 +42,11 @@ public class DetailViewDto {
 	
 	}
 	
-	public int getBoardno() {
-		return boardno;
+	public int getBoardNo() {
+		return boardNo;
 	}
-	public void setBoardno(int boardno) {
-		this.boardno = boardno;
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
 	}
 	public String getCategory() {
 		return category;
@@ -122,5 +126,4 @@ public class DetailViewDto {
 	public void setProfilesrc(String profilesrc) {
 		this.profilesrc = profilesrc;
 	}
-
 }

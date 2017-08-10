@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.ilque.dto.BoardDto;
+import kr.co.ilque.dto.DetailViewDto;
 import kr.co.ilque.dto.StartEnd;
 
 @Repository("boardDao")
@@ -29,9 +30,9 @@ public class OracleBoardDAO {
 	public int getData() {
 		return ss.selectOne("kr.co.ilque.board.getTotal");
 	}
-	public BoardDto selectOne(int boardno){
-		System.out.println(boardno);
-		return ss.selectOne("kr.co.ilque.board.showDetails",boardno);
+	public DetailViewDto selectOne(int boardNo){
+		System.out.println(boardNo);
+		return ss.selectOne("kr.co.ilque.board.showDetails",boardNo);
 		
 	}
 
