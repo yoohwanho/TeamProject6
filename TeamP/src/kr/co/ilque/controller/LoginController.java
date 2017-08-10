@@ -21,10 +21,12 @@ public class LoginController {
 
 	@RequestMapping(value = "/tryLogin", method = RequestMethod.POST)
 	public ModelAndView tryLogin(@RequestParam("id") String memberId, @RequestParam("pw") String memberPwd,
-			HttpServletRequest req, HttpSession ss) {
+								@RequestParam("url") String url,HttpServletRequest req, HttpSession ss) {
 
 		System.out.println("id,pw = " + memberId + "," + memberPwd);
 		System.out.println("url:" + req.getParameter("url"));
+		String[] temp=url.split("/");
+		String jspUrl =temp[temp.length-1];
 
 		// 로그인
 		// 로그인 성공: 세션에 로그인 정보.
@@ -42,13 +44,21 @@ public class LoginController {
 			ss.setAttribute("id", mdto.getMemberId());
 			ss.setAttribute("isLogin", isLogin);
 			
+			//	요청이 write인 경우 writeForm.jsp로 이동
+			if(jspUrl.equals("write"))
+			{
+				jspUrl = "writeForm";
+			}
+			
 			//	main으로 이동
-			return new ModelAndView("main");
+			return new ModelAndView(jspUrl);
 		}else {
 			//	로그인여부를 false로
 			isLogin=false;
 			//	로그인 여부를 세션에 저장
 			ss.setAttribute("isLogin", isLogin);
+			
+			
 			
 			return new ModelAndView("login","isFail",true);
 		}
@@ -61,7 +71,7 @@ public class LoginController {
 		isLogin=false;
 		ss.setAttribute("isLogin", isLogin);
 		ss.removeAttribute("id");		
-		return "main";
+		return "redirect:/main";
 	}
 
 }
