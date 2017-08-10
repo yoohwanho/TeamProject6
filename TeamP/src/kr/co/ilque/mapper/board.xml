@@ -46,6 +46,10 @@
 
 		board WHERE boardno = #{boardNo}
 	</select>
+	<insert id="insertOne" parameterType="bdto">
+		insert into board
+		values (board_seq,{#category},{#title})
+	</insert>
 </mapper>
 
 
