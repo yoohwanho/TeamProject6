@@ -105,9 +105,35 @@
 								src="${dvdto.profilesrc}" alt="프사" class="img-rounded" /></a></td>
 
 						<td><h5>작성일 : ${dvdto.regdate}</h5></td>
+						<td><c:choose>
+								<c:when test="${id eq dvdto.writer}">
+									<a href="modify?"></a><button type="submit" class="btn btn-default" id="">
+										<h4>내 정보 보기</h4>
+									</button>
+
+									<input type="hidden" name="id" value="${id}" />
+								</c:when>
+								<c:otherwise>
+									<button type="submit" class="btn btn-default" id="">
+										<h4>작성자 정보 보기</h4>
+									</button>
+								</c:otherwise>
+							</c:choose></td>
 					</tr>
 					<tr>
 						<td><b>기간 : ${dvdto.time}</b></td>
+						<td><c:choose>
+								<c:when test="${id eq dvdto.writer}">
+									<button type="submit" class="btn btn-default" id="">
+										<h4>글 수정하기</h4>
+									</button>
+
+									<input type="hidden" name="id" value="${id}" />
+								</c:when>
+								<c:otherwise>
+
+								</c:otherwise>
+							</c:choose></td>
 					</tr>
 					<tr>
 						<c:if test="${dvdto.category == '구인'}">
@@ -116,6 +142,18 @@
 						<c:if test="${dvdto.category == '구직'}">
 							<td>구직자 평점:${dvdto.buygrade}</td>
 						</c:if>
+						<td><c:choose>
+								<c:when test="${id eq dvdto.writer}">
+									<button type="submit" class="btn btn-default" id="">
+										<h4>글 삭제하기</h4>
+									</button>
+
+									<input type="hidden" name="id" value="${id}" />
+								</c:when>
+								<c:otherwise>
+
+								</c:otherwise>
+							</c:choose></td>
 					</tr>
 					<tr>
 						<td><h4>퀘스트 보상 : ${dvdto.reward}</h4></td>
@@ -198,8 +236,7 @@
 							<td colspan="3">${cs.contents}</td>
 							<td>${cs.regdate}</td>
 							<td><c:if test="${id eq cs.writer}">
-									<a
-										href="commentDelete?commentNo=${cs.commentNo}&boardNo=${dvdto.boardNo}">
+									<a href="commentDelete?commentNo=${cs.commentNo}&boardNo=${dvdto.boardNo}">
 										<button type="button" class="btn btn-default">삭제</button>
 									</a>
 								</c:if></td>
@@ -217,10 +254,12 @@
 								<label for="comment">문의하기</label>
 								<textarea class="form-control" rows="5" name="comments"
 									id="comments" placeholder="궁금하신 점을 작성해주세요~"></textarea>
-								<button type="submit" class="btn" id=""><h4>등록하기</h4></button>
+								<button type="submit" class="btn btn-default" id="">
+									<h4>등록하기</h4>
+								</button>
 								<input type="hidden" name="id" value="${id}" />
 								<input type="hidden" name="boardNo" value="${dvdto.boardNo}" />
-								
+
 							</c:when>
 							<c:otherwise>
 								<label for="comment"><h3>로그인을 하시면 문의글을 작성하실 수 있습니다.</h3></label>
