@@ -37,4 +37,5 @@ public class OracleMemberDAO {
 		ss.update("kr.co.ilque.member.updateOne", dto);
 	}
 	
+	
 }
