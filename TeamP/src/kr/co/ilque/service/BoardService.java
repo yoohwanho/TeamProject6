@@ -32,4 +32,9 @@ public class BoardService implements QuestService {
 
 		return dao.selectOne(boardNo);
 	}
+
+	public void insertOne(BoardDto bdto) {
+		// TODO Auto-generated method stub
+		dao.insertOne(bdto);
+	}
 }

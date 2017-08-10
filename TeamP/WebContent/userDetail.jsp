@@ -91,26 +91,30 @@
 			<h1>프로필</h1>
 			
 			<div class="container">
+			<form action="modifyForm" method="post">
 			<table class="table">
 
 				<tr>
-					<td rowspan="4"><img src="./img/defaultman.png" alt="default"
+					<td rowspan="4"><img src="${mdto.profileSrc }" alt="profile"
 						width="100" height="100" /></td>
 					<th>ID</th>
 					<td>${mdto.memberId }</td>
+					<input type="hidden" name="memberId" value="${mdto.memberId}"/>
 				</tr>
 				<tr>
 					<th>휴대폰</tj>
 					<td colspan="2">${mdto.phone}</td>
+					<input type="hidden" name="phone" value="${mdto.phone}" />
 				</tr>
 				<tr>
 					<th>요청자로서의 평점</th>
-					<td colspan="2">${mdto.buyGrade }/10</td>
+					<td colspan="2">${mdto.sellGrade }/10</td>
+				
 					<!--  평정 입력 값이 들어가야함  -->
 				</tr>
 				<tr>
 					<th>지원자로서의 평점</th>
-					<td colspan="2">${mdto.sellGrade }/10</td>
+					<td colspan="2">${mdto.buyGrade }/10</td>
 					<!--  지원자 평점이 들어가야 함  -->
 				</tr>
 
@@ -119,22 +123,23 @@
 					<td colspan="2">
 						<div class="panel panel-default">
 							<div class="panel-body">${mdto.contents }</div>
+							<input type="hidden" name="contents" value="${mdto.contents }"/>
 						</div>
 					</td>
 					<!-- 소개글이 출력되야함 -->
 				</tr>
-				<%-- <c:if test="session.id=${memberId}"> --%>
+				<c:if test="${id eq mdto.memberId}">
 				<tr>
 					<td></td>
 					<td></td>
-					<td><a href="modifyForm"><input type="button" value="수정" id="goModify" /></a></td>
+					<td><input type="submit" value="수정"/></td>
 				</tr>
-			<%-- 	</c:if> --%>
-				<input type="hidden" name="memberPwd" value="${memberPwd }"/>
-				<input type="hidden" name="memberName" value="${memberName }"/>
-				<input type="hidden" name="profileSrc" value="${profileSrc }"/>
-				<input type="hidden" name="phone" value="${phone }"/>
-				<input type="hidden" name="gender" value="${gender }"/>
+				</c:if>
+				<input type="hidden" name="memberPwd" value="${mdto.memberPwd }"/>
+				<input type="hidden" name="memberName" value="${mdto.memberName }"/>
+				<input type="hidden" name="profileSrc" value="${mdto.profileSrc }"/>
+				<input type="hidden" name="gender" value="${mdto.gender }"/>
+				</form>
 			</table>
 		</div>
 		<div class="container">

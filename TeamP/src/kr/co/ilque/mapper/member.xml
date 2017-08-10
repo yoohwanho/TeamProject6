@@ -5,7 +5,7 @@
 
 <!-- 조회 입력 수정 -->
 <mapper namespace="kr.co.ilque.member">
-	<select id="showMember" resultType="mdto">
+	<select id="showMember" parameterType="String" resultType="mdto">
 		select * from member where memberid=#{memberId}
 	</select>
 	<select id="login" parameterType="mdto" resultType="mdto">
@@ -17,7 +17,7 @@
 		#{profileSrc},#{phone},#{contents},#{gender},#{birth})
 	</insert>
 	
-	<update id="updateOne" parameterType="mdto">
+	<update id="updateOne" parameterType="mdto" >
 		update member set memberpwd=#{memberPwd},
 		membername=#{memberName},profilesrc=#{profileSrc},
 		phone=#{phone},contents=#{contents},gender=#{gender}
