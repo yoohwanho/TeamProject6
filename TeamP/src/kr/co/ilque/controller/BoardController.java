@@ -1,6 +1,9 @@
 package kr.co.ilque.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,22 +16,22 @@ import kr.co.ilque.service.CommentsService;
 
 @Controller
 public class BoardController {
-	@Resource(name="boardService")
+	@Resource(name = "boardService")
 	BoardService bs;
-	@Resource(name="commentsService")
+	@Resource(name = "commentsService")
 	CommentsService cs;
 
 	// 거래목록에서 글 누르면 상세페이지로 넘어감
 	// bno를 통하여 db에서 글의 상세정보 가져오기
-	@RequestMapping(value = "/detail",method = RequestMethod.GET)
-	public ModelAndView showDetail(@RequestParam(name="boardNo") int boardNo) {
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public ModelAndView showDetail(@RequestParam(name = "boardNo") int boardNo) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		mav.addObject("dvdto", bs.read(boardNo));
 		mav.addObject("list", cs.read(boardNo));
+		mav.addObject("commentTotal", cs.total(boardNo));
 		mav.setViewName("detail");
-		
-		
+
 		return mav;
 		// "detail?bno="+bno;
 	}
@@ -38,6 +41,19 @@ public class BoardController {
 	public String writeOk() {
 		return null;
 		// "detail?bno="+bno;
+	}
+
+	@RequestMapping(value = "/commentDelete")
+	public HttpServletRequest commentDelete(@RequestParam(name = "commentNo") int commentNo, int boardNo,
+			HttpServletRequest req, HttpServletResponse resq) {
+		req.setAttribute("boardNo", boardNo);
+		String url = "detail";
+
+		cs.commentDel(commentNo);
+		RequestDispatcher rd = req.getRequestDispatcher(url);
+		rd.forward(req, resq);
+		return req;
+
 	}
 
 	// 유저 사진을 클릭하면 유저 상세페이지로 넘어감
