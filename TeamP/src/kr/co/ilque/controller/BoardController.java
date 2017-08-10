@@ -36,6 +36,7 @@ public class BoardController {
 	// 작성 버튼 누르면 글 작성 정보를 가지고 글 상세페이지로 넘어감
 	@RequestMapping(value = "/writeOk", method = RequestMethod.POST)
 	public String writeOk() {
+	
 		return null;
 		// "detail?bno="+bno;
 	}
