@@ -20,12 +20,12 @@ public class CommentsService implements QuestService {
 	}
 
 	public int total(int boardNo) {
-		
+
 		return dao.getTotal(boardNo);
 	}
 
 	public void commentDel(int commentNo) {
 		dao.commentDel(commentNo);
-		
+
 	}
 }

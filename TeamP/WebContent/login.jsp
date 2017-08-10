@@ -85,7 +85,7 @@
 
 	<!-- header -->
 	<header class="header">
-		<div class="logo">
+		<div class="logo">  
 			<a href="main"><img
 				src="./img/logo1.png" alt="logo" width="50" height="50" /></a>
 		</div>
@@ -101,6 +101,13 @@
 				<div class="alert alert-success alert-dismissable fade in" id="joinSuccessAlert">
 				  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 					<strong>회원가입 성공!</strong> 이제 서비스를 이용하실 수 있습니다.
+				</div>
+			</c:when>
+			<c:when test="${isAccess }">
+				<!-- 회원이 아닌 경우 접근이 불가능한 메뉴에 접근시 -->
+				<div class="alert alert-warning alert-dismissable fade in" id="joinSuccessAlert">
+				  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>로그인을 해야 이용하실 수 있습니다.</strong> 
 				</div>
 			</c:when>
 			<c:when test="${isFail }">

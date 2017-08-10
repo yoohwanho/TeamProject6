@@ -15,7 +15,7 @@
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
 <link
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+	href="https://fonts.googleapis.com/csss?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -213,9 +213,10 @@
 				<form action="writecomments" method="post">
 					<div class="form-group">
 						<label for="comment">문의하기</label>
+						
 
 						<textarea class="form-control" rows="5" name="comments"
-							id="comment" placeholder="궁금하신 점을 작성해주세요~"></textarea>
+							id="comment" placeholder="궁금하신 점을 작성해주세요~" ></textarea>
 						<button type="button" class="btn" id="">등록하기</button>
 					</div>
 				</form>

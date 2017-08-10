@@ -1,9 +1,6 @@
 package kr.co.ilque.controller;
 
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,23 +34,10 @@ public class BoardController {
 	}
 
 	// 작성 버튼 누르면 글 작성 정보를 가지고 글 상세페이지로 넘어감
-	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	@RequestMapping(value = "/writeOk", method = RequestMethod.POST)
 	public String writeOk() {
 		return null;
 		// "detail?bno="+bno;
-	}
-
-	@RequestMapping(value = "/commentDelete")
-	public HttpServletRequest commentDelete(@RequestParam(name = "commentNo") int commentNo, int boardNo,
-			HttpServletRequest req, HttpServletResponse resq) {
-		req.setAttribute("boardNo", boardNo);
-		String url = "detail";
-
-		cs.commentDel(commentNo);
-		RequestDispatcher rd = req.getRequestDispatcher(url);
-		rd.forward(req, resq);
-		return req;
-
 	}
 
 	// 유저 사진을 클릭하면 유저 상세페이지로 넘어감
@@ -62,6 +46,14 @@ public class BoardController {
 	@RequestMapping("/userDetail")
 	public String userDetail() {
 		return "userDetail";
+		// "userDetail?id="+id
+	}
+
+	@RequestMapping("/commentDelete")
+	public String userDetail2(@RequestParam(name = "commentNo") int commentNo,
+			@RequestParam(name = "boardNo") int boardNo) {
+		cs.commentDel(commentNo);
+		return "redirect:detail?boardNo=" + boardNo;
 		// "userDetail?id="+id
 	}
 

@@ -100,7 +100,7 @@
 			<li><a href="main"><h2>
 						<c:choose>
 							<c:when test="${isLogin }">
-				${id}님		
+					${mdto.memberName }님					
 				</c:when>
 							<c:otherwise>
 					로그인하세요
@@ -187,12 +187,12 @@
 								src="./img/defaultman.png" alt="userPic" height="50" width="50" /></td>
 							<td class="type">${list.category }</td>
 							<td class="title" colspan="2"><a
+								
 								href="detail?boardNo=${list.boardNo}">${list.title}</a></td>
 						</tr>
 						<tr>
 							<td class="writer">${list.writer }</td>
 							<td class="loc">${list.loc }</td>
-
 							<td class="money">${list.reward }</td>
 						</tr>
 					</c:forEach>
