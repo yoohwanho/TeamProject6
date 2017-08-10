@@ -92,34 +92,35 @@
 	<!-- section1 -->
 	<section>
 		<div align="center">
-			<form action="reviewOk" method="post">
+			<form action="reviewOk" method="post" id="reviewForm">
 				<div class="container">
 					<table class="table">
 
 
 						<tr>
 							<th>내용</th>
-							<td><textarea rows="5" cols="40"></textarea></td>
+							<td>
+								<textarea rows="5" cols="40" name="contents" id="contents"
+									placeholder="리뷰는 한번 작성하면 수정할 수 없습니다. 신중하게 작성해주세요."></textarea>
+							</td>
 						</tr>
 
 						<tr>
 							<th>평점</th>
-							<td><input type="number" name="score" id="" maxlength="10"/></td>
+							<td>
+								<input type="number" name="score" id="score" min="0" max="10"/>
+							</td>
 						</tr>
 						<tr>
 							<th>사진첨부</th>
 							<td><img src="./img/defaultman.png" alt="default" width="50"
-								height="50" id="imgF" /><a href="imgPutForm2">사진올리기</a></td>
-
-
-
-
+								height="50" id="imgF" name="imgSrc"/><a href="imgPutForm2">사진올리기</a>
+							</td>
 						</tr>
-
-
 						<tr>
-							<td colspan="2"><input type="submit" value="작성" /> <!-- 작성 버튼을 누르면 detail창으로 넘어간다.  -->
-								<input type="button" value="취소" id="btn" /> <!-- 취소 버튼을 누르면 board창으로 넘어간다.  -->
+							<td colspan="2">
+								<input type="button" value="작성" id="btnWrite" /> <!-- 작성 버튼을 누르면 detail창으로 넘어간다.  -->
+								<input type="button" value="취소" id="btnCancel" /> <!-- 취소 버튼을 누르면 detail 넘어간다.  -->
 							</td>
 						</tr>
 					</table>
@@ -157,7 +158,34 @@
 		</div>
 	</footer>
 	<!-- Footer END -->
+<script>
+	$(function(){
+		$("#btnWrite").on("click",function(){
+			//	작성 버튼
+			if($("#contents").val()==""){
+				//	내용에 아무것도 입력하지 않았을 때
+				alert("내용을 입력해주세요");				
+			}else{
+				$("#reviewForm").submit();
+			}
+		});
+		$("#btnCancel").on("click",function(){
+			//	취소 버튼
+			if($("#contents").val()!=""){
+				var answer = confirm("변경된 내용이 있습니다. 저장하지 않고 취소합니까?");
+				if(answer){
+					//	취소
+					history.back();					
+				}
+			}else{
+				history.back();
+			}
+		});
+		
+	});
 
+	
+</script>
 
 </body>
 </html>
