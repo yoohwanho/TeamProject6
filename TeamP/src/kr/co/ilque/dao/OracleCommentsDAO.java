@@ -31,4 +31,9 @@ public class OracleCommentsDAO {
 		ss.delete("kr.co.ilque.comment.deleteOne",commentNo);
 		
 	}
+
+	public void commentWrite(CommentsDto dto) {
+		ss.insert("kr.co.ilque.comment.insertOne",dto);
+		
+	}
 }

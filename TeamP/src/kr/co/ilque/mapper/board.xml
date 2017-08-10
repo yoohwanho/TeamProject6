@@ -20,13 +20,15 @@
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(*) cnt from board
 	</select>
-	
+
 	<select id="showDetails" resultType="dvd">
 		SELECT boardno, category,
 		title, contents, writer, hits, loc,
-		time, phone, reward, applicant, status, regdate, profilesrc, sellgrade,
+		time, phone, reward, applicant,
+		status, regdate, profilesrc, sellgrade,
 		buygrade
-		FROM (select b.boardno boardno,
+		FROM (select b.boardno
+		boardno,
 		b.category category,b.title title,
 		b.contents
 		contents, b.writer
@@ -40,15 +42,18 @@
 		m.profilesrc profilesrc, m.sellgrade
 		sellgrade, m.buygrade
 		buygrade
-		from board b, member m
+		from
+		board b, member m
 		where b.writer=
 		m.memberid)
 
-		board WHERE boardno = #{boardNo}
+		board WHERE boardno =
+		#{boardNo}
 	</select>
-	<insert id="insertOne" parameterType="bdto">
+	<insert id="insertOne" parameterType="bdto"> 
 		insert into board
-		values (board_seq,{#category},{#title})
+		values(board_seq.nextval,#{category},#{title},#{contents},
+		#{writer},0,#{loc},#{time},#{phone},#{reward},null,'거래대기',sysdate)
 	</insert>
 </mapper>
 
