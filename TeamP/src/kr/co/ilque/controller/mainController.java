@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.dto.MemberDto;
 import kr.co.ilque.service.KeywordsService;
+import kr.co.ilque.service.LoginService;
 
 //	탭으로 언제든지 접근할 수 있는 버튼에 의한 페이지이동.
 
@@ -18,7 +19,15 @@ public class mainController {
 	
 	@Resource(name = "keywordsService")
 	KeywordsService ks;
+	@Resource(name="loginService")
+	LoginService ls;
+	
 
+	public void setLs(LoginService ls) {
+		this.ls = ls;
+	}
+
+	
 	//	메인 페이지
 	@RequestMapping("/main")
 	public ModelAndView main() {
@@ -55,10 +64,20 @@ public class mainController {
 	}
 	
 	//	[마이페이지]
-	//	세션에서 id값을 받아와서 자기 정보 보기
 	@RequestMapping("/myPage")
-	public String showMyPage( HttpSession ss) {
-		MemberDto mdto =(MemberDto)ss.getAttribute("mdto");
-		return "userDetail?id="+mdto.getMemberId();
+	public ModelAndView showMyPage( HttpSession ss) {
+		//	멤버객체 생성
+		MemberDto mdto = new MemberDto();
+		
+		//	session에 저장된 id를 멤버객체에 set
+		if(ss.getAttribute("id")!=null) {
+			mdto.setMemberId((String)ss.getAttribute("id"));			
+		}
+		System.out.println(mdto.getMemberId());
+		//	id가 저장된 멤버객체로 관련 정보 담아오기
+//		LoginService ls = new LoginService();
+		mdto=ls.pickMemberInfo(mdto);
+		
+		return new ModelAndView("userDetail","mdto",mdto);
 	}
 }

@@ -19,9 +19,14 @@ public class OracleMemberDAO {
 	
 	//	로그인시 아이디와 pw가 db에 있는지 확인
 	public MemberDto selectOne(MemberDto dto){
+		System.out.println("로그인 성공");
 		return ss.selectOne("kr.co.ilque.member.login",dto);		
 	}
 	
+	public MemberDto showMember(MemberDto dto) {
+		System.out.println("dao에서:" + dto.getMemberId());
+		return ss.selectOne("kr.co.ilque.member.showMember",dto);
+	}
 	//	가입
 	public void insertOne(MemberDto dto) {
 		ss.insert("kr.co.ilque.member.insertOne",dto);

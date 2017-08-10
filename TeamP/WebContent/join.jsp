@@ -64,7 +64,7 @@
 			<li><a href="main"><h2>
 			<c:choose>
 				<c:when test="${isLogin }">
-					${mdto.memberName }님					
+					${id}님					
 				</c:when>
 				<c:otherwise>
 					로그인하세요
@@ -232,9 +232,9 @@
 			$("#divRepw")[0].innerHTML="<p style='color:red'>위에 입력한 것과 다릅니다.</p>";			
 		}else if($("#memberName").val()==""){
 			$("#divName")[0].innerHTML="<p style='color:red'>이름을 입력해주세요.</p>";
-		}else if($("#phone").val()==""){
-			$("#divPhone")[0].innerHTML="<p style='color:red'>휴대폰번호를 입력해주세요.</p>";
-		}else if($("#gender").val()==""){
+		}else if($("#phone").val().length!=11){
+			$("#divPhone")[0].innerHTML="<p style='color:red'>11자리 휴대폰번호를 입력해주세요.</p>";
+		}else if(!$(':input:radio[name=Gender]:checked').val()){
 			$("#divGender")[0].innerHTML="<p style='color:red'>성별을 선택해주세요.</p>";			
 		}else if($("#birth").val()==""){
 			$("#divBirth")[0].innerHTML="<p style='color:red'>생일을 선택해주세요.</p>";

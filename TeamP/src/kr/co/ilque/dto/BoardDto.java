@@ -123,5 +123,4 @@ public class BoardDto {
 		this.regdate = regdate;
 	}
 
-
 }

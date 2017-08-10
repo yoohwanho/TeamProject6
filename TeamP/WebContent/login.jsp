@@ -60,7 +60,7 @@
 <li><a href="main"><h2>
 			<c:choose>
 				<c:when test="${isLogin }">
-					${mdto.memberName }님					
+					${id}님					
 				</c:when>
 				<c:otherwise>
 					로그인하세요
@@ -128,14 +128,15 @@
 						<th>pw</th>
 						<td>
 							<input type="password" name="pw" id="pw"/>
-							<input type="hidden" name="url" value="location.href" />
+							<input type="hidden" name="url" id="url" value="" />
 						</td>
 					</tr>
 					<tr>
 						<td colspan="3">
 							<input type="button" id="btnLogin" value="로그인" />
 							<!-- join.jsp로 이동 -->
-							<a href="join"><input type="button" value="회원가입" id="btn" /></a>
+							<a href="join"><input type="button" value="회원가입" id="btn" />
+							</a>
 							<!-- ID/PW찾기 미구현 -->
 							<!-- <a href="http://localhost:8080/TeamP/"><input type="button" value="ID/PW찾기" id="btn2" /></a> -->
 						</td>
@@ -176,7 +177,7 @@
 	<!-- Footer END -->
 <script>
  	$(function(){
-		$("#btnLogin").on("click",chkLogin)
+		$("#btnLogin").on("click",chkLogin);
 	});
 	
 	function chkLogin(){
@@ -187,9 +188,8 @@
 			alert("패스워드를 입력해주세요.");
 		}else{
 			//	비어있지 않으면 request에 현재 페이지 저장해서 입력받은 id,pw랑 같이 db로 보냄
-			console.log("로그인준비");
+			$("#url").val(document.referrer);
 			$("#loginForm").submit();
-			console.log("submit함");
 		}
 	} 
 </script>

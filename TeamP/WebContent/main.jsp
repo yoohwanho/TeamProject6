@@ -77,19 +77,17 @@
 		class="fa fa-bars"></i></a>
 	<nav id="sidebar-wrapper">
 		<ul class="sidebar-nav">
-			<a id="menu-close" href="#"
-				class="btn btn-light btn-lg pull-right toggle"><i
-				class="fa fa-times"></i></a>
-			<li><a href="main"><h2>
+			<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+			<li><a href="main">			
 			<c:choose>
 				<c:when test="${isLogin }">
-					${mdto.memberName }님					
+					<h2>${id}님</h2>					
 				</c:when>
 				<c:otherwise>
-					로그인하세요
+					<h2>로그인하세요</h2>
 				</c:otherwise>
 			</c:choose>
-			</h2></a></li>
+			</a></li>
 			<c:choose>
 				<c:when test="${isLogin }">
 					<li><a href="logout">로그아웃</a></li>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.ilque.dao.OracleBoardDAO;
 import kr.co.ilque.dto.BoardDto;
+import kr.co.ilque.dto.DetailViewDto;
 
 @Service("boardService")
 public class BoardService implements QuestService {
@@ -27,8 +28,8 @@ public class BoardService implements QuestService {
 		return dao.getData();
 	}
 
-	public Object read(int boardno) {
+	public DetailViewDto read(int boardNo) {
 
-		return dao.selectOne(boardno);
+		return dao.selectOne(boardNo);
 	}
 }

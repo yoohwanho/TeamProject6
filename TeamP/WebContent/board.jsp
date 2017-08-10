@@ -181,19 +181,19 @@
 
 
 				<table class="table">
-					<c:forEach var="dto" items="${list }">
-							<tr>
+					<c:forEach var="list" items="${list }">
+						<tr>
 							<td rowspan="2" width="100px"><img
 								src="./img/defaultman.png" alt="userPic" height="50" width="50" /></td>
-							<td class="type">${dto.category }</td>
+							<td class="type">${list.category }</td>
 							<td class="title" colspan="2"><a
-								href="detail?boardNo=${dto.boardNo}">${dto.title}</a></td>
+								
+								href="detail?boardNo=${list.boardNo}">${list.title}</a></td>
 						</tr>
 						<tr>
-							<td class="writer">${dto.writer}</td>
-							<td class="loc">${dto.loc}</td>
-
-							<td class="money">${dto.reward}</td>
+							<td class="writer">${list.writer }</td>
+							<td class="loc">${list.loc }</td>
+							<td class="money">${list.reward }</td>
 						</tr>
 					</c:forEach>
 

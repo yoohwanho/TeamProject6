@@ -13,6 +13,7 @@
 		<typeAlias type="kr.co.ilque.dto.MemberDto" alias="mdto" />
 		<typeAlias type="kr.co.ilque.dto.ReviewDto" alias="rdto" />
 		<typeAlias type="kr.co.ilque.dto.SelectInfo" alias="info" />
+		<typeAlias type="kr.co.ilque.dto.DetailViewDto" alias="dvd" />
 	</typeAliases>
 <mappers>
 <mapper resource="kr/co/ilque/mapper/board.xml"/>
