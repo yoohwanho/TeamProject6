@@ -17,9 +17,9 @@ public class OracleCommentsDAO {
 		this.ss = ss;
 	}
 
-	public List<CommentsDto> selectOne(int boardno) {
+	public List<CommentsDto> selectOne(int boardNo) {
 
-		return ss.selectList("kr.co.ilque.comment.showComments", boardno);
+		return ss.selectList("kr.co.ilque.comment.showComments", boardNo);
 	}
 
 }

@@ -53,7 +53,7 @@
 		<li><a href="main"><h2>
 			<c:choose>
 				<c:when test="${isLogin }">
-					${mdto.memberName }님					
+					${id}님					
 				</c:when>
 				<c:otherwise>
 					로그인하세요
@@ -105,12 +105,12 @@
 				</tr>
 				<tr>
 					<th>요청자로서의 평점</th>
-					<td colspan="2">${mdto.buygrade }/10</td>
+					<td colspan="2">${mdto.buyGrade }/10</td>
 					<!--  평정 입력 값이 들어가야함  -->
 				</tr>
 				<tr>
 					<th>지원자로서의 평점</th>
-					<td colspan="2">${mdto.sellgrade }/10</td>
+					<td colspan="2">${mdto.sellGrade }/10</td>
 					<!--  지원자 평점이 들어가야 함  -->
 				</tr>
 

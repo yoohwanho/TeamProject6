@@ -63,7 +63,7 @@
 		<li><a href="main"><h2>
 			<c:choose>
 				<c:when test="${isLogin }">
-					${mdto.memberName }님					
+				${id}님					
 				</c:when>
 				<c:otherwise>
 					로그인하세요

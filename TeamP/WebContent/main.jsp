@@ -81,7 +81,7 @@
 			<li><a href="main">			
 			<c:choose>
 				<c:when test="${isLogin }">
-					<h2>${mdto.memberName }님</h2>					
+					<h2>${id}님</h2>					
 				</c:when>
 				<c:otherwise>
 					<h2>로그인하세요</h2>

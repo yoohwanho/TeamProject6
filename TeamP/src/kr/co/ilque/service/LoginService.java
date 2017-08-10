@@ -22,6 +22,12 @@ public class LoginService implements QuestService{
 	}
 	
 	public MemberDto pickMemberInfo(MemberDto mdto) {
+		System.out.println("로그인서비스에서실행된:"+ mdto.getMemberId());
+		System.out.println(mdto);
+		System.out.println(dao);
+		System.out.println(dao.showMember(mdto));
+		
+		
 		return dao.showMember(mdto);
 	}
 }

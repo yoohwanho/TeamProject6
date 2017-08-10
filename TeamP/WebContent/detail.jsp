@@ -52,7 +52,7 @@
 			<li><a href="main"><h2>
 						<c:choose>
 							<c:when test="${isLogin }">
-					${mdto.memberName }님					
+					${id}님					
 				</c:when>
 							<c:otherwise>
 					로그인하세요
@@ -72,6 +72,7 @@
 			<li><a href="write">해주세요/해드립니다</a></li>
 			<li><a href="board">거래목록</a></li>
 		</ul>
+
 	</nav>
 	<!-- Navigation END -->
 
@@ -95,26 +96,31 @@
 				<table class="table">
 
 					<tr>
-						<th colspan="5">${bdto.title}</th>
+						<th colspan="5">${dvdto.title}</th>
 					</tr>
 					<tr>
 						<!-- 클릭한 게시글의 정보 -->
 						<td rowspan="4"><a href="userDetail"><img
-								src="./img/mal2.png" alt="프사" class="img-rounded" /></a></td>
+								src="${dvdto.profilesrc}" alt="프사" class="img-rounded" /></a></td>
 
-						<td><h5>${bdto.regdate}</h5></td>
+						<td><h5>${dvdto.regdate}</h5></td>
 					</tr>
 					<tr>
 						<td><b>댓글 N개</b></td>
 					</tr>
 					<tr>
-						<td>평점 6.5/10</td>
+						<c:if test="${dvdto.category == '구인'}">
+							<td>${dvdto.sellgrade}</td>
+						</c:if>
+						<c:if test="${dvdto.category == '구직'}">
+							<td>${dvdto.buygrade}</td>
+						</c:if>
 					</tr>
 					<tr>
-						<td>금액</td>
+						<td>${dvdto.reward}</td>
 					</tr>
 					<tr>
-						<td colspan="5">${bdto.contents}</td>
+						<td colspan="5">${dvdto.contents}</td>
 					</tr>
 					<tr>
 						<th>연락처</th>
@@ -122,9 +128,9 @@
 						<th>기한</th>
 					</tr>
 					<tr>
-						<td>${bdto.phone }</td>
-						<td>${bdto.loc }</td>
-						<td>${bdto.time }</td>
+						<td>${dvdto.phone }</td>
+						<td>${dvdto.loc }</td>
+						<td>${dvdto.time }</td>
 					</tr>
 
 				</table>
@@ -135,7 +141,7 @@
 					var map = new naver.maps.Map('map');
 
 					//입력된 주소에 따라 지도시작위치가 달라짐.
-					var myaddress = '마들로 859-19';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
+					var myaddress = '${dvdto.loc }';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
 					naver.maps.Service
 							.geocode(
 									{
@@ -186,8 +192,8 @@
 					</tr>
 					<c:forEach var="cs" items="${list}">
 						<tr>
-							<td><input type="hidden" name="commentno"
-								value="${commentno}" /></td>
+							<td><input type="hidden" name="commentNo"
+								value="${cs.commentNo}" /></td>
 							<td>${cs.writer}</td>
 							<td colspan="3">${cs.contents}</td>
 							<td>${cs.regdate}</td>
