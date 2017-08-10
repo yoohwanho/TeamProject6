@@ -102,6 +102,7 @@
 							<td>
 								<textarea rows="5" cols="40" name="contents" id="contents"
 									placeholder="리뷰는 한번 작성하면 수정할 수 없습니다. 신중하게 작성해주세요."></textarea>
+								<input type="hidden" name="boardNo" value="${boardNo }" />
 							</td>
 						</tr>
 
