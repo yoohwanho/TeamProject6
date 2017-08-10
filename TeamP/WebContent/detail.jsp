@@ -52,6 +52,7 @@
 			<li><a href="main"><h2>
 						<c:choose>
 							<c:when test="${isLogin }">
+							
 					${id}님					
 				</c:when>
 							<c:otherwise>
@@ -206,6 +207,7 @@
 				<form action="writecomments" method="post">
 					<div class="form-group">
 						<label for="comment">문의하기</label>
+
 						<textarea class="form-control" rows="5" name="comments"
 							id="comment" placeholder="궁금하신 점을 작성해주세요~"></textarea>
 						<button type="button" class="btn" id="">등록하기</button>

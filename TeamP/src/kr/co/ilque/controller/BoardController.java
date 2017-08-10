@@ -21,7 +21,7 @@ public class BoardController {
 	// 거래목록에서 글 누르면 상세페이지로 넘어감
 	// bno를 통하여 db에서 글의 상세정보 가져오기
 	@RequestMapping(value = "/detail",method = RequestMethod.GET)
-	public ModelAndView showDetail(@RequestParam(name="boardNo",defaultValue="1") int boardNo) {
+	public ModelAndView showDetail(@RequestParam(name="boardNo") int boardNo) {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("dvdto", bs.read(boardNo));
