@@ -7,17 +7,28 @@
 <!-- input 할떄 해당글의 boardno도 필요하다 페이지에서 잘 갖고오자 -->
 
 <mapper namespace="kr.co.ilque.comment">
-	<select id="showComments" resultType="cdto">
-		select * from comments where boardno=#{boardNo}
+	<select id="getTotal" resultType="int">
+		select count(#{boardno}) from
+		comments
 	</select>
+	<select id="showComments" resultType="cdto">
+		select * from comments
+		where boardno=#{boardno}
+		order by commentno desc
+	</select>
+
 	<insert id="insertOne" parameterType="cdto">
 		insert into comments values
-		(comment_seq,#{boardNo},#{writer},#{contents},sysdate)
+		(comment_seq,#{boardno},#{writer},#{contents},sysdate)
 	</insert>
 	<update id="updateOne" parameterType="cdto">
-		update comments set contents=#{contents}, regdate=sysdate
+		update comments set
+		contents=#{contents}, regdate=sysdate
 	</update>
 	<delete id="deleteOne">
 		delete comments where commentno=#{commentNo}
 	</delete>
 </mapper>
+	
+
+

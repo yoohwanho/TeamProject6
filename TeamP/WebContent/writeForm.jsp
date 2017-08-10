@@ -102,7 +102,7 @@
 						</tr>
 						<tr>
 							<th>상세 내용</th>
-							<td><textarea rows="5" cols="40" name="contents"></textarea></td>
+							<td><textarea rows="5" cols="40" name="contents" id="contents"></textarea></td>
 						</tr>
 						<tr>
 							<th>제안 금액</th>
@@ -110,20 +110,20 @@
 						</tr>
 						<tr>
 							<th>휴대폰</th>
-							<td><input type="text" name="phone" placeholder="${phone}" /></td>
+							<td><input type="text" name="phone" id="phone" placeholder="${phone}" /></td>
 							<!-- default로 로그인 한 사람의 핸드폰 번호가 들어가지만 후에 본인이 수정 가능!! -->
 						</tr>
 						<tr>
 							<th>지원기한</th>
-							<td><input type="date" name="time" id="" /></td>
+							<td><input type="date" name="time" id="time" /></td>
 						</tr>
 						<tr>
 							<th>위치</th>
 							<td>
-								<input type="text" id="sample6_postcode" placeholder="우편번호">
+								<input type="text" name="sample6_postcode" id="sample6_postcode" placeholder="우편번호">
 <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" id="sample6_address" placeholder="주소">
-<input type="text" id="sample6_address2" placeholder="상세주소">
+<input type="text" name="sample6_address" id="sample6_address" placeholder="주소">
+<input type="text" name="sample6_address2" id="sample6_address2" placeholder="상세주소">
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
