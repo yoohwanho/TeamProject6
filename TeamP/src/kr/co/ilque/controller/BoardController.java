@@ -92,12 +92,12 @@ public class BoardController {
 		bdto.setReward(reward);
 		bdto.setApplicant("");
 		
-		
+	
 		
 		System.out.println();
 		
 		
-		
+		//임력후 다시 리스트를 출력시킨다.
 		return null;
 		// "detail?bno="+bno;
 	}
