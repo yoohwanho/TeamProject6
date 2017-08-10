@@ -149,9 +149,15 @@
 						<tr>
 							<th>사진 등록</th>
 							<!-- ${filePath }-->
-							
-							<a href=""><input type="file" name="" id="" /></a>
+							<td colspan="2">
+							<a href="modifyPic"><input type="file" name="" id="" /></a>
+							<c:if test="${filePath  eq ''}">
+							<input type="hidden" name="filePath" value="./img/defaultman.png"/>
+							</c:if>
+							<c:if test="${filePath  ne ''}">
 							<input type="hidden" name="filePath" value="${filePath}"/>
+							</c:if>
+							
 							</td>
 						</tr>
 						
@@ -161,7 +167,7 @@
 						</tr>
 
 						<tr>
-							<td colspan="3"><input type="button" value="수정완료" id="goModify"/> 
+							<td colspan="3"><input type="submit" value="수정완료" id="goModify"/> 
 							
 								<input type="button" value="취소" id="btn" /></td>
 						</tr>
