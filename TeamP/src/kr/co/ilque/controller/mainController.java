@@ -51,8 +51,15 @@ public class mainController {
 
 	//	[해주세요/해드립니다] 누르면 글 작성 페이지로 넘어감
 	@RequestMapping("/write")
-	public String writeForm() {
-		return "writeForm";
+	public ModelAndView writeForm(HttpSession ss) {
+		boolean isLogin = (boolean)ss.getAttribute("isLogin");
+		if(!isLogin) {
+			//로그아웃상태일 경우 로그인화면으로 이동
+			return new ModelAndView("login","isAccess",true);
+		}else{
+			return new ModelAndView("writeForm");
+		}
+		
 	}
 	
 	//	[마이페이지]
