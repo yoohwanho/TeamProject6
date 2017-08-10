@@ -21,6 +21,8 @@ public class mainController {
 	KeywordsService ks;
 	@Resource(name="loginService")
 	LoginService ls;
+	boolean isLogin;
+	
 	
 
 	public void setLs(LoginService ls) {
@@ -30,18 +32,27 @@ public class mainController {
 	
 	//	메인 페이지
 	@RequestMapping("/main")
-	public ModelAndView main() {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("list",ks.select10());
-		mav.setViewName("main");
-		return mav;
+	public ModelAndView main(HttpSession ss) {
+		if(ss.getAttribute("isLogin")==null) {
+			//	isLogin이 null일 경우 사이트에 첫 접근으로 판단하여 isLogin을 false로
+			isLogin=false;
+			//	세션에 저장한다
+			ss.setAttribute("isLogin", isLogin);
+		}
+		return new ModelAndView("main","list",ks.select10());
 	}
 	
 	//	[로그인] 페이지로 넘어감
 	@RequestMapping("/login")
-	public String login() {
-		return "login";
+	public String login(HttpSession ss) {
+		boolean isLogin = (boolean)ss.getAttribute("isLogin");
+		
+		if(!isLogin) {
+			return "login";
+		}else{
+			//	로그인 상태에서 접근할 경우 메인페이지로 이동
+			return "redirect:/main";
+		}
 	}
 	
 	//	로그인 하면 세션에 로그인 정보를 저장하고이전페이지로 넘어감
@@ -53,33 +64,53 @@ public class mainController {
 	
 	//	(로그아웃 상태일때)회원가입 페이지로 넘어감
 	@RequestMapping(value="/join",method=RequestMethod.GET)
-	public String join() {
-		return "join";
+	public String join(HttpSession ss) {
+		boolean isLogin = (boolean)ss.getAttribute("isLogin");
+		
+		if(!isLogin) {
+			return "join";			
+		}else {
+			//	로그인 상태에서 접근할 경우 메인페이지로 이동
+			return "redirect:/main";
+		}
 	}
 
 	//	[해주세요/해드립니다] 누르면 글 작성 페이지로 넘어감
 	@RequestMapping("/write")
-	public String writeForm() {
+	public ModelAndView writeForm(HttpSession ss) {
+		boolean isLogin = (boolean)ss.getAttribute("isLogin");
 		
-		
-		return "writeForm";
+		if(!isLogin) {
+			//로그아웃상태일 경우 로그인화면으로 이동
+			return new ModelAndView("redirect:/login","isAccess",true);
+		}else{
+			return new ModelAndView("writeForm");
+		}
 	}
 	
 	//	[마이페이지]
 	@RequestMapping("/myPage")
 	public ModelAndView showMyPage( HttpSession ss) {
-		//	멤버객체 생성
-		MemberDto mdto = new MemberDto();
+		boolean isLogin = (boolean)ss.getAttribute("isLogin");
 		
-		//	session에 저장된 id를 멤버객체에 set
-		if(ss.getAttribute("id")!=null) {
-			mdto.setMemberId((String)ss.getAttribute("id"));			
+		if(!isLogin) {
+			//로그아웃상태일 경우 로그인화면으로 이동
+			return new ModelAndView("login","isAccess",true);
+		}else{
+			//	로그인 상태일 경우 이동
+			//	멤버객체 생성
+			MemberDto mdto = new MemberDto();
+			
+			//	session에 저장된 id를 멤버객체에 set
+			if(ss.getAttribute("id")!=null) {
+				mdto.setMemberId((String)ss.getAttribute("id"));			
+			}
+			System.out.println(mdto.getMemberId());
+			//	id가 저장된 멤버객체로 관련 정보 담아오기
+			//	LoginService ls = new LoginService();
+			mdto=ls.pickMemberInfo(mdto);
+			
+			return new ModelAndView("userDetail","mdto",mdto);
 		}
-		System.out.println(mdto.getMemberId());
-		//	id가 저장된 멤버객체로 관련 정보 담아오기
-//		LoginService ls = new LoginService();
-		mdto=ls.pickMemberInfo(mdto);
-		
-		return new ModelAndView("userDetail","mdto",mdto);
 	}
 }
