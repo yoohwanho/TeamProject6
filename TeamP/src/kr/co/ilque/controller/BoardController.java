@@ -119,8 +119,7 @@ public class BoardController {
 		bs.deleteOne(boardNo);
 		return "redirect:board";
 	}
-	@RequestMapping("/modifyOk")
-	public ModelAndView modifyOk(@RequestParam())
+	
 	@RequestMapping("/modifyBoard")
 	public ModelAndView modifyBoard(@RequestParam(name="boardNo") int boardNo) {
 		String[] loc = new String[3];
