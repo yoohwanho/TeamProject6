@@ -14,8 +14,18 @@ public class CommentsService implements QuestService {
 	@Resource(name = "commentsDao")
 	OracleCommentsDAO dao;
 
-	public List<CommentsDto> read(int boardNo) {
+	public List<CommentsDto> read(int boardno) {
 
-		return dao.selectOne(boardNo);
+		return dao.selectOne(boardno);
+	}
+
+	public int total(int boardNo) {
+
+		return dao.getTotal(boardNo);
+	}
+
+	public void commentDel(int commentNo) {
+		dao.commentDel(commentNo);
+
 	}
 }

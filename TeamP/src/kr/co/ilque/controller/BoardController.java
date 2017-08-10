@@ -1,4 +1,3 @@
-
 package kr.co.ilque.controller;
 
 import javax.annotation.Resource;
@@ -11,11 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.dto.BoardDto;
-import kr.co.ilque.dto.DetailViewDto;
-import kr.co.ilque.dto.MemberDto;
 import kr.co.ilque.service.BoardService;
 import kr.co.ilque.service.CommentsService;
-import kr.co.ilque.service.LoginService;
 
 @Controller
 public class BoardController {
@@ -36,19 +32,19 @@ public class BoardController {
 	}
 
 	// 거래목록에서 글 누르면 상세페이지로 넘어감
-	// bno를 통하여 db에서 글의 상세정보 가져오기
-	@RequestMapping(value = "/detail",method = RequestMethod.GET)
-	public ModelAndView showDetail(@RequestParam(name="boardNo") int boardNo) {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("dvdto", bs.read(boardNo));
-		mav.addObject("list", cs.read(boardNo));
-		mav.setViewName("detail");
-		
-		
-		return mav;
-		// "detail?bno="+bno;
-	}
+		// bno를 통하여 db에서 글의 상세정보 가져오기
+		@RequestMapping(value = "/detail", method = RequestMethod.GET)
+		public ModelAndView showDetail(@RequestParam(name = "boardNo") int boardNo) {
+			ModelAndView mav = new ModelAndView();
+
+			mav.addObject("dvdto", bs.read(boardNo));
+			mav.addObject("list", cs.read(boardNo));
+			mav.addObject("commentTotal", cs.total(boardNo));
+			mav.setViewName("detail");
+
+			return mav;
+			// "detail?bno="+bno;
+		}
 
 	// 작성 버튼 누르면 글 작성 정보를 가지고 글 상세페이지로 넘어감
 	@RequestMapping(value = "/writeOk", method = RequestMethod.POST)
@@ -108,6 +104,14 @@ public class BoardController {
 	@RequestMapping("/userDetail")
 	public String userDetail() {
 		return "userDetail";
+		// "userDetail?id="+id
+	}
+	
+	@RequestMapping("/commentDelete")
+	public String userDetail2(@RequestParam(name = "commentNo") int commentNo,
+			@RequestParam(name = "boardNo") int boardNo) {
+		cs.commentDel(commentNo);
+		return "redirect:detail?boardNo=" + boardNo;
 		// "userDetail?id="+id
 	}
 
