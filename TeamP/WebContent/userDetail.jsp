@@ -95,7 +95,7 @@
 			<table class="table">
 
 				<tr>
-					<td rowspan="4"><img src="${mdto.profileSrc }" alt="profile"
+					<td rowspan="4"><img src="${mdto.profileSrc}" alt="profile"
 						width="100" height="100" /></td>
 					<th>ID</th>
 					<td>${mdto.memberId }</td>
