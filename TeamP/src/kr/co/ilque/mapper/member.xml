@@ -18,8 +18,8 @@
 	</insert>
 	
 	<update id="updateOne" parameterType="mdto">
-		update member set memberpwd=#{memberpwd},
-		membername=#{membername},profilesrc=#{profilesrc},
+		update member set memberpwd=#{memberPwd},
+		membername=#{memberName},profilesrc=#{profileSrc},
 		phone=#{phone},contents=#{contents},gender=#{gender}
 		where memberid=#{memberId}
 	</update>
