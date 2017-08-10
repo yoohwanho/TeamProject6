@@ -137,7 +137,8 @@
 
 						<tr>
 							<th>성별</th>
-							<td colspan="2"><input type="radio" name="gender" id="male" value="male" />남자
+							<td colspan="2">
+								<input type="radio" name="gender" id="male" value="male" />남자
 								<input type="radio" name="gender" id="female" value="female"/>여자<br />
 							<div id="divGender" class="warning"></div>
 							</td>
@@ -234,7 +235,8 @@
 			$("#divName")[0].innerHTML="<p style='color:red'>이름을 입력해주세요.</p>";
 		}else if($("#phone").val().length!=11){
 			$("#divPhone")[0].innerHTML="<p style='color:red'>11자리 휴대폰번호를 입력해주세요.</p>";
-		}else if(!$(':input:radio[name=Gender]:checked').val()){
+		}else if(!$(':input:radio[name=gender]:checked').val()){
+			
 			$("#divGender")[0].innerHTML="<p style='color:red'>성별을 선택해주세요.</p>";			
 		}else if($("#birth").val()==""){
 			$("#divBirth")[0].innerHTML="<p style='color:red'>생일을 선택해주세요.</p>";

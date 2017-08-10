@@ -18,4 +18,14 @@ public class CommentsService implements QuestService {
 
 		return dao.selectOne(boardno);
 	}
+
+	public int total(int boardNo) {
+
+		return dao.getTotal(boardNo);
+	}
+
+	public void commentDel(int commentNo) {
+		dao.commentDel(commentNo);
+
+	}
 }
