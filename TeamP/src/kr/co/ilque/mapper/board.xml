@@ -21,7 +21,7 @@
 		SELECT COUNT(*) cnt from board
 	</select>
 	<select id="showDetails" resultType="bdto" >
-	select * from board where boardno = #{boardno}
+	select * from board where boardno = #{boardNo}
 	</select>
 </mapper>
 

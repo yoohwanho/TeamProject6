@@ -36,7 +36,6 @@ public class ListController {
 		mav.addObject("endPage", endPage);
 		mav.addObject("prev", prev);
 		mav.addObject("next", next);
-
 		mav.addObject("list", bs.leadAll(startNo, endNo));
 		mav.setViewName("board");
 		return mav;
