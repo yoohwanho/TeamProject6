@@ -126,15 +126,20 @@
 							<th>성별</th>
 							<td colspan="2">
 								<c:choose>
-								<c:when test="${dto.gender }==male">
+								<c:when test="${dto.gender }='male'">
 								<input type="radio" name="gender" id="male" value="male" checked="checked" />남자
 								</c:when>
-								<c:when test="${dto.gender }!=male">
+								<c:when test="${dto.gender }!='male'">
 								<input type="radio" name="gender" id="male" value="male" />남자
+								</c:when>
+								<c:when test="${dto.gender}='female' }">
+								<input type="radio" name="gender" id="female" value="female" checked="checked"/>여자								
+								</c:when>
+								<c:when test="${dto.gender}!='female' }">
+								<input type="radio" name="gender" id="female" value="female"/>여자								
 								</c:when>
 								
 								</c:choose>
-								<input type="radio" name="gender" id="female" value="female"/>여자
 								</td>
 								
 						</tr>

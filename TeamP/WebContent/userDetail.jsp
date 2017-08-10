@@ -123,13 +123,13 @@
 					</td>
 					<!-- 소개글이 출력되야함 -->
 				</tr>
-				<%-- <c:if test="session.id=${memberId}"> --%>
+				<c:if test="session.id=${memberId}">
 				<tr>
 					<td></td>
 					<td></td>
 					<td><a href="modifyForm"><input type="button" value="수정" id="goModify" /></a></td>
 				</tr>
-			<%-- 	</c:if> --%>
+				</c:if>
 				<input type="hidden" name="memberPwd" value="${memberPwd }"/>
 				<input type="hidden" name="memberName" value="${memberName }"/>
 				<input type="hidden" name="profileSrc" value="${profileSrc }"/>
