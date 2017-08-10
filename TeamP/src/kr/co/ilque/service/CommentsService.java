@@ -28,4 +28,9 @@ public class CommentsService implements QuestService {
 		dao.commentDel(commentNo);
 
 	}
+
+	public void commentWrite(CommentsDto dto) {
+		dao.commentWrite(dto);
+		
+	}
 }

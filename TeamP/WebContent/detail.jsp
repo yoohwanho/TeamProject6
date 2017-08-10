@@ -212,12 +212,20 @@
 			<div class="container">
 				<form action="writecomments" method="post">
 					<div class="form-group">
-						<label for="comment">문의하기</label>
-						
-
-						<textarea class="form-control" rows="5" name="comments"
-							id="comment" placeholder="궁금하신 점을 작성해주세요~" ></textarea>
-						<button type="button" class="btn" id="">등록하기</button>
+						<c:choose>
+							<c:when test="${isLogin}">
+								<label for="comment">문의하기</label>
+								<textarea class="form-control" rows="5" name="comments"
+									id="comments" placeholder="궁금하신 점을 작성해주세요~"></textarea>
+								<button type="submit" class="btn" id=""><h4>등록하기</h4></button>
+								<input type="hidden" name="id" value="${id}" />
+								<input type="hidden" name="boardNo" value="${dvdto.boardNo}" />
+								
+							</c:when>
+							<c:otherwise>
+								<label for="comment"><h3>로그인을 하시면 문의글을 작성하실 수 있습니다.</h3></label>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</form>
 			</div>

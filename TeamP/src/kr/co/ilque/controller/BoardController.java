@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.ilque.dto.CommentsDto;
 import kr.co.ilque.service.BoardService;
 import kr.co.ilque.service.CommentsService;
 
@@ -50,11 +51,23 @@ public class BoardController {
 	}
 
 	@RequestMapping("/commentDelete")
-	public String userDetail2(@RequestParam(name = "commentNo") int commentNo,
+	public String commentDel(@RequestParam(name = "commentNo") int commentNo,
 			@RequestParam(name = "boardNo") int boardNo) {
 		cs.commentDel(commentNo);
 		return "redirect:detail?boardNo=" + boardNo;
 		// "userDetail?id="+id
+	}
+
+	@RequestMapping("/writecomments")
+	public String commentIn(@RequestParam(name = "comments") String comments,
+			@RequestParam(name = "boardNo") int boardNo, @RequestParam(name = "id") String id) {
+		CommentsDto dto = new CommentsDto();
+		dto.setBoardNo(boardNo);
+		dto.setContents(comments);
+		dto.setWriter(id);
+		cs.commentWrite(dto);
+
+		return "redirect:detail?boardNo=" + boardNo;
 	}
 
 }
