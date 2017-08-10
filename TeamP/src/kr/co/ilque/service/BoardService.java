@@ -37,4 +37,9 @@ public class BoardService implements QuestService {
 		// TODO Auto-generated method stub
 		dao.insertOne(bdto);
 	}
+
+	public void deleteOne(int boardNo) {
+		dao.deleteOne(boardNo);
+		
+	}
 }

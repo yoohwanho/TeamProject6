@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.dto.BoardDto;
 import kr.co.ilque.dto.CommentsDto;
+import kr.co.ilque.dto.DetailViewDto;
 import kr.co.ilque.service.BoardService;
 import kr.co.ilque.service.CommentsService;
 
@@ -26,8 +27,6 @@ public class BoardController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public ModelAndView showDetail(@RequestParam(name = "boardNo") int boardNo) {
 		ModelAndView mav = new ModelAndView();
-
-
 			mav.addObject("dvdto", bs.read(boardNo));
 			mav.addObject("list", cs.read(boardNo));
 			mav.addObject("commentTotal", cs.total(boardNo));
@@ -53,7 +52,7 @@ public class BoardController {
 		System.out.println("writeOk 진입");
 		BoardDto bdto= new BoardDto();
 		String writer = (String) ss.getAttribute("id");//writer에 세션에서 아이디 받아와서 저장
-		String loc = address+" "+address2+" (우)"+postCode;
+		String loc = address+" "+address2+" "+postCode;
 
 		
 		
@@ -88,18 +87,6 @@ public class BoardController {
 		// "detail?bno="+bno;
 	}
 
-	// 유저 사진을 클릭하면 유저 상세페이지로 넘어감
-	// 유저 id를 가지고 가서 db에서 유저 상세페이지 가져오기
-	// 자기 페이지가 아닐 경우 휴대폰번호와 이름은 일정부분 필터링(성**, 0101234****)
-	@RequestMapping("/userDetail")
-	public String userDetail() {
-		return "userDetail";
-		// "userDetail?id="+id
-
-	}
-
-
-
 
 	@RequestMapping("/commentDelete")
 	public String commentDel(@RequestParam(name = "commentNo") int commentNo,
@@ -120,6 +107,36 @@ public class BoardController {
 
 		return "redirect:detail?boardNo=" + boardNo;
 	}
+	@RequestMapping("/deleteBoard")
+	public String deleteOne(@RequestParam(name="boardNo") int boardNo) {
+		bs.deleteOne(boardNo);
+		return "redirect:board";
+	}
 	
+	@RequestMapping("/modifyBoard")
+	public ModelAndView modifyBoard(@RequestParam(name="boardNo") int boardNo) {
+		String[] loc = new String[3];
+		ModelAndView mav = new ModelAndView();
+		DetailViewDto dvdto = bs.read(boardNo);
+		if(dvdto.getLoc().contains(" ")) {
+			loc=dvdto.getLoc().split(" ");			
+		}else {
+			//	★이 포함되어있지 않은 샘플데이터 처리
+			loc[0]="테";
+			loc[1]="스";
+			loc[2]="트";
+		}
+		
+		mav.addObject("dvdto", dvdto);
+		
+		System.out.println(loc[0]);
+		System.out.println(loc[1]);
+		System.out.println(loc[2]);
+		mav.addObject("sample6_address1",loc[0]);
+		mav.addObject("sample6_address2",loc[1]);
+		mav.addObject("sample6_postcode", loc[2]);
+		mav.setViewName("modifyForm");
+		return mav;
+	}
 
 }

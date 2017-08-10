@@ -41,4 +41,9 @@ public class OracleBoardDAO {
 		ss.insert("kr.co.ilque.board.insertOne",bdto);
 	}
 
+	public void deleteOne(int boardNo) {
+		ss.delete("kr.co.ilque.board.deleteOne",boardNo);
+		
+	}
+
 }
