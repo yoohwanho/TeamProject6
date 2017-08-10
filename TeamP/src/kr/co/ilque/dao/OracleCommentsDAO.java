@@ -22,4 +22,13 @@ public class OracleCommentsDAO {
 		return ss.selectList("kr.co.ilque.comment.showComments", boardNo);
 	}
 
+	public int getTotal(int boardNo) {
+		
+		return ss.selectOne("kr.co.ilque.comment.getTotal", boardNo);
+	}
+
+	public void commentDel(int commentNo) {
+		ss.delete("kr.co.ilque.comment.deleteOne",commentNo);
+		
+	}
 }

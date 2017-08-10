@@ -15,7 +15,7 @@
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
 <link
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+	href="https://fonts.googleapis.com/csss?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -104,21 +104,21 @@
 						<td rowspan="4"><a href="userDetail"><img
 								src="${dvdto.profilesrc}" alt="프사" class="img-rounded" /></a></td>
 
-						<td><h5>${dvdto.regdate}</h5></td>
+						<td><h5>작성일 : ${dvdto.regdate}</h5></td>
 					</tr>
 					<tr>
-						<td><b>댓글 N개</b></td>
+						<td><b>기간 : ${dvdto.time}</b></td>
 					</tr>
 					<tr>
 						<c:if test="${dvdto.category == '구인'}">
-							<td>${dvdto.sellgrade}</td>
+							<td>구인자 평점: ${dvdto.sellgrade}</td>
 						</c:if>
 						<c:if test="${dvdto.category == '구직'}">
-							<td>${dvdto.buygrade}</td>
+							<td>구직자 평점:${dvdto.buygrade}</td>
 						</c:if>
 					</tr>
 					<tr>
-						<td>${dvdto.reward}</td>
+						<td><h4>퀘스트 보상 : ${dvdto.reward}</h4></td>
 					</tr>
 					<tr>
 						<td colspan="5">${dvdto.contents}</td>
@@ -189,15 +189,21 @@
 
 					<tr class="active">
 
-						<td>댓글 (2개)</td>
+						<td>댓글 : ${commentTotal} 개</td>
 					</tr>
 					<c:forEach var="cs" items="${list}">
 						<tr>
-							<td><input type="hidden" name="commentNo"
-								value="${cs.commentNo}" /></td>
+
 							<td>${cs.writer}</td>
 							<td colspan="3">${cs.contents}</td>
 							<td>${cs.regdate}</td>
+							<td><c:if test="${id eq cs.writer}">
+									<a
+										href="commentDelete?commentNo=${cs.commentNo}&boardNo=${dvdto.boardNo}">
+										<button type="button" class="btn btn-default">삭제</button>
+									</a>
+								</c:if></td>
+
 						</tr>
 					</c:forEach>
 				</table>
@@ -207,9 +213,10 @@
 				<form action="writecomments" method="post">
 					<div class="form-group">
 						<label for="comment">문의하기</label>
+						
 
 						<textarea class="form-control" rows="5" name="comments"
-							id="comment" placeholder="궁금하신 점을 작성해주세요~"></textarea>
+							id="comment" placeholder="궁금하신 점을 작성해주세요~" ></textarea>
 						<button type="button" class="btn" id="">등록하기</button>
 					</div>
 				</form>

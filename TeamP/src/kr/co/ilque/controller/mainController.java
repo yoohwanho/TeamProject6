@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.dto.MemberDto;
+import kr.co.ilque.service.KeywordsService;
 import kr.co.ilque.service.LoginService;
 
 //	탭으로 언제든지 접근할 수 있는 버튼에 의한 페이지이동.
 
 @Controller
 public class mainController {
+	
+	@Resource(name = "keywordsService")
+	KeywordsService ks;
 	@Resource(name="loginService")
 	LoginService ls;
 	boolean isLogin;
@@ -28,14 +32,14 @@ public class mainController {
 	
 	//	메인 페이지
 	@RequestMapping("/main")
-	public String main(HttpSession ss) {
+	public ModelAndView main(HttpSession ss) {
 		if(ss.getAttribute("isLogin")==null) {
 			//	isLogin이 null일 경우 사이트에 첫 접근으로 판단하여 isLogin을 false로
 			isLogin=false;
 			//	세션에 저장한다
 			ss.setAttribute("isLogin", isLogin);
 		}
-		return "main";
+		return new ModelAndView("main","list",ks.select10());
 	}
 	
 	//	[로그인] 페이지로 넘어감
