@@ -36,4 +36,9 @@ public class OracleBoardDAO {
 		
 	}
 
+	public void insertOne(BoardDto bdto) {
+		// TODO Auto-generated method stub
+		ss.insert("kr.co.ilque.board.insertOne",bdto);
+	}
+
 }

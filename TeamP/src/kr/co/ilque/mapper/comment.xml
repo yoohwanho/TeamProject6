@@ -8,18 +8,19 @@
 
 <mapper namespace="kr.co.ilque.comment">
 	<select id="getTotal" resultType="int">
-		select count(#{boardno}) from
+		select count(*) from
 		comments
+		WHERE boardno = #{boardNo}
 	</select>
 	<select id="showComments" resultType="cdto">
 		select * from comments
-		where boardno=#{boardno}
+		where boardno=#{boardNo}
 		order by commentno desc
 	</select>
 
 	<insert id="insertOne" parameterType="cdto">
 		insert into comments values
-		(comment_seq,#{boardno},#{writer},#{contents},sysdate)
+		(comment_seq.nextval,#{boardNo},#{writer},#{contents},sysdate)
 	</insert>
 	<update id="updateOne" parameterType="cdto">
 		update comments set
