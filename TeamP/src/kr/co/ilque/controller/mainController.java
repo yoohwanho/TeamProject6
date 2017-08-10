@@ -1,11 +1,13 @@
 package kr.co.ilque.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.dto.MemberDto;
@@ -44,14 +46,52 @@ public class mainController {
 	
 	//	[로그인] 페이지로 넘어감
 	@RequestMapping("/login")
-	public String login(HttpSession ss) {
-		boolean isLogin = (boolean)ss.getAttribute("isLogin");
+	public ModelAndView login(HttpSession ss, HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("login");
 		
+
+		//	로그인 실패메시지를 띄울지 판별
+		boolean isFail=false;
+		if(req.getParameter("isFail")!=null) {
+			//	isFail이 null이 아니고 true값이 있다면 isFail에 true
+			if(req.getParameter("isFail").equals("true")) {
+				isFail=true;
+				mav.addObject("isFail",isFail);
+			}
+		}
+		
+		//	회원가입페이지에서 이동했는지 판별
+		boolean isJoin=false;
+		if(req.getParameter("isJoin")!=null) {
+			//	isJoin이 null이 아니고 true값이 있다면 true
+			if(req.getParameter("isJoin").equals("true")) {
+				isJoin=true;
+				mav.addObject("isJoin",isJoin);
+			}
+		}
+		
+		//	로그아웃상태에서 접근했는지 판별
+		boolean isAccess=false;
+		if(req.getParameter("isAccess")!=null) {
+			//	isAccess이 null이 아니고 true값이 있다면 isAccess에 true
+			if(req.getParameter("isAccess").equals("true")) {
+				isAccess=true;
+				mav.addObject("isAccess",isAccess);
+			}
+		}
+		
+		
+		//로그인 여부를 판별
+		boolean isLogin = (boolean)ss.getAttribute("isLogin");
 		if(!isLogin) {
-			return "login";
+			//	로그아웃 상태: 로그인페이지로
+			mav.setViewName("login");
+			return mav;
 		}else{
-			//	로그인 상태에서 접근할 경우 메인페이지로 이동
-			return "redirect:/main";
+			//	로그인 상태: 메인으로
+			
+			mav.setViewName("redirect:/main");
+			return mav;
 		}
 	}
 	
