@@ -36,8 +36,7 @@
 		});
 	});
 	
-	
-</script>
+	</script>
 
 </head>
 
@@ -89,6 +88,7 @@
 	<!-- section1 -->
 	<section>
 		<div align="center">
+		
 			<form action="writeOk" method="post">
 				<div class="container">
 					<table class="table">
