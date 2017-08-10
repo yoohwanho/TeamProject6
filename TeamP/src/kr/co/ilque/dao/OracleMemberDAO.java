@@ -22,6 +22,9 @@ public class OracleMemberDAO {
 		return ss.selectOne("kr.co.ilque.member.login",dto);		
 	}
 	
+	public MemberDto showMember(MemberDto dto) {
+		return ss.selectOne("kr.co.ilque.member.showMember",dto);
+	}
 	//	가입
 	public void insertOne(MemberDto dto) {
 		ss.insert("kr.co.ilque.member.insertOne",dto);

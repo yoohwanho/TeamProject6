@@ -36,11 +36,6 @@
 		});
 	});
 	
-	$(function(){
-		$("#goModify").on("click", function(){
-			location.href="";
-		});
-	});
 </script>
 
 </head>
@@ -95,27 +90,27 @@
 		<div align="center">
 			<h1>프로필</h1>
 			
-			<<div class="container">
+			<div class="container">
 			<table class="table">
 
 				<tr>
 					<td rowspan="4"><img src="./img/defaultman.png" alt="default"
 						width="100" height="100" /></td>
 					<th>ID</th>
-					<td></td>
+					<td>${mdto.memberId }</td>
 				</tr>
 				<tr>
 					<th>휴대폰</tj>
-					<td colspan="2">${phone}</td>
+					<td colspan="2">${mdto.phone}</td>
 				</tr>
 				<tr>
 					<th>요청자로서의 평점</th>
-					<td colspan="2">평점/10</td>
+					<td colspan="2">${mdto.buygrade }/10</td>
 					<!--  평정 입력 값이 들어가야함  -->
 				</tr>
 				<tr>
 					<th>지원자로서의 평점</th>
-					<td colspan="2">평점/10</td>
+					<td colspan="2">${mdto.sellgrade }/10</td>
 					<!--  지원자 평점이 들어가야 함  -->
 				</tr>
 
@@ -123,16 +118,23 @@
 					<td><h2>소개</h2></td>
 					<td colspan="2">
 						<div class="panel panel-default">
-							<div class="panel-body">소개글이 들어가면 됩니다 소개글소개글</div>
+							<div class="panel-body">${mdto.contents }</div>
 						</div>
 					</td>
 					<!-- 소개글이 출력되야함 -->
 				</tr>
+				<%-- <c:if test="session.id=${memberId}"> --%>
 				<tr>
 					<td></td>
 					<td></td>
-					<td><input type="button" value="수정" id="goModify" /></td>
+					<td><a href="modifyForm"><input type="button" value="수정" id="goModify" /></a></td>
 				</tr>
+			<%-- 	</c:if> --%>
+				<input type="hidden" name="memberPwd" value="${memberPwd }"/>
+				<input type="hidden" name="memberName" value="${memberName }"/>
+				<input type="hidden" name="profileSrc" value="${profileSrc }"/>
+				<input type="hidden" name="phone" value="${phone }"/>
+				<input type="hidden" name="gender" value="${gender }"/>
 			</table>
 		</div>
 		<div class="container">

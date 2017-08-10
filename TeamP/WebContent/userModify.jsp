@@ -105,27 +105,38 @@
 			<table class="table">
 						<tr>
 							<th>id</th>
-							<td colspan="2">${memberId}</td>
-							<input type="hidden" name="memberId" value="${memberId }" />
+							<td colspan="2">${dto.memberId}</td>
+							<input type="hidden" name="memberId" value="${dto.memberId }" />
 						</tr>
 						<tr>
 							<th>pw</th>
-							<td colspan="2"><input type="password" name="memberPwd" value="${memberPwd }"/></td>
+							<td colspan="2"><input type="password" name="memberPwd" value="${dto.memberPwd }"/></td>
 						</tr>
 						<tr>
 							<th>이름</th>
-							<td><input type="text" name="memberName" id="" value="${memberName }"/></td>
+							<td><input type="text" name="memberName" id="" value="${dto.memberName }"/></td>
 						</tr>
 						<tr>
 							<th>휴대폰</th>
 							<td colspan="2"><input type="text" name="phone"
-								placeholder="'-'없이 입력해주세요." value="${phone}"/></td>
+								placeholder="'-'없이 입력해주세요." value="${dto.phone}"/></td>
 						</tr>
 
 						<tr>
 							<th>성별</th>
-							<td colspan="2"><input type="radio" name="gender" id="male" value="male" />남자
-								<input type="radio" name="gender" id="female" value="female"/>여자</td>
+							<td colspan="2">
+								<c:choose>
+								<c:when test="${dto.gender }==male">
+								<input type="radio" name="gender" id="male" value="male" checked="checked" />남자
+								</c:when>
+								<c:when test="${dto.gender }!=male">
+								<input type="radio" name="gender" id="male" value="male" />남자
+								</c:when>
+								
+								</c:choose>
+								<input type="radio" name="gender" id="female" value="female"/>여자
+								</td>
+								
 						</tr>
 						<tr>
 							<th>사진 등록</th>
@@ -134,18 +145,18 @@
 								height="50" id="imgF" /></td>
 							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
 							<td><a href="imgPutForm3">사진올리기</a>
-							<input type="hidden" name="filePath" value="${filePath}"/>
+							<input type="hidden" name="filePath" value="${dto.filePath}"/>
 
 							</td>
 						</tr>
 						
 						<tr>
 							<th>자기 소개</th>
-							<td><textarea name="contents" id="contents" cols="50" rows="5"></textarea></td>
+							<td><textarea name="contents" id="contents" cols="50" rows="5">${dto.contents }</textarea></td>
 						</tr>
 
 						<tr>
-							<td colspan="3"><input type="submit" value="수정" /> 
+							<td colspan="3"><input type="submit" value="수정완료" /> 
 							
 								<input type="button" value="취소" id="btn" /></td>
 						</tr>
