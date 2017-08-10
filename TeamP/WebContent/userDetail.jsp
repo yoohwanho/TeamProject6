@@ -97,7 +97,7 @@
 					<td rowspan="4"><img src="./img/defaultman.png" alt="default"
 						width="100" height="100" /></td>
 					<th>ID</th>
-					<td>${memberID}</td>
+					<td>${memberId}</td>
 				
 				</tr>
 				<tr>
@@ -107,12 +107,12 @@
 				</tr>
 				<tr>
 					<th>요청자로서의 평점</th>
-					<td colspan="2">평점/10</td>
+					<td colspan="2">${sellGrade }/10</td>
 					<!--  평정 입력 값이 들어가야함  -->
 				</tr>
 				<tr>
 					<th>지원자로서의 평점</th>
-					<td colspan="2">평점/10</td>
+					<td colspan="2">${buyGrade }/10</td>
 					<!--  지원자 평점이 들어가야 함  -->
 				</tr>
 
@@ -120,7 +120,7 @@
 					<td><h2>소개</h2></td>
 					<td colspan="2">
 						<div class="panel panel-default">
-							<div class="panel-body">소개글이 들어가면 됩니다 소개글소개글</div>
+							<div class="panel-body">${contents }</div>
 						</div>
 					</td>
 					<!-- 소개글이 출력되야함 -->
@@ -132,12 +132,10 @@
 					<td><a href="modifyForm"><input type="button" value="수정" id="goModify" /></a></td>
 				</tr>
 			<%-- 	</c:if> --%>
-				<input type="hidden" name="memberID" value="${memberID }"/>
 				<input type="hidden" name="memberPwd" value="${memberPwd }"/>
 				<input type="hidden" name="memberName" value="${memberName }"/>
 				<input type="hidden" name="profileSrc" value="${profileSrc }"/>
 				<input type="hidden" name="phone" value="${phone }"/>
-				<input type="hidden" name="contents" vaule="${contents }"/>
 				<input type="hidden" name="gender" value="${gender }"/>
 			</table>
 		</div>

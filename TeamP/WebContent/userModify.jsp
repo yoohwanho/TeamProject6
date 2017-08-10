@@ -124,8 +124,19 @@
 
 						<tr>
 							<th>성별</th>
-							<td colspan="2"><input type="radio" name="gender" id="male" value="male" />남자
-								<input type="radio" name="gender" id="female" value="female"/>여자</td>
+							<td colspan="2">
+								<c:choose>
+								<c:when test="${dto.gender }==male">
+								<input type="radio" name="gender" id="male" value="male" checked="checked" />남자
+								</c:when>
+								<c:when test="${dto.gender }!=male">
+								<input type="radio" name="gender" id="male" value="male" />남자
+								</c:when>
+								
+								</c:choose>
+								<input type="radio" name="gender" id="female" value="female"/>여자
+								</td>
+								
 						</tr>
 						<tr>
 							<th>사진 등록</th>

@@ -51,6 +51,7 @@ public class mainController {
 	@RequestMapping("/myPage")
 	public String showMyPage( HttpSession ss) {
 		MemberDto mdto =(MemberDto)ss.getAttribute("mdto");
+		
 		return "userDetail?id="+mdto.getMemberId();
 	}
 }
