@@ -5,8 +5,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.dto.MemberDto;
+import kr.co.ilque.service.LoginService;
 
 //	탭으로 언제든지 접근할 수 있는 버튼에 의한 페이지이동.
 
@@ -47,11 +49,20 @@ public class mainController {
 	}
 	
 	//	[마이페이지]
-	//	세션에서 id값을 받아와서 자기 정보 보기
 	@RequestMapping("/myPage")
-	public String showMyPage( HttpSession ss) {
-		MemberDto mdto =(MemberDto)ss.getAttribute("mdto");
+	public ModelAndView showMyPage( HttpSession ss) {
+		//	멤버객체 생성
+		MemberDto mdto = new MemberDto();
 		
-		return "userDetail?id="+mdto.getMemberId();
+		//	session에 저장된 id를 멤버객체에 set
+		if(ss.getAttribute("id")!=null) {
+			mdto.setMemberId((String)ss.getAttribute("id"));			
+		}
+		System.out.println(mdto.getMemberId());
+		//	id가 저장된 멤버객체로 관련 정보 담아오기
+		LoginService ls = new LoginService();
+		mdto=ls.pickMemberInfo(mdto);
+		
+		return new ModelAndView("userDetail","mdto",mdto);
 	}
 }

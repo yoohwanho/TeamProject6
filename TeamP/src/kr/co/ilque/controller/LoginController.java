@@ -31,14 +31,23 @@ public class LoginController {
 		MemberDto mdto = new MemberDto();
 		mdto.setMemberId(memberId);
 		mdto.setMemberPwd(memberPwd);
-		mdto = sv.chkLogin(mdto);
-		if ( mdto!= null) {
+		if ( sv.chkLogin(mdto)!=null) {
 			// 로그인 성공
+			
+			//	로그인 여부를 true로
 			isLogin = true;
-			ss.setAttribute("mdto", mdto);
+			
+			//	session에 id를 저장
+			//	로그인여부를 저장
+			ss.setAttribute("id", mdto.getMemberId());
 			ss.setAttribute("isLogin", isLogin);
+			
+			//	main으로 이동
 			return new ModelAndView("main");
 		}else {
+			//	로그인여부를 false로
+			isLogin=false;
+			//	로그인 여부를 세션에 저장
 			ss.setAttribute("isLogin", isLogin);
 			
 			return new ModelAndView("login","isFail",true);
@@ -51,7 +60,7 @@ public class LoginController {
 	public String logout(HttpSession ss) {
 		isLogin=false;
 		ss.setAttribute("isLogin", isLogin);
-		ss.removeAttribute("mdto");		
+		ss.removeAttribute("id");		
 		return "main";
 	}
 

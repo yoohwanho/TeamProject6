@@ -17,8 +17,12 @@ public class LoginService implements QuestService{
 	}
 
 	//	로그인 체크
-	public MemberDto chkLogin(MemberDto dto) {
-		return dao.selectOne(dto);
+	public MemberDto chkLogin(MemberDto mdto) {
+		return dao.selectOne(mdto);
+	}
+	
+	public MemberDto pickMemberInfo(MemberDto mdto) {
+		return dao.showMember(mdto);
 	}
 }
   
