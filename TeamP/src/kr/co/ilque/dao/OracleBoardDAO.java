@@ -12,28 +12,35 @@ import kr.co.ilque.dto.StartEnd;
 
 @Repository("boardDao")
 public class OracleBoardDAO {
-	
+
 	@Autowired
 	private SqlSession ss;
 
 	public void setSs(SqlSession ss) {
 		this.ss = ss;
 	}
-	
-	public List<BoardDto> selectAll(int startNo, int endNo) {
+
+	public List<BoardDto> selectAll(int startNo, int endNo, String keyword,String category,String gender) {
 		StartEnd se = new StartEnd();
 		se.setEndNo(endNo);
 		se.setStartNo(startNo);
-		return ss.selectList("kr.co.ilque.board.selectAll",se);
+		se.setKeyword(keyword);
+		se.setCategory(category);
+		se.setGender(gender);
+		System.out.println("dao에서 키워드값 :"+keyword);
+		List<BoardDto> list = ss.selectList("kr.co.ilque.board.selectAll", se);
+		System.out.println(list);
+		return list;
 	}
 
 	public int getData() {
 		return ss.selectOne("kr.co.ilque.board.getTotal");
 	}
-	public DetailViewDto selectOne(int boardNo){
+
+	public DetailViewDto selectOne(int boardNo) {
 		System.out.println(boardNo);
-		return ss.selectOne("kr.co.ilque.board.showDetails",boardNo);
-		
+		return ss.selectOne("kr.co.ilque.board.showDetails", boardNo);
+
 	}
 
 }

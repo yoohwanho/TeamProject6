@@ -1,6 +1,7 @@
 package kr.co.ilque.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,20 +9,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.service.BoardService;
+import kr.co.ilque.service.KeywordsService;
 
 @Controller
 public class ListController {
 
 	@Resource(name = "boardService")
 	BoardService bs;
+	@Resource(name = "keywordsService")
+	KeywordsService ks;
 
 	public void setBs(BoardService bs) {
 		this.bs = bs;
 	}
+	
+
+	public void setKs(KeywordsService ks) {
+		this.ks = ks;
+	}
+
 
 	@RequestMapping("/board")
 	public ModelAndView list(@RequestParam(name = "currentPage", defaultValue = "1") int currentPage,
-			@RequestParam(name = "CountPerPage", defaultValue = "10") int CountPerPage) {
+			@RequestParam(name = "CountPerPage", defaultValue = "10") int CountPerPage,
+			HttpServletRequest req
+			) {
+		String keyword = null;
+		String gender = null;
+		String category = null;
 		ModelAndView mav = new ModelAndView();
 		int total = bs.getTotal();
 		int startNo = (currentPage - 1) * CountPerPage + 1;
@@ -36,7 +51,28 @@ public class ListController {
 		mav.addObject("endPage", endPage);
 		mav.addObject("prev", prev);
 		mav.addObject("next", next);
-		mav.addObject("list", bs.leadAll(startNo, endNo));
+		System.out.println(req.getParameter("keyword"));
+		if(req.getParameter("keyword")!=null) {
+			System.out.println("키워드체크:"+ks.check(req.getParameter("keyword")).isEmpty());
+			if(ks.check(req.getParameter("keyword")).isEmpty()) {
+				ks.add(req.getParameter("keyword"));
+			}else {
+				ks.update(req.getParameter("keyword"));
+			}
+			System.out.println("키워드조회");
+			keyword = '%'+req.getParameter("keyword")+'%';
+		}
+		if(req.getParameter("category")!=null) {
+			category = '%'+req.getParameter("category")+'%';
+		}
+		if(req.getParameter("gender")!=null) {
+			gender = '%'+req.getParameter("gender")+'%';
+		}
+		/*else if(){
+		
+		}*/
+		
+		mav.addObject("list", bs.leadAll(startNo, endNo,keyword,category,gender));
 		mav.setViewName("board");
 		return mav;
 
