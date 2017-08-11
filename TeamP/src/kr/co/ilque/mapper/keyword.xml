@@ -8,7 +8,8 @@
 <mapper namespace="kr.co.ilque.keyword">
 	<!-- 상위 10개 조회 -->
 	<select id="showTop10" resultType="kdto">
-		select * from keywords where rownum &lt; 10 order by counts desc
+		select * from (select * from keywords order by counts desc)
+		where rownum &lt; 10
 	</select>
 	<!-- 검색어 추가를위해 DB에 있는지 없는지 isnext로 확인할거 -->
 	<select id="check" resultType="kdto">
