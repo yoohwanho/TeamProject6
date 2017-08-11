@@ -46,4 +46,9 @@ public class OracleBoardDAO {
 		
 	}
 
+	public void modifyOk(BoardDto bdto) {
+		ss.update("kr.co.ilque.board.updateOne",bdto);
+		
+	}
+
 }
