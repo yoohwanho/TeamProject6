@@ -27,6 +27,8 @@ public class BoardController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public ModelAndView showDetail(@RequestParam(name = "boardNo") int boardNo) {
 		ModelAndView mav = new ModelAndView();
+			DetailViewDto dto = bs.read(boardNo);
+			dto.setProfilesrc("./data/"+dto.getProfilesrc());
 			mav.addObject("dvdto", bs.read(boardNo));
 			mav.addObject("list", cs.read(boardNo));
 			mav.addObject("commentTotal", cs.total(boardNo));
@@ -83,7 +85,7 @@ public class BoardController {
 		
 		bs.insertOne(bdto);
 		//임력후 다시 리스트를 출력시킨다.
-		return null;
+		return "redirect:/board";
 		// "detail?bno="+bno;
 	}
 

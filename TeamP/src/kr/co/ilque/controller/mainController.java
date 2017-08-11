@@ -156,4 +156,23 @@ public class mainController {
 			return new ModelAndView("userDetail","mdto",mdto);
 		}
 	}
+	@RequestMapping("/memberPage")
+	public ModelAndView showMemberPage(@RequestParam("id") String id,HttpSession ss) {
+		boolean isLogin = (boolean)ss.getAttribute("isLogin");
+		
+		if(!isLogin) {
+	
+			
+			return new ModelAndView("login","isAccess",true);
+		}else{
+
+			MemberDto mdto = new MemberDto();
+			mdto.setMemberId(id);
+			mdto=ls.pickMemberInfo(mdto);
+			mdto.setProfileSrc("./data/"+mdto.getProfileSrc());
+			
+			
+			return new ModelAndView("userDetail","mdto",mdto);
+		}
+	}
 }
