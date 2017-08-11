@@ -157,7 +157,7 @@
 							<!-- ${filePath }-->
 							<td><input type="file" name="file" id="" /></td>
 							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
-							<td><a href="imgPutForm">사진올리기</a>
+						
 							
 
 							</td>

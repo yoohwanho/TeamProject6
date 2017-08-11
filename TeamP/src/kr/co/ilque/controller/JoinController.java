@@ -34,7 +34,7 @@ public class JoinController {
 	// �쉶�썝媛��엯踰꾪듉�쓣 �늻瑜대㈃ memberDTO�� isJoin=1�쓣 媛�吏�怨� 濡쒓렇�씤�럹�씠吏�濡�
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String joinOk(@RequestParam("memberId") String memberId, @RequestParam("memberPwd") String memberPwd,
-			@RequestParam("memberName") String memberName, @RequestParam("filePath") String profileSrc,
+			@RequestParam("memberName") String memberName,
 			@RequestParam("phone") String phone, @RequestParam("gender") String gender,
 			@RequestParam("birth") String birth, @RequestParam("contents") String contents,
 			@ModelAttribute("uploadFile") UploadFile file, HttpServletRequest req, BindingResult result) {
@@ -42,11 +42,10 @@ public class JoinController {
 		dto.setMemberId(memberId);
 		dto.setMemberPwd(memberPwd);
 		dto.setMemberName(memberName);
-		dto.setProfileSrc(profileSrc);
 		dto.setGender(gender);
 		dto.setPhone(phone);
 		dto.setContents(contents);
-		System.out.println(profileSrc);
+		
 		// contents?
 		dto.setBirth(birth);
 		

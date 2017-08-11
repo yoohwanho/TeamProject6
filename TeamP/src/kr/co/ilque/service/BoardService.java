@@ -42,4 +42,9 @@ public class BoardService implements QuestService {
 		dao.deleteOne(boardNo);
 		
 	}
+
+	public void modifyOne(BoardDto bdto) {
+		dao.modifyOk(bdto);
+		
+	}
 }
