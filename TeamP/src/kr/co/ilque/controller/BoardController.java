@@ -10,42 +10,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ilque.dto.BoardDto;
+import kr.co.ilque.dto.CommentsDto;
+import kr.co.ilque.dto.DetailViewDto;
 import kr.co.ilque.service.BoardService;
 import kr.co.ilque.service.CommentsService;
 
 @Controller
 public class BoardController {
-	@Resource(name="boardService")
+	@Resource(name = "boardService")
 	BoardService bs;
-	@Resource(name="commentsService")
+	@Resource(name = "commentsService")
 	CommentsService cs;
-/*	@Resource(name="loginService")
-	LoginService ls;
-	*/
-
-	public void setBs(BoardService bs) {
-		this.bs = bs;
-	}
-
-	public void setCs(CommentsService cs) {
-		this.cs = cs;
-	}
 
 	// 거래목록에서 글 누르면 상세페이지로 넘어감
 	// bno를 통하여 db에서 글의 상세정보 가져오기
-	@RequestMapping(value = "/detail",method = RequestMethod.GET)
-	public ModelAndView showDetail(@RequestParam(name="boardNo") int boardNo) {
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public ModelAndView showDetail(@RequestParam(name = "boardNo") int boardNo) {
 		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("dvdto", bs.read(boardNo));
-		mav.addObject("list", cs.read(boardNo));
-		mav.addObject("commentTotal", cs.total(boardNo));
-		mav.setViewName("detail");
-		
-		
-		return mav;
-		// "detail?bno="+bno;
-	}
+			DetailViewDto dto = bs.read(boardNo);
+			dto.setProfilesrc("./data/"+dto.getProfilesrc());
+			mav.addObject("dvdto", dto);
+			mav.addObject("list", cs.read(boardNo));
+			mav.addObject("commentTotal", cs.total(boardNo));
+			mav.setViewName("detail");
+			return mav;
+			// "detail?bno="+bno;
+		}
 
 	// 작성 버튼 누르면 글 작성 정보를 가지고 글 상세페이지로 넘어감
 	@RequestMapping(value = "/writeOk", method = RequestMethod.POST)
@@ -64,7 +54,7 @@ public class BoardController {
 		System.out.println("writeOk 진입");
 		BoardDto bdto= new BoardDto();
 		String writer = (String) ss.getAttribute("id");//writer에 세션에서 아이디 받아와서 저장
-		String loc = address+" "+address2+" (우)"+postCode;
+		String loc = address+" "+address2+" "+postCode;
 
 		
 		
@@ -93,33 +83,62 @@ public class BoardController {
 		
 		System.out.println();
 		
-		
+		bs.insertOne(bdto);
 		//임력후 다시 리스트를 출력시킨다.
-		return null;
+		return "redirect:/board";
 		// "detail?bno="+bno;
 	}
 
-	// 유저 사진을 클릭하면 유저 상세페이지로 넘어감
-	// 유저 id를 가지고 가서 db에서 유저 상세페이지 가져오기
-	// 자기 페이지가 아닐 경우 휴대폰번호와 이름은 일정부분 필터링(성**, 0101234****)
-	@RequestMapping("/userDetail")
-	public ModelAndView userDetail(HttpSession ss ) {
-		boolean isLogin = (boolean)ss.getAttribute("isLogin");
-		
-		if(!isLogin) {
-			//로그아웃상태일 경우 로그인화면으로 이동
-			return new ModelAndView("redirect:/login","isAccess",true);
-		}else{
-			return new ModelAndView("userDetail");
-		}
-		// "userDetail?id="+id
-	}
-	
+
 	@RequestMapping("/commentDelete")
-	public String userDetail2(@RequestParam(name = "commentNo") int commentNo,
+	public String commentDel(@RequestParam(name = "commentNo") int commentNo,
 			@RequestParam(name = "boardNo") int boardNo) {
 		cs.commentDel(commentNo);
 		return "redirect:detail?boardNo=" + boardNo;
 		// "userDetail?id="+id
 	}
+
+	@RequestMapping("/writecomments")
+	public String commentIn(@RequestParam(name = "comments") String comments,
+			@RequestParam(name = "boardNo") int boardNo, @RequestParam(name = "id") String id) {
+		CommentsDto dto = new CommentsDto();
+		dto.setBoardNo(boardNo);
+		dto.setContents(comments);
+		dto.setWriter(id);
+		cs.commentWrite(dto);
+
+		return "redirect:detail?boardNo=" + boardNo;
+	}
+	@RequestMapping("/deleteBoard")
+	public String deleteOne(@RequestParam(name="boardNo") int boardNo) {
+		bs.deleteOne(boardNo);
+		return "redirect:board";
+	}
+	
+	@RequestMapping("/modifyBoard")
+	public ModelAndView modifyBoard(@RequestParam(name="boardNo") int boardNo) {
+		String[] loc = new String[3];
+		ModelAndView mav = new ModelAndView();
+		DetailViewDto dvdto = bs.read(boardNo);
+		if(dvdto.getLoc().contains(" ")) {
+			loc=dvdto.getLoc().split(" ");			
+		}else {
+			//	★이 포함되어있지 않은 샘플데이터 처리
+			loc[0]="테";
+			loc[1]="스";
+			loc[2]="트";
+		}
+		
+		mav.addObject("dvdto", dvdto);
+		
+		System.out.println(loc[0]);
+		System.out.println(loc[1]);
+		System.out.println(loc[2]);
+		mav.addObject("sample6_address1",loc[0]);
+		mav.addObject("sample6_address2",loc[1]);
+		mav.addObject("sample6_postcode", loc[2]);
+		mav.setViewName("modifyForm");
+		return mav;
+	}
+
 }

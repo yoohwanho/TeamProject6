@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,6 +49,14 @@
 		}
 		
 	})
+	
+	$(function(){
+		("${postPic}").on("click", function(){
+			$.post("imgPutForm3");
+		})
+	})
+	
+	
 </script>
 </head>
 
@@ -100,69 +110,71 @@
 		<div align="center">
 			<h1>프로필 수정</h1>
 			<div class="container">
-			<form action="modify">
+			<form:form action="modify" method="post" id="postModify"
+			enctype="multipart/form-data" commandName="uploadFile">
 			<!-- 수정 버튼을 누르면 userDetail.jsp로 이동  -->
 			<table class="table">
+			
 						<tr>
 							<th>id</th>
-							<td colspan="2">${dto.memberId}</td>
-							<input type="hidden" name="memberId" value="${dto.memberId }" />
+							<td colspan="2">${mdto.memberId}
+							<input type="hidden" name="memberId" value="${mdto.memberId }" />
+							</td>
+							
 						</tr>
 						<tr>
 							<th>pw</th>
-							<td colspan="2"><input type="password" name="memberPwd" value="${dto.memberPwd }"/></td>
+							<td colspan="2"><input type="password" name="memberPwd" value="${mdto.memberPwd }"/></td>
 						</tr>
 						<tr>
 							<th>이름</th>
-							<td><input type="text" name="memberName" id="" value="${dto.memberName }"/></td>
+							<td><input type="text" name="memberName" id="" value="${mdto.memberName }"/></td>
 						</tr>
 						<tr>
 							<th>휴대폰</th>
 							<td colspan="2"><input type="text" name="phone"
-								placeholder="'-'없이 입력해주세요." value="${dto.phone}"/></td>
+								placeholder="'-'없이 입력해주세요." value="${mdto.phone}"/></td>
 						</tr>
 
 						<tr>
 							<th>성별</th>
 							<td colspan="2">
 								<c:choose>
-								<c:when test="${dto.gender }==male">
+								<c:when test="${mdto.gender eq 'male'}">
 								<input type="radio" name="gender" id="male" value="male" checked="checked" />남자
-								</c:when>
-								<c:when test="${dto.gender }!=male">
-								<input type="radio" name="gender" id="male" value="male" />남자
-								</c:when>
-								
-								</c:choose>
 								<input type="radio" name="gender" id="female" value="female"/>여자
+								</c:when>
+								<c:when test="${mdto.gender eq 'female' }">
+								<input type="radio" name="gender" id="male" value="male" />남자
+								<input type="radio" name="gender" id="female" value="female" checked="checked"/>여자								
+								</c:when>
+								</c:choose>
 								</td>
 								
 						</tr>
 						<tr>
 							<th>사진 등록</th>
 							<!-- ${filePath }-->
-							<td><img src="./img/defaultman.png" alt="default" width="50"
-								height="50" id="imgF" /></td>
-							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
-							<td><a href="imgPutForm3">사진올리기</a>
-							<input type="hidden" name="filePath" value="${dto.filePath}"/>
-
+							<td colspan="2">
+							<input type="file" name="file" id="" />
+							
 							</td>
 						</tr>
 						
 						<tr>
 							<th>자기 소개</th>
-							<td><textarea name="contents" id="contents" cols="50" rows="5">${dto.contents }</textarea></td>
+							<td><textarea name="contents" id="contents" cols="50" rows="5">${mdto.contents }</textarea></td>
 						</tr>
 
 						<tr>
-							<td colspan="3"><input type="submit" value="수정완료" /> 
+							<td colspan="3"><input type="submit" value="수정완료" id="goModify"/> 
 							
 								<input type="button" value="취소" id="btn" /></td>
 						</tr>
-						</div>
+					
 					</table>
-			</form>
+					
+			</form:form>
 			</div>
 		</div>
 	</section>
@@ -187,7 +199,7 @@
 					</p>
 					<ul class="list-unstyled">
 						<li><i class="fa fa-phone fa-fw"></i> (033) 123-4567</li>
-						<li><i class="fa fa-envelope-o fa-fw"></i>acorn@google.com</a></li>
+						<li><i class="fa fa-envelope-o fa-fw"></i>acorn@google.com</li>
 					</ul>
 					<hr class="small">
 					<p class="text-muted">Copyright &copy; Your Website 2014</p>

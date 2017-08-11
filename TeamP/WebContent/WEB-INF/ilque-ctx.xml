@@ -37,6 +37,7 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="uploadTempDir" value="/WEB-INF/tmp/" />
+		<property name="maxUploadSize" value="104857600"></property>
 	</bean>
 	
 	<mvc:default-servlet-handler />

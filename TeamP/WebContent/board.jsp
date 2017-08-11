@@ -94,23 +94,21 @@
 		class="fa fa-bars"></i></a>
 	<nav id="sidebar-wrapper">
 		<ul class="sidebar-nav">
-			<a href="#" id="menu-close"
-				class="btn btn-light btn-lg pull-right toggle"><i
-				class="fa fa-times"></i></a>
-			<li><a href="main"><h2>
-						<c:choose>
-							<c:when test="${isLogin }">
-					${mdto.memberName }님					
+			<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+			<li><a href="main">			
+			<c:choose>
+				<c:when test="${isLogin }">
+					<h2>${id}님</h2>					
 				</c:when>
-							<c:otherwise>
-					로그인하세요
+				<c:otherwise>
+					<h2>로그인하세요</h2>
 				</c:otherwise>
-						</c:choose>
-					</h2></a></li>
+			</c:choose>
+			</a></li>
 			<c:choose>
 				<c:when test="${isLogin }">
 					<li><a href="logout">로그아웃</a></li>
-					<li><a href="myPage">마이페이지</a></li>
+					<li><a href="myPage?id=${id }">마이페이지</a></li>					
 				</c:when>
 				<c:otherwise>
 					<li><a href="login">로그인</a></li>
@@ -129,7 +127,7 @@
 			<a href="main"><img src="./img/logo1.png" alt="logo" width="50"
 				height="50" /></a>
 			<!-- Trigger the modal with a button -->
-			<button type="searchButton" class="btn btn-info btn-lg"
+			<button type="searchButton" class="btn btn btn-lg"
 				data-toggle="modal" data-target="#myModal">
 				<img src="./img/search.png" alt="search" width="30" height="30" />
 			</button>
@@ -142,44 +140,8 @@
 	<!-- section1 -->
 	<section>
 		<div class="container">
-			<div class="filter">
-				<form action="board">
-					<table class="miniTable">
-
-						<tr>
-							<td><label><input type="radio" name="optionJob"
-									value="일감">일감</label></td>
-							<td><label><input type="radio" name="optionJob"
-									value="일손">일손</label></td>
-							<td><label><input type="radio" name="optionJob"
-									value="전체">전체</label></td>
-						</tr>
-						<tr>
-							<td><label><input type="radio" name="optionGender"
-									value="여자">여자</label></td>
-							<td><label><input type="radio" name="optionGender"
-									value="남자">남자</label></td>
-							<td><label><input type="radio" name="optionGender"
-									value="무관">무관</label></td>
-						</tr>
-						<tr>
-							<td><input type="text" class="val" name="minVal"
-								placeholder="0" /></td>
-
-							<td><input type="text" class="val" name="maxVal"
-								placeholder="100000" /></td>
-							<td><input type="submit" value="검색" /></td>
-						</tr>
-					</table>
-				</form>
-			</div>
-
-
 			<!-- 페이징처리할 구간 -->
 			<div class="table-responsive" align="center">
-
-
-
 				<table class="table">
 					<c:forEach var="list" items="${list }">
 						<tr>
@@ -187,7 +149,6 @@
 								src="./img/defaultman.png" alt="userPic" height="50" width="50" /></td>
 							<td class="type">${list.category }</td>
 							<td class="title" colspan="2"><a
-								
 								href="detail?boardNo=${list.boardNo}">${list.title}</a></td>
 						</tr>
 						<tr>
@@ -304,7 +265,7 @@
 					</p>
 					<ul class="list-unstyled">
 						<li><i class="fa fa-phone fa-fw"></i> (033) 123-4567</li>
-						<li><i class="fa fa-envelope-o fa-fw"></i>acorn@google.com</a></li>
+						<li><i class="fa fa-envelope-o fa-fw"></i>acorn@google.com</li>
 					</ul>
 					<hr class="small">
 					<p class="text-muted">Copyright &copy; Your Website 2014</p>

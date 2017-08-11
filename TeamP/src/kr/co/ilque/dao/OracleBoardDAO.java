@@ -43,4 +43,19 @@ public class OracleBoardDAO {
 
 	}
 
+	public void insertOne(BoardDto bdto) {
+		// TODO Auto-generated method stub
+		ss.insert("kr.co.ilque.board.insertOne",bdto);
+	}
+
+	public void deleteOne(int boardNo) {
+		ss.delete("kr.co.ilque.board.deleteOne",boardNo);
+		
+	}
+
+	public void modifyOk(BoardDto bdto) {
+		ss.update("kr.co.ilque.board.updateOne",bdto);
+		
+	}
+
 }

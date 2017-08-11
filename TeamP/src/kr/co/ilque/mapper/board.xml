@@ -61,9 +61,20 @@
 	</select>
 	<insert id="insertOne" parameterType="bdto">
 		insert into board
-		values
-		(board_seq,{#category},{#title})
+		values(board_seq.nextval,#{category},#{title},#{contents},
+		#{writer},0,#{loc},#{time},#{phone},#{reward},null,'거래대기',sysdate)
 	</insert>
+	<delete id="deleteOne">
+		DELETE board
+		WHERE boardno = #{boardNo}
+	</delete>
+	<update id="updateOne" parameterType="bdto">
+		UPDATE board set
+		category = #{category}, title=#{title}
+		,contents=#{contents},loc=#{loc},
+		time=#{time},phone=#{phone},reward=#{reward}
+		WHERE boardNo=#{boardNo}
+	</update>
 </mapper>
 
 

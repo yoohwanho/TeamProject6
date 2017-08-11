@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 		<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,7 +102,8 @@
 	<section>
 		<div align="center">
 			<h1>회원가입</h1>
-			<form action="login" method="post" id="joinForm">
+			<form:form action="login" method="post" id="joinForm"
+			enctype="multipart/form-data" commandName="uploadFile">
 				<div class="container">
 					<table class="table">
 						<tr>
@@ -152,11 +155,9 @@
 						<tr>
 							<th>사진 등록</th>
 							<!-- ${filePath }-->
-							<td><img src="./img/defaultman.png" alt="default" width="50"
-								height="50" id="imgF" /></td>
+							<td><input type="file" name="file" id="" /></td>
 							<!-- 현재  default이미지 파일 선택후 파일이미지로 대체할 예정 -->
-							<td><a href="imgPutForm">사진올리기</a>
-							<input type="hidden" name="filePath" value="${filePath}"/>
+						
 							
 
 							</td>
@@ -172,9 +173,10 @@
 							<!-- 회원가입 버튼을 누르면 로그인 페이지로 넘어가서 회원 가입 성공창이 뜬다.  -->
 								<input type="button" value="취소" id="btn" /></td>
 						</tr>
-						</div>
+						
 					</table>
-			</form>
+					</div>
+			</form:form>
 		</div>
 	</section>
 	<!-- section1 end -->
