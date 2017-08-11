@@ -109,8 +109,7 @@ public class BoardController {
 	@RequestMapping("/modifyOk")
 	public String modifyOk(@ModelAttribute("dvdto") DetailViewDto dvdto,
 			@RequestParam("sample6_postcode") String postCode, @RequestParam("sample6_address") String address,
-			@RequestParam("sample6_address2") String address2,
-	@RequestParam("boardNo")int boardNo){
+			@RequestParam("sample6_address2") String address2, @RequestParam("boardNo") int boardNo) {
 		/*
 		 * UPDATE board set category = #{category}, title=#{title}
 		 * ,contents=#{contents},loc=#{loc},
@@ -121,8 +120,8 @@ public class BoardController {
 		bdto.setTitle(dvdto.getTitle());
 		bdto.setWriter(dvdto.getWriter());
 		bdto.setContents(dvdto.getContents());
-		bdto.setLoc(address + address2+postCode);
-		
+		bdto.setLoc(address + address2 + postCode);
+
 		bdto.setPhone(dvdto.getPhone());
 		bdto.setReward(dvdto.getReward());
 		bdto.setBoardNo(dvdto.getBoardNo());
