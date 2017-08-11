@@ -28,36 +28,27 @@ import kr.co.ilque.controller.UploadFile;
 public class MemberController {
 	@Resource(name = "userService")
 	UserService us;
-	
-	@Resource(name="loginService")
+
+	@Resource(name = "loginService")
 	LoginService ls;
 
 	public void setUs(UserService us) {
 		this.us = us;
 	}
-	
-	
 
 	public void setLs(LoginService ls) {
 		this.ls = ls;
 	}
 
-
-
 	// [�닔�젙]踰꾪듉 �늻瑜대㈃ �젙蹂� �닔�젙�븯湲�
 	// id媛믪쑝濡� 湲곗〈 �젙蹂대�� 遺덈윭���꽌 誘몃━ 梨꾩썙�넃怨� �닔�젙�븳 媛믪쓣 db�뿉 update�븳�떎
 	// �옉�꽦 �썑�뿏 留덉씠�럹�씠吏�濡� �떎�떆 �씠�룞.@RequestMapping("/modify")
-	@RequestMapping(value="/modifyForm", method=RequestMethod.POST)
-	public ModelAndView goModifyForm(
-			@RequestParam("memberId") String memberId,
-			@RequestParam("memberPwd") String memberPwd,
-			@RequestParam("memberName") String memberName,
-			@RequestParam("profileSrc") String profileSrc,
-			@RequestParam("phone") String phone,
-			@RequestParam("contents") String contents,
-			@RequestParam("gender") String gender			
-			) {
-		
+	@RequestMapping(value = "/modifyForm", method = RequestMethod.POST)
+	public ModelAndView goModifyForm(@RequestParam("memberId") String memberId,
+			@RequestParam("memberPwd") String memberPwd, @RequestParam("memberName") String memberName,
+			@RequestParam("profileSrc") String profileSrc, @RequestParam("phone") String phone,
+			@RequestParam("contents") String contents, @RequestParam("gender") String gender) {
+
 		MemberDto dto = new MemberDto();
 		dto.setMemberId(memberId);
 		dto.setMemberPwd(memberPwd);
@@ -67,25 +58,22 @@ public class MemberController {
 		dto.setPhone(phone);
 		dto.setContents(contents);
 		ls.pickMemberInfo(dto);
-		
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mdto", dto);
 		mav.setViewName("userModify");
-		
-		
+
 		return mav;
 	}
 
-	@RequestMapping(value="/modify",method=RequestMethod.POST)
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public ModelAndView modify(@RequestParam("memberId") String memberId, @RequestParam("memberPwd") String memberPwd,
 			@RequestParam("memberName") String memberName, @RequestParam("phone") String phone,
 			@RequestParam("gender") String gender, @RequestParam("filePath") String profileSrc,
-			@RequestParam("contents") String contents,
-			@ModelAttribute("uploadFile")UploadFile file, 
-			HttpServletRequest req,
-			BindingResult result
-			
-			) {
+			@RequestParam("contents") String contents, @ModelAttribute("uploadFile") UploadFile file,
+			HttpServletRequest req, BindingResult result
+
+	) {
 
 		MemberDto dto = new MemberDto();
 		dto.setMemberId(memberId);
@@ -96,8 +84,8 @@ public class MemberController {
 		dto.setPhone(phone);
 		dto.setContents(contents);
 		MultipartFile mfile = file.getFile();
-		//vaildate 추후 추가 가능
-		
+		// vaildate 추후 추가 가능
+
 		HttpSession hs = req.getSession();
 		ServletContext application = hs.getServletContext();
 
@@ -109,10 +97,10 @@ public class MemberController {
 		String fileName = mfile.getOriginalFilename();
 
 		// 파일객체생성
-		File f = new File(filePath + "/" +memberId+fileName);
-		//경로에있는 파일에 mfile을 복사해
-		//파일이름 겹칠수도 있자나...파일 이름은 id+파일이름으로 한다.
-		
+		File f = new File(filePath + "/" + memberId + fileName);
+		// 경로에있는 파일에 mfile을 복사해
+		// 파일이름 겹칠수도 있자나...파일 이름은 id+파일이름으로 한다.
+
 		try {
 			mfile.transferTo(f);
 		} catch (IllegalStateException e) {
@@ -122,12 +110,12 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		dto.setProfileSrc(f.getName());
 		us.updateOne(dto);
 		ls.pickMemberInfo(dto);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("mdto",dto);
+		mav.addObject("mdto", dto);
 		mav.setViewName("userDetail");
 
 		return mav;

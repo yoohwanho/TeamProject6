@@ -73,7 +73,7 @@ public class BoardController {
 
 		bs.insertOne(bdto);
 		// 임력후 다시 리스트를 출력시킨다.
-		return "board";
+		return "redirect:board";
 		// "detail?bno="+bno;
 	}
 

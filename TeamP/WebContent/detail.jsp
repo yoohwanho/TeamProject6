@@ -46,24 +46,21 @@
 		class="fa fa-bars"></i></a>
 	<nav id="sidebar-wrapper">
 		<ul class="sidebar-nav">
-			<a id="menu-close" href="#"
-				class="btn btn-light btn-lg pull-right toggle"><i
-				class="fa fa-times"></i></a>
-			<li><a href="main"><h2>
-						<c:choose>
-							<c:when test="${isLogin }">
-							
-					${id}님					
+			<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+			<li><a href="main">			
+			<c:choose>
+				<c:when test="${isLogin }">
+					<h2>${id}님</h2>					
 				</c:when>
-							<c:otherwise>
-					로그인하세요
+				<c:otherwise>
+					<h2>로그인하세요</h2>
 				</c:otherwise>
-						</c:choose>
-					</h2></a></li>
+			</c:choose>
+			</a></li>
 			<c:choose>
 				<c:when test="${isLogin }">
 					<li><a href="logout">로그아웃</a></li>
-					<li><a href="myPage">마이페이지</a></li>
+					<li><a href="myPage?id=${id }">마이페이지</a></li>					
 				</c:when>
 				<c:otherwise>
 					<li><a href="login">로그인</a></li>
@@ -73,7 +70,6 @@
 			<li><a href="write">해주세요/해드립니다</a></li>
 			<li><a href="board">거래목록</a></li>
 		</ul>
-
 	</nav>
 	<!-- Navigation END -->
 
@@ -107,7 +103,7 @@
 						<td><h5>작성일 : ${dvdto.regdate}</h5></td>
 						<td><c:choose>
 								<c:when test="${id eq dvdto.writer}">
-									<a href="modify?"></a><button type="submit" class="btn btn-default" id="">
+									<a href="myPage"></a><button type="button" class="btn btn-default" id="">
 										<h4>내 정보 보기</h4>
 									</button>
 
