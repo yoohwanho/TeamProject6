@@ -20,9 +20,9 @@ public class BoardService implements QuestService {
 		this.dao = dao;
 	}
 
-	public List<BoardDto> leadAll(int startNo, int endNo,String keyword,String category,String gender) {
-		System.out.println("서비스에서 keyword값"+keyword);
-		return dao.selectAll(startNo, endNo,keyword,category,gender);
+	public List<BoardDto> leadAll(int startNo, int endNo, String keyword, String category, String gender) {
+		System.out.println("서비스에서 keyword값" + keyword);
+		return dao.selectAll(startNo, endNo, keyword, category, gender);
 	}
 
 	public int getTotal() {
@@ -41,11 +41,16 @@ public class BoardService implements QuestService {
 
 	public void deleteOne(int boardNo) {
 		dao.deleteOne(boardNo);
-		
+
 	}
 
 	public void modifyOne(BoardDto bdto) {
 		dao.modifyOk(bdto);
-		
+
+	}
+
+	public void updateOne(BoardDto dto) {
+		dao.updateOne(dto);
+
 	}
 }

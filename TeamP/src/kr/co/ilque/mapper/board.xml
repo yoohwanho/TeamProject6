@@ -72,7 +72,7 @@
 		UPDATE board set
 		category = #{category}, title=#{title}
 		,contents=#{contents},loc=#{loc},
-		time=#{time},phone=#{phone},reward=#{reward}
+		phone=#{phone},reward=#{reward}
 		WHERE boardNo=#{boardNo}
 	</update>
 </mapper>
