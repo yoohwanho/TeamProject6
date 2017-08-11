@@ -20,12 +20,14 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.ilque.dto.MemberDto;
 import kr.co.ilque.service.LoginService;
 import kr.co.ilque.service.UserService;
+import kr.co.ilque.controller.FileValidator;
 import kr.co.ilque.controller.UploadFile;
 
 //留덉씠�럹�씠吏��뿉�꽌�쓽 �럹�씠吏� �씠�룞
 
 @Controller
 public class MemberController {
+	FileValidator f;
 	@Resource(name = "userService")
 	UserService us;
 	
@@ -97,7 +99,12 @@ public class MemberController {
 		dto.setContents(contents);
 		MultipartFile mfile = file.getFile();
 		//vaildate 추후 추가 가능
-		
+		f.validate(file,result);
+		if(result.hasErrors()) {
+			System.out.println("여기서끝난다");
+			System.out.println(result.getFieldValue("file"));
+			return new ModelAndView("upload/uploadForm");
+		}
 		HttpSession hs = req.getSession();
 		ServletContext application = hs.getServletContext();
 

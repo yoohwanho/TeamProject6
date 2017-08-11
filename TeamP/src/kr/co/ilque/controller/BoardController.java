@@ -1,8 +1,11 @@
 package kr.co.ilque.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,8 +28,13 @@ public class BoardController {
 	// 거래목록에서 글 누르면 상세페이지로 넘어감
 	// bno를 통하여 db에서 글의 상세정보 가져오기
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public ModelAndView showDetail(@RequestParam(name = "boardNo") int boardNo) {
+	public ModelAndView showDetail(@RequestParam(name = "boardNo") int boardNo,
+			HttpServletRequest req
+			) {
 		ModelAndView mav = new ModelAndView();
+		DetailViewDto dvdto = bs.read(boardNo);
+		ServletContext application =req.getSession().getServletContext();
+		dvdto.setProfilesrc(application.getRealPath("/data")+"/"+dvdto.getProfilesrc());
 			mav.addObject("dvdto", bs.read(boardNo));
 			mav.addObject("list", cs.read(boardNo));
 			mav.addObject("commentTotal", cs.total(boardNo));
