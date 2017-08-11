@@ -46,21 +46,22 @@
 		class="fa fa-bars"></i></a>
 	<nav id="sidebar-wrapper">
 		<ul class="sidebar-nav">
-			<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-			<li><a href="main">			
-			<c:choose>
-				<c:when test="${isLogin }">
-					<h2>${id}님</h2>					
-				</c:when>
-				<c:otherwise>
-					<h2>로그인하세요</h2>
-				</c:otherwise>
-			</c:choose>
+			<a id="menu-close" href="#"
+				class="btn btn-light btn-lg pull-right toggle"><i
+				class="fa fa-times"></i></a>
+			<li><a href="main"> <c:choose>
+						<c:when test="${isLogin }">
+							<h2>${id}님</h2>
+						</c:when>
+						<c:otherwise>
+							<h2>로그인하세요</h2>
+						</c:otherwise>
+					</c:choose>
 			</a></li>
 			<c:choose>
 				<c:when test="${isLogin }">
 					<li><a href="logout">로그아웃</a></li>
-					<li><a href="myPage?id=${id }">마이페이지</a></li>					
+					<li><a href="myPage?id=${id }">마이페이지</a></li>
 				</c:when>
 				<c:otherwise>
 					<li><a href="login">로그인</a></li>
@@ -103,54 +104,60 @@
 						<td><h5>작성일 : ${dvdto.regdate}</h5></td>
 						<td><c:choose>
 								<c:when test="${id eq dvdto.writer}">
-									<a href="myPage"></a><button type="button" class="btn btn-default" id="">
-										<h4>내 정보 보기</h4>
-									</button>
+									<a href="myPage?id=${id }">
+										<button type="button" class="btn btn-default" id="">
+											<h4>내 정보 보기</h4>
+										</button>
+									</a>
 
 									<input type="hidden" name="id" value="${id}" />
 								</c:when>
 								<c:otherwise>
-									<a href="myPage?id=${dvdto.writer}"><button type="button" class="btn btn-default" id="">
-										<h4>작성자 정보 보기</h4>
-									</button></a>
+									<a href="myPage?id=${dvdto.writer}"><button type="button"
+											class="btn btn-default" id="">
+											<h4>작성자 정보 보기</h4>
+										</button></a>
 								</c:otherwise>
 							</c:choose></td>
 					</tr>
 					<tr>
-						<td><b>기간 : ${dvdto.time}</b></td>
-						<td><c:choose>
-								<c:when test="${id eq dvdto.writer}">
-									<a href="modifyBoard?boardNo=${dvdto.boardNo}"><button type="submit" class="btn btn-default" id="">
-										<h4>글 수정하기</h4>
-									</button></a>
+						<c:choose>
+							<c:when test="${id eq dvdto.writer}">
+								<td><b>기간 : ${dvdto.time}</b></td>
+								<td><a href="modifyBoard?boardNo=${dvdto.boardNo}"><button
+											type="submit" class="btn btn-default" id="">
+											<h4>글 수정하기</h4>
+										</button></a> <input type="hidden" name="id" value="${id}" /></td>
+							</c:when>
+							<c:otherwise>
+								<td colspan="2"><b>기간 : ${dvdto.time}</b></td>
 
-									<input type="hidden" name="id" value="${id}" />
-								</c:when>
-								<c:otherwise>
+							</c:otherwise>
+						</c:choose>
 
-								</c:otherwise>
-							</c:choose></td>
 					</tr>
 					<tr>
 						<c:if test="${dvdto.category == '구인'}">
-							<td>구인자 평점: ${dvdto.sellgrade}</td>
+							<td colspan="2"><b>구인자 평점: ${dvdto.sellgrade}</b></td>
 						</c:if>
 						<c:if test="${dvdto.category == '구직'}">
-							<td>구직자 평점:${dvdto.buygrade}</td>
-						</c:if>
-						<td><c:choose>
+							<c:choose>
 								<c:when test="${id eq dvdto.writer}">
-								<a href="deleteBoard?boardNo=${dvdto.boardNo}">
-									<button type="submit" class="btn btn-default" id="">
-										<h4>글 삭제하기</h4>
-									</button>
-									</a>
-									
+									<td><b>구직자 평점:${dvdto.buygrade}</b></td>
+									<td><a href="deleteBoard?boardNo=${dvdto.boardNo}">
+											<button type="submit" class="btn btn-default" id="">
+												<h4>글 삭제하기</h4>
+											</button>
+									</a></td>
 								</c:when>
 								<c:otherwise>
+									<td colspan="2"><b>구직자 평점:${dvdto.buygrade}</b></td>
 
 								</c:otherwise>
-							</c:choose></td>
+							</c:choose>
+
+						</c:if>
+
 					</tr>
 					<tr>
 						<td><h4>퀘스트 보상 : ${dvdto.reward}</h4></td>
@@ -233,7 +240,8 @@
 							<td colspan="3">${cs.contents}</td>
 							<td>${cs.regdate}</td>
 							<td><c:if test="${id eq cs.writer}">
-									<a href="commentDelete?commentNo=${cs.commentNo}&boardNo=${dvdto.boardNo}">
+									<a
+										href="commentDelete?commentNo=${cs.commentNo}&boardNo=${dvdto.boardNo}">
 										<button type="button" class="btn btn-default">삭제</button>
 									</a>
 								</c:if></td>
