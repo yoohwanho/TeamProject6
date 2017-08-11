@@ -15,7 +15,16 @@
 		ORDER BY boardno DESC )
 		WHERE ROWNUM &lt;= #{endNo} )
 		WHERE RN
-		&gt;= #{startNo}
+		&gt;=
+		#{startNo}
+		<if test="keyword!=null">and (title like #{keyword}
+			or contents like #{keyword})
+		</if>
+		<if test="gender!=null">and title like #{gender}
+		</if>
+		<if test="category!=null">and title like #{category}
+		</if>
+
 	</select>
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(*) cnt from board
@@ -75,7 +84,8 @@
 
 
 
-
+<!-- <if test="keyword!='fuck'">and (title like '%#{keyword, jdbcType=VARCHAR}%' 
+	or contents like '%#{keyword, jdbcType=VARCHAR}%') </if> -->
 
 
 

@@ -19,4 +19,13 @@ public class OracleKeywordsDAO {
 	public List<KeywordsDto> showTop10(){
 		return ss.selectList("kr.co.ilque.keyword.showTop10");
 	}
+	public void insertOne(String keyword) {
+		ss.insert("kr.co.ilque.keyword.insertOne",keyword);
+	}
+	public List<KeywordsDto> check(String keyword){
+		return ss.selectList("kr.co.ilque.keyword.check",keyword);
+	}
+	public void updateOne(String keyword) {
+		ss.update("kr.co.ilque.keyword.updateOne",keyword);
+	}
 }

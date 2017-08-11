@@ -55,7 +55,8 @@
 					if ($("#searchText").val() == "") {
 						alert("검색어를 입력해주세요");
 					} else {
-						$(location).attr('href',
+						$(location
+								).attr('href',
 								"board?keyword=" + $("#searchText").val());
 					}
 				})

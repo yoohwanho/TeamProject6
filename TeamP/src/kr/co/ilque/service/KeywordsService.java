@@ -19,4 +19,14 @@ public class KeywordsService implements QuestService{
 		return dao.showTop10();
 	}
 	
+	public void add(String keyword) {
+		dao.insertOne(keyword);
+	}
+	public List<KeywordsDto> check(String keyword){
+		return dao.check(keyword);
+	}
+	public void update(String keyword) {
+		dao.updateOne(keyword);
+	}
+	
 }
