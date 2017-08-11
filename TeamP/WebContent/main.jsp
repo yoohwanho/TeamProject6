@@ -67,6 +67,12 @@
 	background-image: none;
 	color: #f4511e;
 }
+a:link{
+	color: white;
+}
+a:visited {
+	color: #24BDAD;
+}
 </style>
 </head>
 
@@ -113,16 +119,18 @@
 
 
 			<!-- 헤더에서 검색텍스트에어리어와 검색버튼 -->
-			<input type="search" width="50" height="50" id="searchText"
-				placeholder="Search..."
-				style="width: 150px; height: 36px; margin-top: 5px;" />
-			<button id="searchButton">
-				<img src="./img/search.png" alt="search" width="30" height="30" />
-			</button>
+			<!--  <div class="input-group" style="display:inline">
+    <input type="text" class="form-control" style="width:300px" placeholder="Search">
+    <div class="input-group-btn" style="float:left">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
 			<a href="board"> <img src="./img/listIcon.png" alt="listIcon"
 				width="50" height="40" style="margin-top: 2px" />
 			</a>
-		</div>
+		</div> -->
 
 	</header>
 	<!-- header end -->

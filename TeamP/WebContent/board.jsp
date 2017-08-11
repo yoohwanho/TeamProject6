@@ -129,7 +129,7 @@
 			<a href="main"><img src="./img/logo1.png" alt="logo" width="50"
 				height="50" /></a>
 			<!-- Trigger the modal with a button -->
-			<button type="searchButton" class="btn btn-info btn-lg"
+			<button type="searchButton" class="btn btn btn-lg"
 				data-toggle="modal" data-target="#myModal">
 				<img src="./img/search.png" alt="search" width="30" height="30" />
 			</button>
