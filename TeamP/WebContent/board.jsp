@@ -35,6 +35,35 @@
 			$("#sidebar-wrapper").toggleClass("active");
 		});
 	});
+	$(function() {
+		$("#searchBtn").on(
+				"click",
+				function() {
+					console.log("서치버튼눌림");
+					var category = $("input:radio[name=category]:checked")
+							.val();
+					var keyword = $("#searchText").val();
+					if (category != "전체") {
+						if (keyword != "") {
+							var url = "board" + "?category=" + category
+									+ "&keyword=" + keyword;
+						}
+						if (keyword == "") {
+							var url = "board" + "?category=" + category;
+						}
+					} else {
+						if (keyword != "") {
+							var url = "board" + "?keyword=" + keyword;
+						}
+						if (keyword == "") {
+							var url = "board";
+						}
+					}
+
+					$(location).attr('href', url);
+				})
+
+	})
 </script>
 <style type="text/css">
 .filter {
@@ -94,21 +123,22 @@
 		class="fa fa-bars"></i></a>
 	<nav id="sidebar-wrapper">
 		<ul class="sidebar-nav">
-			<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-			<li><a href="main">			
-			<c:choose>
-				<c:when test="${isLogin }">
-					<h2>${id}님</h2>					
-				</c:when>
-				<c:otherwise>	
-					<h2>로그인하세요</h2>
-				</c:otherwise>
-			</c:choose>
+			<a id="menu-close" href="#"
+				class="btn btn-light btn-lg pull-right toggle"><i
+				class="fa fa-times"></i></a>
+			<li><a href="main"> <c:choose>
+						<c:when test="${isLogin }">
+							<h2>${id}님</h2>
+						</c:when>
+						<c:otherwise>
+							<h2>로그인하세요</h2>
+						</c:otherwise>
+					</c:choose>
 			</a></li>
 			<c:choose>
 				<c:when test="${isLogin }">
 					<li><a href="logout">로그아웃</a></li>
-					<li><a href="myPage?id=${id }">마이페이지</a></li>					
+					<li><a href="myPage?id=${id }">마이페이지</a></li>
 				</c:when>
 				<c:otherwise>
 					<li><a href="login">로그인</a></li>
@@ -198,24 +228,24 @@
 								<h4 class="modal-title">검색키워드</h4>
 							</div>
 							<div class="modal-body">
-							<form action=""></form>
+								<form action=""></form>
 								<table class="miniTable">
 
 									<tr>
 										<td><label><input type="radio" name="category"
-												value="일감">일감</label></td>
+												value="구인">일감</label></td>
 										<td><label><input type="radio" name="category"
-												value="일손">일손</label></td>
+												value="구직">일손</label></td>
 										<td><label><input type="radio" name="category"
 												value="전체">전체</label></td>
 									</tr>
 									<tr>
-										<td><label><input type="radio"
-												name="gender" value="여자">여자</label></td>
-										<td><label><input type="radio"
-												name="gender" value="남자">남자</label></td>
-										<td><label><input type="radio"
-												name="gender" value="무관">무관</label></td>
+										<td><label><input type="radio" name="gender"
+												value="여자">여자</label></td>
+										<td><label><input type="radio" name="gender"
+												value="남자">남자</label></td>
+										<td><label><input type="radio" name="gender"
+												value="무관">무관</label></td>
 									</tr>
 									<tr>
 										<td><input type="text" class="val" name="minVal"
@@ -228,16 +258,15 @@
 								</table>
 							</div>
 							<div class="modal-footer">
-								<form>
-									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Search">
-										<div class="input-group-btn">
-											<button class="btn btn-default" type="submit">
-												<i class="glyphicon glyphicon-search"></i>
-											</button>
-										</div>
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Search"
+										id="searchText" />
+									<div class="input-group-btn">
+										<button class="btn btn-default" id="searchBtn">
+											<i class="glyphicon glyphicon-search"></i>
+										</button>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -28,6 +28,7 @@ public class OracleBoardDAO {
 		se.setCategory(category);
 		se.setGender(gender);
 		System.out.println("dao에서 키워드값 :"+keyword);
+		System.out.println("dao에서 카테고리값 : " +category);
 		List<BoardDto> list = ss.selectList("kr.co.ilque.board.selectAll", se);
 		System.out.println(list);
 		return list;

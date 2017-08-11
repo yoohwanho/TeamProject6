@@ -12,12 +12,12 @@
 		FROM (SELECT
 		boardno,category,title,contents,writer,hits,loc,time,phone,reward,applicant,status,regdate
 		FROM BOARD where 1=1
-		<if test="keyword!=null">and (title like #{keyword}
+		<if test="keyword!=null"> and (title like #{keyword}
 			or contents like #{keyword})
 		</if>
-		<if test="gender!=null">and title like #{gender}
+		<if test="gender!=null">and gender like #{gender}
 		</if>
-		<if test="category!=null">and title like #{category}
+		<if test="category!=null">and category like #{category}
 		</if>
 		ORDER BY boardno DESC )
 		WHERE ROWNUM &lt;= #{endNo} )
