@@ -29,7 +29,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 			DetailViewDto dto = bs.read(boardNo);
 			dto.setProfilesrc("./data/"+dto.getProfilesrc());
-			mav.addObject("dvdto", bs.read(boardNo));
+			mav.addObject("dvdto", dto);
 			mav.addObject("list", cs.read(boardNo));
 			mav.addObject("commentTotal", cs.total(boardNo));
 			mav.setViewName("detail");
