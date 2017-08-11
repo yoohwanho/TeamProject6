@@ -25,7 +25,6 @@ public class OracleBoardDAO {
 		se.setEndNo(endNo);
 		se.setStartNo(startNo);
 		List<BoardDto> list =ss.selectList("kr.co.ilque.board.selectAll",se);
-		ss.close();
 		return list;
 	}
 
