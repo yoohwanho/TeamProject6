@@ -1,7 +1,6 @@
 package kr.co.ilque.controller;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -131,26 +130,29 @@ public class mainController {
 	
 	//	[留덉씠�럹�씠吏�]
 	@RequestMapping("/myPage")
-	public ModelAndView showMyPage( HttpSession ss,@RequestParam("id")String id,
-			HttpServletRequest req) {
+	public ModelAndView showMyPage( HttpSession ss) {
 		boolean isLogin = (boolean)ss.getAttribute("isLogin");
 		
 		if(!isLogin) {
+	
 			//濡쒓렇�븘�썐�긽�깭�씪 寃쎌슦 濡쒓렇�씤�솕硫댁쑝濡� �씠�룞
 			return new ModelAndView("login","isAccess",true);
 		}else{
 			//	濡쒓렇�씤 �긽�깭�씪 寃쎌슦 �씠�룞
 			//	硫ㅻ쾭媛앹껜 �깮�꽦
 			MemberDto mdto = new MemberDto();
-			mdto.setMemberId(id);
+			
+			//	session�뿉 ���옣�맂 id瑜� 硫ㅻ쾭媛앹껜�뿉 set
+			if(ss.getAttribute("id")!=null) {
+				mdto.setMemberId((String)ss.getAttribute("id"));			
+			}
 			System.out.println(mdto.getMemberId());
 			//	id媛� ���옣�맂 硫ㅻ쾭媛앹껜濡� 愿��젴 �젙蹂� �떞�븘�삤湲�
 			//	LoginService ls = new LoginService();
 			mdto=ls.pickMemberInfo(mdto);
-			ServletContext application =req.getSession().getServletContext();
-			
 			mdto.setProfileSrc("./data/"+mdto.getProfileSrc());
-			System.out.println(mdto.getProfileSrc());
+			
+			
 			return new ModelAndView("userDetail","mdto",mdto);
 		}
 	}
