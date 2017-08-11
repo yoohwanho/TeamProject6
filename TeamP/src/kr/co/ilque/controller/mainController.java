@@ -130,7 +130,7 @@ public class mainController {
 	
 	//	[留덉씠�럹�씠吏�]
 	@RequestMapping("/myPage")
-	public ModelAndView showMyPage( HttpSession ss) {
+	public ModelAndView showMyPage( HttpSession ss ) {
 		boolean isLogin = (boolean)ss.getAttribute("isLogin");
 		
 		if(!isLogin) {

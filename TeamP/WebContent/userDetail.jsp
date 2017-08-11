@@ -95,26 +95,27 @@
 			<table class="table">
 
 				<tr>
-					<td rowspan="4"><img src="${mdto.profileSrc}" alt="profile"
-						width="100" height="100" /></td>
+					<td rowspan="4" 	width="250px" ><img width="250px" src="${mdto.profileSrc}" alt="profile"
+					/></td>
 					<th>ID</th>
 					<td>${mdto.memberId }</td>
 					<input type="hidden" name="memberId" value="${mdto.memberId}"/>
+					
 				</tr>
 				<tr>
-					<th>휴대폰</tj>
-					<td colspan="2">${mdto.phone}</td>
+					<th>휴대폰</th>
+					<td>${mdto.phone}</td>
 					<input type="hidden" name="phone" value="${mdto.phone}" />
 				</tr>
 				<tr>
 					<th>요청자로서의 평점</th>
-					<td colspan="2">${mdto.sellGrade }/10</td>
+					<td>${mdto.sellGrade }/10</td>
 				
 					<!--  평정 입력 값이 들어가야함  -->
 				</tr>
 				<tr>
 					<th>지원자로서의 평점</th>
-					<td colspan="2">${mdto.buyGrade }/10</td>
+					<td>${mdto.buyGrade }/10</td>
 					<!--  지원자 평점이 들어가야 함  -->
 				</tr>
 
