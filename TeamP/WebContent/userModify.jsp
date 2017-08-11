@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,13 +110,17 @@
 		<div align="center">
 			<h1>프로필 수정</h1>
 			<div class="container">
-			<form action="modify" method="post" id="postModify">
+			<form:form action="modify" method="post" id="postModify"
+			enctype="multipart/form-data" commandName="uploadFile">
 			<!-- 수정 버튼을 누르면 userDetail.jsp로 이동  -->
 			<table class="table">
+			
 						<tr>
 							<th>id</th>
-							<td colspan="2">${mdto.memberId}</td>
+							<td colspan="2">${mdto.memberId}
 							<input type="hidden" name="memberId" value="${mdto.memberId }" />
+							</td>
+							
 						</tr>
 						<tr>
 							<th>pw</th>
@@ -150,13 +156,7 @@
 							<th>사진 등록</th>
 							<!-- ${filePath }-->
 							<td colspan="2">
-							<a href="modifyPic"><input type="file" name="" id="" /></a>
-							<c:if test="${filePath  eq ''}">
-							<input type="hidden" name="filePath" value="./img/defaultman.png"/>
-							</c:if>
-							<c:if test="${filePath  ne ''}">
-							<input type="hidden" name="filePath" value="${filePath}"/>
-							</c:if>
+							<input type="file" name="file" id="" />
 							
 							</td>
 						</tr>
@@ -171,9 +171,10 @@
 							
 								<input type="button" value="취소" id="btn" /></td>
 						</tr>
-						</div>
+					
 					</table>
-			</form>
+					
+			</form:form>
 			</div>
 		</div>
 	</section>
@@ -198,7 +199,7 @@
 					</p>
 					<ul class="list-unstyled">
 						<li><i class="fa fa-phone fa-fw"></i> (033) 123-4567</li>
-						<li><i class="fa fa-envelope-o fa-fw"></i>acorn@google.com</a></li>
+						<li><i class="fa fa-envelope-o fa-fw"></i>acorn@google.com</li>
 					</ul>
 					<hr class="small">
 					<p class="text-muted">Copyright &copy; Your Website 2014</p>

@@ -130,7 +130,7 @@ public class mainController {
 	
 	//	[마이페이지]
 	@RequestMapping("/myPage")
-	public ModelAndView showMyPage( HttpSession ss) {
+	public ModelAndView showMyPage( HttpSession ss,@RequestParam("id")String id) {
 		boolean isLogin = (boolean)ss.getAttribute("isLogin");
 		
 		if(!isLogin) {
@@ -140,11 +140,7 @@ public class mainController {
 			//	로그인 상태일 경우 이동
 			//	멤버객체 생성
 			MemberDto mdto = new MemberDto();
-			
-			//	session에 저장된 id를 멤버객체에 set
-			if(ss.getAttribute("id")!=null) {
-				mdto.setMemberId((String)ss.getAttribute("id"));			
-			}
+			mdto.setMemberId(id);
 			System.out.println(mdto.getMemberId());
 			//	id가 저장된 멤버객체로 관련 정보 담아오기
 			//	LoginService ls = new LoginService();

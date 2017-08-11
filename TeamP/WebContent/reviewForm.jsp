@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,20 +56,20 @@
 			<a id="menu-close" href="#"
 				class="btn btn-light btn-lg pull-right toggle"><i
 				class="fa fa-times"></i></a>
-<li><a href="main"><h2>
-			<c:choose>
-				<c:when test="${isLogin }">
+			<li><a href="main"><h2>
+						<c:choose>
+							<c:when test="${isLogin }">
 					${id}님					
 				</c:when>
-				<c:otherwise>
+							<c:otherwise>
 					로그인하세요
 				</c:otherwise>
-			</c:choose>
-			</h2></a></li>
+						</c:choose>
+					</h2></a></li>
 			<c:choose>
 				<c:when test="${isLogin }">
 					<li><a href="logout">로그아웃</a></li>
-					<li><a href="myPage">마이페이지</a></li>					
+					<li><a href="myPage">마이페이지</a></li>
 				</c:when>
 				<c:otherwise>
 					<li><a href="login">로그인</a></li>
@@ -92,41 +94,38 @@
 	<!-- section1 -->
 	<section>
 		<div align="center">
-			<form action="reviewOk" method="post" id="reviewForm">
+			<form:form action="reviewOk" method="post" id="reviewForm"
+				enctype="multipart/form-data" commandName="uploadFile">
 				<div class="container">
 					<table class="table">
 
 
 						<tr>
 							<th>내용</th>
-							<td>
-								<textarea rows="5" cols="40" name="contents" id="contents"
+							<td><textarea rows="5" cols="40" name="contents"
+									id="contents"
 									placeholder="리뷰는 한번 작성하면 수정할 수 없습니다. 신중하게 작성해주세요."></textarea>
-								<input type="hidden" name="boardNo" value="${boardNo }" />
-							</td>
+								<input type="hidden" name="boardNo" value="${boardNo }" /></td>
 						</tr>
 
 						<tr>
 							<th>평점</th>
-							<td>
-								<input type="number" name="score" id="score" min="0" max="10"/>
-							</td>
+							<td><input type="number" name="score" id="score" min="0"
+								max="10" /></td>
 						</tr>
 						<tr>
 							<th>사진첨부</th>
-							<td><img src="./img/defaultman.png" alt="default" width="50"
-								height="50" id="imgF" name="imgSrc"/><a href="imgPutForm2">사진올리기</a>
-							</td>
+							<td><input type="file" name="file" id="" /></td>
 						</tr>
 						<tr>
-							<td colspan="2">
-								<input type="button" value="작성" id="btnWrite" /> <!-- 작성 버튼을 누르면 detail창으로 넘어간다.  -->
-								<input type="button" value="취소" id="btnCancel" /> <!-- 취소 버튼을 누르면 detail 넘어간다.  -->
+							<td colspan="2"><input type="button" value="작성"
+								id="btnWrite" /> <!-- 작성 버튼을 누르면 detail창으로 넘어간다.  --> <input
+								type="button" value="취소" id="btnCancel" /> <!-- 취소 버튼을 누르면 detail 넘어간다.  -->
 							</td>
 						</tr>
 					</table>
 				</div>
-			</form>
+			</form:form>
 		</div>
 	</section>
 	<!-- section1 end -->
@@ -159,34 +158,32 @@
 		</div>
 	</footer>
 	<!-- Footer END -->
-<script>
-	$(function(){
-		$("#btnWrite").on("click",function(){
-			//	작성 버튼
-			if($("#contents").val()==""){
-				//	내용에 아무것도 입력하지 않았을 때
-				alert("내용을 입력해주세요");				
-			}else{
-				$("#reviewForm").submit();
-			}
-		});
-		$("#btnCancel").on("click",function(){
-			//	취소 버튼
-			if($("#contents").val()!=""){
-				var answer = confirm("변경된 내용이 있습니다. 저장하지 않고 취소합니까?");
-				if(answer){
-					//	취소
-					history.back();					
+	<script>
+		$(function() {
+			$("#btnWrite").on("click", function() {
+				//	작성 버튼
+				if ($("#contents").val() == "") {
+					//	내용에 아무것도 입력하지 않았을 때
+					alert("내용을 입력해주세요");
+				} else {
+					$("#reviewForm").submit();
 				}
-			}else{
-				history.back();
-			}
-		});
-		
-	});
+			});
+			$("#btnCancel").on("click", function() {
+				//	취소 버튼
+				if ($("#contents").val() != "") {
+					var answer = confirm("변경된 내용이 있습니다. 저장하지 않고 취소합니까?");
+					if (answer) {
+						//	취소
+						history.back();
+					}
+				} else {
+					history.back();
+				}
+			});
 
-	
-</script>
+		});
+	</script>
 
 </body>
 </html>

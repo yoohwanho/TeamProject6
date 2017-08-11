@@ -101,7 +101,7 @@
 					</tr>
 					<tr>
 						<!-- 클릭한 게시글의 정보 -->
-						<td rowspan="4"><a href="userDetail"><img
+						<td rowspan="4"><a href="myPage?id=${dvdto.writer }"><img
 								src="${dvdto.profilesrc}" alt="프사" class="img-rounded" /></a></td>
 
 						<td><h5>작성일 : ${dvdto.regdate}</h5></td>
@@ -114,9 +114,9 @@
 									<input type="hidden" name="id" value="${id}" />
 								</c:when>
 								<c:otherwise>
-									<button type="submit" class="btn btn-default" id="">
+									<a href="myPage?id=${dvdto.writer}"><button type="button" class="btn btn-default" id="">
 										<h4>작성자 정보 보기</h4>
-									</button>
+									</button></a>
 								</c:otherwise>
 							</c:choose></td>
 					</tr>
