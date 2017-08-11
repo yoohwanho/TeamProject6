@@ -18,7 +18,7 @@
 		&gt;=
 		#{startNo}
 		<if test="keyword!=null">and (title like #{keyword}
-			or contents like '#{keyword}')
+			or contents like #{keyword})
 		</if>
 		<if test="gender!=null">and title like #{gender}
 		</if>

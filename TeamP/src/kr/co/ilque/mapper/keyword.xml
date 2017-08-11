@@ -15,7 +15,7 @@
 		select * from keywords where kword=#{keyword}
 	</select>
 	<insert id="insertOne">
-		insert into keywords values(keyword_seq, #{keyword}, 1)
+		insert into keywords values(keyword_seq.nextval, #{keyword}, 1)
 	</insert>
 	<update id="updateOne">
 		update keywords set counts = counts+1 where kword=#{keyword}
