@@ -100,7 +100,7 @@
 				<c:when test="${isLogin }">
 					<h2>${id}님</h2>					
 				</c:when>
-				<c:otherwise>
+				<c:otherwise>	
 					<h2>로그인하세요</h2>
 				</c:otherwise>
 			</c:choose>
@@ -198,23 +198,24 @@
 								<h4 class="modal-title">검색키워드</h4>
 							</div>
 							<div class="modal-body">
+							<form action=""></form>
 								<table class="miniTable">
 
 									<tr>
-										<td><label><input type="radio" name="optionJob"
+										<td><label><input type="radio" name="category"
 												value="일감">일감</label></td>
-										<td><label><input type="radio" name="optionJob"
+										<td><label><input type="radio" name="category"
 												value="일손">일손</label></td>
-										<td><label><input type="radio" name="optionJob"
+										<td><label><input type="radio" name="category"
 												value="전체">전체</label></td>
 									</tr>
 									<tr>
 										<td><label><input type="radio"
-												name="optionGender" value="여자">여자</label></td>
+												name="gender" value="여자">여자</label></td>
 										<td><label><input type="radio"
-												name="optionGender" value="남자">남자</label></td>
+												name="gender" value="남자">남자</label></td>
 										<td><label><input type="radio"
-												name="optionGender" value="무관">무관</label></td>
+												name="gender" value="무관">무관</label></td>
 									</tr>
 									<tr>
 										<td><input type="text" class="val" name="minVal"
