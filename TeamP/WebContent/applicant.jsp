@@ -163,14 +163,14 @@
 						<td><h4>퀘스트 보상 : ${dvdto.reward}</h4></td>
 						<c:choose>
 							<c:when test="${id eq dvdto.writer}">
-								<td><a href="">
+								<td><a href="deleteBoard?boardNo=${dvdto.boardNo}">
 										<button type="button" class="btn btn-default" id="">
 											<h4>지원자 보기</h4>
 										</button>
 								</a></td>
 							</c:when>
 							<c:otherwise>
-								<td><a href="">
+								<td><a href="?boardNo=${dvdto.boardNo}">
 										<button type="button" class="btn btn-default" id="">
 											<h4>지원자 보기</h4>
 										</button>
