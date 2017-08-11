@@ -11,12 +11,7 @@
 		RN,boardno,category,title,contents,writer,hits,loc,time,phone,reward,applicant,status,regdate
 		FROM (SELECT
 		boardno,category,title,contents,writer,hits,loc,time,phone,reward,applicant,status,regdate
-		FROM BOARD
-		ORDER BY boardno DESC )
-		WHERE ROWNUM &lt;= #{endNo} )
-		WHERE RN
-		&gt;=
-		#{startNo}
+		FROM BOARD where 1=1
 		<if test="keyword!=null">and (title like #{keyword}
 			or contents like #{keyword})
 		</if>
@@ -24,6 +19,12 @@
 		</if>
 		<if test="category!=null">and title like #{category}
 		</if>
+		ORDER BY boardno DESC )
+		WHERE ROWNUM &lt;= #{endNo} )
+		WHERE RN
+		&gt;=
+		#{startNo}
+
 
 	</select>
 	<select id="getTotal" resultType="int">
@@ -70,7 +71,8 @@
 	</delete>
 	<update id="updateOne" parameterType="bdto">
 		UPDATE board set
-		category = #{category}, title=#{title}
+		category =
+		#{category}, title=#{title}
 		,contents=#{contents},loc=#{loc},
 		time=#{time},phone=#{phone},reward=#{reward}
 		WHERE boardNo=#{boardNo}
