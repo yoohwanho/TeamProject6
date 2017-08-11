@@ -156,7 +156,7 @@
 							<th>사진 등록</th>
 							<!-- ${filePath }-->
 							<td colspan="2">
-							<input type="file" name="file" id="" />
+							<input type="file" name="file" value="${mdto.profileSrc }"  />
 							
 							</td>
 						</tr>

@@ -71,7 +71,7 @@ public class MemberController {
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public ModelAndView modify(@RequestParam("memberId") String memberId, @RequestParam("memberPwd") String memberPwd,
 			@RequestParam("memberName") String memberName, @RequestParam("phone") String phone,
-			@RequestParam("gender") String gender, @RequestParam("filePath") String profileSrc,
+			@RequestParam("gender") String gender, 
 			@RequestParam("contents") String contents, @ModelAttribute("uploadFile") UploadFile file,
 			HttpServletRequest req, BindingResult result
 
@@ -81,7 +81,7 @@ public class MemberController {
 		dto.setMemberId(memberId);
 		dto.setMemberPwd(memberPwd);
 		dto.setMemberName(memberName);
-		dto.setProfileSrc(profileSrc);
+		
 		dto.setGender(gender);
 		dto.setPhone(phone);
 		dto.setContents(contents);

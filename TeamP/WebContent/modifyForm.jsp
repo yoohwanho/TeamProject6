@@ -134,7 +134,7 @@
 								onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 								<input type="text" id="sample6_address"
 								name="sample6_address"
-								value="${sample6_address1}"> <input type="text"
+								value="${sample6_address}"> <input type="text"
 								id="sample6_address2" name="sample6_address2" value="${sample6_address2}"> <script
 									src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 								<script>
